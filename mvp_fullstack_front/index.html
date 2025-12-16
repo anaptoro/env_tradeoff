@@ -11,59 +11,106 @@
 </head>
 
 <body>
-     <!-- Cabeçalho -->
+    <!-- Cabeçalho -->
     <header>
         <div class="title">
             <h1>Environmental compensation calculator</h1>
         </div>
         <div class="banner">
-            <!-- se quiser usar sua imagem local, troque pelo caminho: market.jpg -->
             <img src="img/env_fig.jpeg" alt="Comp">
         </div>
     </header>
 
-     <!-- Formulário para adicionar árvores -->
-    <section class="newItem">
-        <input type="text" id="treeName" placeholder="Nome da espécie (ex: ipe)">
-        <input type="number" id="treeQuantity" placeholder="Quantidade" min="1">
+    <!-- Abas de modo -->
+    <div class="mode-tabs">
+        <button id="tabIsolated" class="mode-btn active" onclick="setMode('isolated')">
+            Isolated trees
+        </button>
+        <button id="tabPatch" class="mode-btn" onclick="setMode('patch')">
+            Patch / area (m²)
+        </button>
+    </div>
 
-        <select id="treeGroup">
-            <option value="native">Nativa</option>
-            <option value="exotic">Exótica</option>
-        </select>
+    <!-- ===================== ÁRVORES ISOLADAS ===================== -->
+    <section id="isolatedSection">
+        <!-- Formulário -->
+        <section class="newItem">
+            <input type="text" id="treeName" placeholder="Nome da espécie (ex: ipe)">
+            <input type="number" id="treeQuantity" placeholder="Quantidade" min="1">
 
-        <select id="treeMunicipality">
-            <option value="">Selecione o município</option>
-        </select>
+            <select id="treeGroup">
+                <option value="native">Nativa</option>
+                <option value="exotic">Exótica</option>
+            </select>
 
-        <button onclick="addItem()" class="addBtn">Adicionar à lista</button>
-        <button onclick="calculateTotal()" class="calcBtn">Calcular compensação</button>
+            <select id="treeMunicipality">
+                <option value="">Selecione o município</option>
+            </select>
+
+            <button onclick="addItem()" class="addBtn">Adicionar à lista</button>
+            <button onclick="calculateTotal()" class="calcBtn">Calcular compensação</button>
+        </section>
+
+        <!-- Mensagens -->
+        <section class="messages">
+            <div id="errorBox"></div>
+            <div id="totalBox"></div>
+        </section>
+
+        <!-- Tabela com árvores do lote -->
+        <section class="items">
+            <table id="myTable">
+                <tr>
+                    <th>Espécie</th>
+                    <th>Quantidade</th>
+                    <th>Tipo</th>
+                    <th>Municipality</th>
+                    <th>Comp./árvore</th>
+                    <th>Comp. total item</th>
+                    <th>
+                        <img src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
+                             width="15" height="15" alt="Remover">
+                    </th>
+                </tr>
+            </table>
+        </section>
     </section>
 
-    <!-- Mensagens -->
-    <section class="messages">
-        <div id="errorBox"></div>
-        <div id="totalBox"></div>
+    <!-- ===================== PATCH / ÁREA ===================== -->
+    <section id="patchSection" class="hidden">
+        <!-- Formulário -->
+        <section class="newItem">
+            <select id="patchMunicipality">
+                <option value="">Selecione o município</option>
+            </select>
+            <input type="number" id="patchArea" placeholder="Área do patch (m²)" min="0">
+            <button onclick="addPatchItem()" class="addBtn">Adicionar patch</button>
+            <button onclick="calculatePatchTotal()" class="calcBtn">Calcular compensação</button>
+        </section>
+
+        <!-- Mensagens -->
+        <section class="messages">
+            <div id="errorBoxPatch"></div>
+            <div id="totalBoxPatch"></div>
+        </section>
+
+        <!-- Tabela de patches -->
+        <section class="items">
+            <table id="patchTable">
+                <tr>
+                    <th>Municipality</th>
+                    <th>Área (m²)</th>
+                    <th>Comp./m²</th>
+                    <th>Comp. total patch</th>
+                    <th>
+                        <img src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
+                             width="15" height="15" alt="Remover">
+                    </th>
+                </tr>
+            </table>
+        </section>
     </section>
 
-    <!-- Tabela com árvores do lote -->
-    <section class="items">
-        <table id="myTable">
-            <tr>
-                <th>Espécie</th>
-                <th>Quantidade</th>
-                <th>Tipo</th>
-                <th>Municipality</th>
-                <th>Comp./árvore</th>
-                <th>Comp. total item</th>
-                <th>
-                    <img src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
-                         width="15" height="15" alt="Remover">
-                </th>
-            </tr>
-        </table>
-    </section>
-
-    <script src="scripts.js?v=11"></script>
+    <script src="scripts.js?v=21"></script>
 </body>
 </html>

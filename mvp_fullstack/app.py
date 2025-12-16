@@ -3,7 +3,8 @@ from flask_cors import CORS
 
 from model import Session
 from model.compensation import Compensation
-from model.utils import load_compensacao_from_csv_once
+from model.patch_compensation import PatchCompensation
+from model.utils import load_compensacao_from_csv_once, load_patch_compensacao_from_csv_once
 
 app = Flask(__name__)
 CORS(app)
@@ -11,6 +12,7 @@ CORS(app)
 @app.before_first_request
 def init_compensation():
     load_compensacao_from_csv_once()
+    load_patch_compensacao_from_csv_once()
 
 @app.route('/')
 def home():
@@ -27,6 +29,19 @@ def listar_municipios():
         session.query(Compensation.municipality)
         .distinct()
         .order_by(Compensation.municipality)
+        .all()
+    )
+    municipios = [r[0] for r in rows if r[0]]
+    session.close()
+    return jsonify({"municipios": municipios}), 200
+
+@app.route("/api/patch_municipios", methods=["GET"])
+def listar_patch_municipios():
+    session = Session()
+    rows = (
+        session.query(PatchCompensation.municipality)
+        .distinct()
+        .order_by(PatchCompensation.municipality)
         .all()
     )
     municipios = [r[0] for r in rows if r[0]]
@@ -111,3 +126,85 @@ def calcular_compensacao_lote():
         "total_compensacao_geral": total_geral,
         "itens_sem_regra": itens_sem_regra
     }), 200
+
+@app.route('/api/compensacao/patch', methods=['POST'])
+@app.route('/api/compensacao/patch', methods=['POST'])
+def calcular_compensacao_patch():
+    data = request.get_json() or {}
+    print("Received data for patch:", data)  # debug
+
+    patches = data.get("patches")
+    if not isinstance(patches, list) or not patches:
+        return jsonify({"erro": "Envie uma lista 'patches' com pelo menos um elemento"}), 400
+
+    session = Session()
+
+    resultados = []
+    total_geral = 0.0
+    patches_sem_regra = []
+
+    for idx, patch in enumerate(patches):
+        municipality = patch.get("municipality")
+        area_m2 = patch.get("area_m2")
+
+        # Campos obrigatórios
+        missing = []
+        if not municipality:
+            missing.append("municipality")
+        if area_m2 is None:
+            missing.append("area_m2")
+
+        if missing:
+            patches_sem_regra.append({
+                "index": idx,
+                "motivo": f"Campos obrigatórios faltando ({', '.join(missing)})",
+                "item": patch
+            })
+            continue
+
+        # Converte área para número
+        try:
+            area_m2 = float(area_m2)
+        except (TypeError, ValueError):
+            patches_sem_regra.append({
+                "index": idx,
+                "motivo": "area_m2 não é número",
+                "item": patch
+            })
+            continue
+
+        # Busca regra na tabela PatchCompensation
+        regra = (
+            session.query(PatchCompensation)
+            .filter(PatchCompensation.municipality == municipality)
+            .first()
+        )
+
+        if not regra:
+            patches_sem_regra.append({
+                "index": idx,
+                "motivo": "não existe regra de compensação para este município",
+                "item": patch
+            })
+            continue
+
+        # Supondo coluna 'compensation_m2' no modelo PatchCompensation
+        comp_por_m2 = regra.compensation_m2
+        total_patch = comp_por_m2 * area_m2
+        total_geral += total_patch
+
+        resultados.append({
+            "municipality": municipality,
+            "area_m2": area_m2,
+            "compensacao_por_m2": comp_por_m2,
+            "compensacao_total_patch": total_patch,
+        })
+
+    session.close()
+
+    return jsonify({
+        "patches_processados": resultados,
+        "total_compensacao_geral": total_geral,
+        "patches_sem_regra": patches_sem_regra,
+    }), 200
+

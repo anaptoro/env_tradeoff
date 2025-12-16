@@ -5,11 +5,11 @@ li {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: rgb(225, 222, 199);
+    background-color: rgb(27, 77, 50);
 }
 
 header {
-    background-color: rgb(225, 222, 199);
+    background-color: rgb(198, 236, 200);
     text-align: center;
     position: relative;
     width: 100%;
@@ -18,7 +18,7 @@ header {
 .title {
     color: white;
     width: 100%;
-    background-color: rgb(35, 32, 24);
+    background-color: rgb(27, 77, 50);
     display: inline-block;
     padding: 2px 0px;
     position: sticky;
@@ -37,7 +37,7 @@ header {
 }
 
 .newItem {
-    background-color: rgb(225, 222, 199);
+    background-color: rgb(213, 225, 205);
     padding: 30px 40px;
     color: white;
     display: flex;
@@ -55,31 +55,37 @@ header {
 #treeName,
 #treeQuantity,
 #treeGroup,
-#treeOrigin {
+#treeMunicipality,
+#patchMunicipality,
+#patchArea {
     margin: 0;
     border: 1px solid rgb(35, 32, 24);
     padding: 10px;
     font-size: 16px;
 }
 
+/* campo espécie */
 #treeName {
     width: 25%;
 }
 
+/* quantidade (árvores) */
 #treeQuantity {
     width: 8%;
 }
 
+/* selects / inputs "curtos" */
 #treeGroup,
-#treeOrigin {
+#treeMunicipality,
+#patchMunicipality,
+#patchArea {
     width: 15%;
     background-color: white;
 }
-
 .addBtn,
 .calcBtn {
     padding: 9px 12px;
-    background-color: rgb(35, 32, 24);
+    background-color: rgb(27, 77, 50);
     color: white;
     text-align: center;
     font-size: 16px;
@@ -105,7 +111,7 @@ header {
 table,
 th,
 td {
-    border: 1px solid black;
+    border: 1px solid rgb(244, 241, 241);
     border-collapse: collapse;
     cursor: pointer;
     position: relative;
@@ -116,7 +122,7 @@ td {
 }
 
 table {
-    background-color: white;
+    background-color: rgb(209, 245, 209);
     width: 80%;
 }
 
@@ -129,7 +135,7 @@ th:nth-child(1) {
 }
 
 tr:hover {
-    background: rgb(200, 199, 199);
+    background: rgb(198, 233, 205);
 }
 
 .close:hover {
@@ -149,4 +155,46 @@ tr:hover {
 
 #totalBox {
     font-weight: bold;
+}
+
+/* --------- Tabs: Isolated vs Patch --------- */
+
+.mode-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 6px 40px;
+    background-color: rgb(27, 77, 50);
+}
+
+.mode-btn {
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #e4e4e4;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px 4px 0 0;
+}
+
+.mode-btn.active {
+    background-color: rgb(213, 225, 205); /* mesma cor do .newItem */
+    font-weight: 700;
+}
+
+/* usado pelo JS para esconder/mostrar seções */
+.hidden {
+    display: none;
+}
+
+#errorBoxPatch {
+    color: #b31616;
+    margin-bottom: 5px;
+}
+
+#totalBoxPatch {
+    font-weight: bold;
+}
+
+#patchTable {
+    background-color: rgb(209, 235, 245); /* azul clarinho só pra diferenciar */
 }

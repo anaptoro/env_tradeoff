@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 # importando os elementos definidos no modelo
 from model.base import Base
 from model.compensation import Compensation
+from model.patch_compensation import PatchCompensation
 
 
 # url de acesso ao banco (essa é uma url de acesso ao sqlite local)
