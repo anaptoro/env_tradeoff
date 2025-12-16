@@ -1,8 +1,6 @@
-# Minha API
+# Environmental compensation calculator
 
-Este pequeno projeto faz parte do material diático da Disciplina **Desenvolvimento Full Stack Básico** 
-
-O objetivo aqui é ilutsrar o conteúdo apresentado na primeira aula com um código simples.
+This small application aims to facilitate/simulate environmental compensation for the Sao Paulo state, more specifically the compensation needed in case of patches or isolated trees supression.
 
 ---
 ## Como executar

@@ -1,29 +1,25 @@
-from flask import Flask, request, send_from_directory, render_template, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
-from sqlalchemy.exc import IntegrityError
 
-from model import Session, Produto
-from model.comentario import Comentario
-
-from model.utils import load_compensacao_from_csv_once
+from model import Session
 from model.compensation import Compensation
+from model.utils import load_compensacao_from_csv_once
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/')
-def home():
-    return render_template("home.html"), 200
-
-
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory('static', 'favicon.ico', mimetype='image/x-icon')
-
 @app.before_first_request
 def init_compensation():
     load_compensacao_from_csv_once()
-    
+
+@app.route('/')
+def home():
+    return jsonify({
+        "status": "ok",
+        "message": "Tree compensation API is running"
+    }), 200
+
+
 @app.route('/api/municipios', methods=['GET'])
 def listar_municipios():
     session = Session()
@@ -33,7 +29,7 @@ def listar_municipios():
         .order_by(Compensation.municipality)
         .all()
     )
-    municipios = [r[0] for r in rows]
+    municipios = [r[0] for r in rows if r[0]]
     session.close()
     return jsonify({"municipios": municipios}), 200
 
