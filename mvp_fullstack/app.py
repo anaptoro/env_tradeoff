@@ -55,24 +55,22 @@ def calcular_compensacao_lote():
 
     items = data.get("items")
     if not isinstance(items, list) or not items:
-        return jsonify({"erro": "Envie uma lista 'items' com pelo menos um elemento"}), 400
+        return jsonify({"error": "You need to sen a list with at least one item"}), 400
 
     session = Session()
-
     resultados = []
     total_geral = 0
     itens_sem_regra = []
 
     for idx, item in enumerate(items):
-        name = item.get("name")
         municipality = item.get("municipality")
         group = item.get("group")
         quantidade = item.get("quantidade")
 
-        if not name or not municipality or quantidade is None:
+        if not municipality or quantidade is None:
             itens_sem_regra.append({
                 "index": idx,
-                "motivo": "Campos obrigatórios faltando (name, municipality, quantidade)",
+                "motivo": "Municipality and quantity cant be None",
                 "item": item
             })
             continue
@@ -82,13 +80,12 @@ def calcular_compensacao_lote():
         except ValueError:
             itens_sem_regra.append({
                 "index": idx,
-                "motivo": "quantidade não é número inteiro",
+                "motivo": "Quantity must be an Integer value",
                 "item": item
             })
             continue
 
         query = session.query(Compensation).filter(
-            Compensation.name == name,
             Compensation.municipality == municipality,
         )
         if group:
@@ -98,9 +95,8 @@ def calcular_compensacao_lote():
         if not regra:
             itens_sem_regra.append({
                 "index": idx,
-                "motivo": "Nenhuma regra encontrada",
-                "filtros_usados": {
-                    "name": name,
+                "motivo": "No rule found",
+                "Filters used:": {
                     "municipality": municipality,
                     "group": group
                 }
@@ -111,7 +107,6 @@ def calcular_compensacao_lote():
         total_geral += total_item
 
         resultados.append({
-            "name": name,
             "municipality": municipality,
             "group": group,
             "quantidade": quantidade,
@@ -122,12 +117,11 @@ def calcular_compensacao_lote():
     session.close()
 
     return jsonify({
-        "itens_processados": resultados,
-        "total_compensacao_geral": total_geral,
-        "itens_sem_regra": itens_sem_regra
+        "processed items": resultados,
+        "total compensation": total_geral,
+        "items without compensation": itens_sem_regra
     }), 200
 
-@app.route('/api/compensacao/patch', methods=['POST'])
 @app.route('/api/compensacao/patch', methods=['POST'])
 def calcular_compensacao_patch():
     data = request.get_json() or {}

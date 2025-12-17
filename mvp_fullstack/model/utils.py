@@ -32,7 +32,6 @@ def load_compensacao_from_csv_once(force: bool = False):
         for row in reader:
             rows.append(
                 Compensation(
-                    name=row["name"].strip(),
                     group=row["group"].strip(),
                     municipality=row["municipality"].strip(),
                     compensation=int(row["compensation"])

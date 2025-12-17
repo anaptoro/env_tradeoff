@@ -1,6 +1,6 @@
-name,group,municipality,compensation
-ipe,native,avare,2
-ipe,native,sorocaba,4
-palmeira,native,piracicaba,3
-leucena,exotic,piracicaba,0
-generic,exotic,cotia,0
+group,municipality,compensation
+native,avare,2
+native,sorocaba,4
+native,piracicaba,3
+exotic,piracicaba,0
+exotic,cotia,0

@@ -52,7 +52,6 @@ header {
     clear: both;
 }
 
-#treeName,
 #treeQuantity,
 #treeGroup,
 #treeMunicipality,
@@ -64,10 +63,6 @@ header {
     font-size: 16px;
 }
 
-/* campo espécie */
-#treeName {
-    width: 25%;
-}
 
 /* quantidade (árvores) */
 #treeQuantity {

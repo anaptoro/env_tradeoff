@@ -2,32 +2,31 @@
 
 This small application aims to facilitate/simulate environmental compensation for the Sao Paulo state, more specifically the compensation needed in case of patches or isolated trees supression.
 
+The possible inputs for the application are:
+Isolated trees:
+- Quantity
+- Exotic/Native
+- Municipality
+
+Patches:
+- Municipality
+- Patch size (squared meters)
+
+For both cases the compensation will be automatically calculated based on individual municipalities environmental rules.
+
 ---
-## Como executar
+## How to run
 
-Será necessário ter todas as libs python listadas no `requirements.txt` instaladas, é bem simples o processo.
-
-Após clonar o repositório, é necessário ir ao diretório raiz do projeto, pelo terminal, para poder executar os comandos descritos abaixo.
-
-> É fortemente indicado o uso de ambientes virtuais do tipo [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html).
+You need to create a virtual env and install the libraries listed on `requirements.txt`
 
 ```
 (env)$ pip install -r requirements.txt
 ```
+In order to run the API, inside your virtual env:
 
-Este comando instala as dependências/bibliotecas, descritas no arquivo `requirements.txt`.
+(env)$cd mvp_fullstack
 
-Para executar a API  basta executar:
-
-```
-(env)$ fpython -m flask --app app run --host 0.0.0.0 --port 5002
-```
-
-Em modo de desenvolvimento é recomendado executar utilizando o parâmetro reload, que reiniciará o servidor
-automaticamente após uma mudança no código fonte. 
+(env)$ python -m flask --app app run --host 0.0.0.0 --port 5002
 
 ```
-(env)$ python -m flask --app app run --host 0.0.0.0 --port 5002 --reload
-```
-
-Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
+Finally open the index.html file contained into the mvp_fullstack_front folder in your browser.
