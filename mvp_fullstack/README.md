@@ -1,16 +1,23 @@
 # Environmental compensation calculator
 
-This small application aims to facilitate/simulate environmental compensation for the Sao Paulo state, more specifically the compensation needed in case of patches or isolated trees supression.
+This small application aims to facilitate/simulate environmental compensation for the Sao Paulo state, more specifically the compensation needed in case of patches, isolated trees, and Permanent Preservation Area(PPA) supression.
 
 The possible inputs for the application are:
 Isolated trees:
 - Quantity
 - Exotic/Native
 - Municipality
+- Endangered* (yes/not)
+
+*to facilitate a tab for consulting is a specie is considered endangered or not is available.
 
 Patches:
 - Municipality
-- Patch size (squared meters)
+- Patch size (square meters)
+
+PPA:
+- Municipality 
+- Area (square meters)
 
 For both cases the compensation will be automatically calculated based on individual municipalities environmental rules.
 
@@ -29,4 +36,4 @@ In order to run the API, inside your virtual env:
 (env)$ python -m flask --app app run --host 0.0.0.0 --port 5002
 
 ```
-Finally open the index.html file contained into the mvp_fullstack_front folder in your browser.
+Finally, open the index.html file contained into the mvp_fullstack_front folder in your browser.

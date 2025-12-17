@@ -20,7 +20,7 @@ APP_CSV = BASE_DIR / "app_compensation.csv"
 def load_compensacao_from_csv_once(force: bool = False):
     session = Session()
 
-    # se não for force e já tiver dados, não recarrega
+    
     if not force and session.query(Compensation).first():
         session.close()
         return
@@ -43,7 +43,7 @@ def load_compensacao_from_csv_once(force: bool = False):
             municipality = row["municipality"].strip()
             comp = int(row["compensation"])
 
-            # new column (optional)
+            
             end_str = row.get("endangered", "").strip()
             if not end_str:
                 endangered = 1.0
@@ -51,7 +51,7 @@ def load_compensacao_from_csv_once(force: bool = False):
                 try:
                     endangered = float(end_str)
                 except ValueError:
-                    endangered = 1.0   # fallback
+                    endangered = 1.0   
 
             rows.append(
                 Compensation(
@@ -94,7 +94,7 @@ def load_patch_compensacao_from_csv_once():
             if not muni:
                 continue
             if muni in seen:
-                # se estiver duplicado, ignoramos as próximas repetições
+                
                 continue
             seen.add(muni)
 
@@ -127,7 +127,7 @@ def load_species_status_from_csv_once():
 
     session = Session()
     try:
-        # if table already has rows, do nothing
+        
         if session.query(SpeciesStatus).first():
             print("Species status table already populated.")
             _STATUS_LOADED = True
@@ -141,14 +141,12 @@ def load_species_status_from_csv_once():
             reader = csv.DictReader(f)
 
             for raw_row in reader:
-                # CSV header is "family,specie,status" (your example),
-                # but the DB column is "species" → we map it:
                 family = (raw_row.get("family") or "").strip()
                 specie = (raw_row.get("specie") or raw_row.get("species") or "").strip()
                 status = (raw_row.get("status") or "").strip()
 
                 if not family or not specie or not status:
-                    continue  # skip incomplete row
+                    continue  
 
                 session.add(
                     SpeciesStatus(

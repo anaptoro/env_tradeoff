@@ -45,30 +45,29 @@ def listar_app_municipios():
     return jsonify({"municipios": municipios}), 200
 
 
-# Consulta de status por família / espécie (GET)
+
 @app.route("/api/species/status")
 def get_species_status():
     family = request.args.get("family", "").strip()
-    specie = request.args.get("specie", "").strip()  # query param continua 'specie'
-
+    specie = request.args.get("specie", "").strip()  
     session = Session()
     try:
         q = session.query(SpeciesStatus)
 
         if family:
-            # case-insensitive, contains
+            
             q = q.filter(SpeciesStatus.family.ilike(f"%{family}%"))
         if specie:
-            # 👇 AQUI é o bug: usar .species, não .specie
+            
             q = q.filter(SpeciesStatus.specie.ilike(f"%{specie}%"))
 
         rows = q.all()
 
-        # Sempre 200; lista vazia = "não encontrado"
+        
         result = [
             {
                 "family": row.family,
-                "specie": row.specie,  # chave 'specie' pra bater com o front
+                "specie": row.specie,  
                 "status": row.status,
                 "descricao": STATUS_DESCRIPTIONS.get(row.status, ""),
             }
@@ -124,7 +123,7 @@ def calcular_compensacao_lote():
         municipality = item.get("municipality")
         group = item.get("group")
         quantidade = item.get("quantidade")
-        endangered_flag = item.get("endangered", False)  # NEW
+        endangered_flag = item.get("endangered", False)  
 
         if not municipality or quantidade is None:
             itens_sem_regra.append({
@@ -162,7 +161,6 @@ def calcular_compensacao_lote():
             })
             continue
 
-        # ---- NEW: interpret endangered flag ----
         is_endangered = False
         if isinstance(endangered_flag, bool):
             is_endangered = endangered_flag
@@ -172,7 +170,7 @@ def calcular_compensacao_lote():
         base_comp = regra.compensation
         multiplier = 1.0
         if is_endangered:
-            # use multiplier from DB; default 1 if null/0
+            
             multiplier = regra.endangered or 1.0
 
         comp_por_arvore = base_comp * multiplier
@@ -203,7 +201,7 @@ def calcular_compensacao_lote():
 @app.route('/api/compensacao/patch', methods=['POST'])
 def calcular_compensacao_patch():
     data = request.get_json() or {}
-    print("Received data for patch:", data)  # debug
+    print("Received data for patch:", data)  
 
     patches = data.get("patches")
     if not isinstance(patches, list) or not patches:
@@ -219,7 +217,7 @@ def calcular_compensacao_patch():
         municipality = patch.get("municipality")
         area_m2 = patch.get("area_m2")
 
-        # Campos obrigatórios
+        
         missing = []
         if not municipality:
             missing.append("municipality")
@@ -234,7 +232,7 @@ def calcular_compensacao_patch():
             })
             continue
 
-        # Converte área para número
+        
         try:
             area_m2 = float(area_m2)
         except (TypeError, ValueError):
@@ -245,7 +243,7 @@ def calcular_compensacao_patch():
             })
             continue
 
-        # Busca regra na tabela PatchCompensation
+        
         regra = (
             session.query(PatchCompensation)
             .filter(PatchCompensation.municipality == municipality)
@@ -260,7 +258,7 @@ def calcular_compensacao_patch():
             })
             continue
 
-        # Supondo coluna 'compensation_m2' no modelo PatchCompensation
+        
         comp_por_m2 = regra.compensation_m2
         total_patch = comp_por_m2 * area_m2
         total_geral += total_patch

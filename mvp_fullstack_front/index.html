@@ -11,18 +11,16 @@
 </head>
 
 <body>
-    <!-- Cabeçalho -->
     <header>
         <div class="title">
             <h1>Environmental compensation calculator</h1>
         </div>
         <div class="banner">
-            <!-- sua imagem -->
             <img src="img/env_fig.jpeg" alt="Comp">
         </div>
     </header>
 
-    <!-- TABS -->
+
     <nav class="tabs">
         <button id="tabIsolated" class="tab-button active" onclick="setMode('isolated')">
             Isolated trees
@@ -38,8 +36,7 @@
         </button>
     </nav>
 
-    <!-- ========== ABA 1: ÁRVORES ISOLADAS ========== -->
-    <!-- Isolated trees tab -->
+
     <section id="isolatedSection" class="tab-section">
         <h2>Árvores isoladas</h2>
 
@@ -58,10 +55,10 @@
 
             <select id="isolatedMunicipality">
                 <option value="">Selecione o município</option>
-                <!-- opções preenchidas via JS -->
+
             </select>
 
-            <!-- 🔴 NOVO: endangered dropdown, casa com treeEndangered no JS -->
+
             <select id="treeEndangered">
                 <option value="false">Não ameaçada</option>
                 <option value="true">Ameaçada</option>
@@ -97,12 +94,12 @@
         </section>
     </section>
 
-    <!-- ========== ABA 2: PATCH / ÁREA ========== -->
+    
     <section id="patchSection" class="tab-section" style="display:none;">
         <section class="newItem">
             <select id="patchMunicipality">
                 <option value="">Selecione o município</option>
-                <!-- opções carregadas via JS a partir de /api/municipios -->
+                
             </select>
 
             <input
@@ -140,13 +137,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- linhas preenchidas via JS -->
+                    
                 </tbody>
             </table>
         </section>
     </section>
 
-    <!-- ========== ABA 3: STATUS DE ESPÉCIES ========== -->
+    
     <section id="statusSection" class="tab-section" style="display:none;">
         <section class="newItem">
           <input type="text" id="statusFamily" placeholder="Family (ex: ACANTHACEAE)" />
@@ -174,7 +171,7 @@
       </section>
 
 
-<!-- APP compensation tab -->
+
 <section id="appSection" class="tab-section" style="display:none;">
     <h2>Compensação de APP</h2>
 
@@ -216,7 +213,7 @@
     </section>
 </section>
      
-    <!-- JS -->
+    
     <script src="scripts.js"></script>
 </body>
 </html>

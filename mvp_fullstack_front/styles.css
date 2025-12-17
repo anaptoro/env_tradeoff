@@ -64,12 +64,12 @@ header {
 }
 
 
-/* quantidade (árvores) */
+
 #treeQuantity {
     width: 8%;
 }
 
-/* selects / inputs "curtos" */
+
 #treeGroup,
 #treeMunicipality,
 #patchMunicipality,
@@ -152,7 +152,7 @@ tr:hover {
     font-weight: bold;
 }
 
-/* --------- Tabs: Isolated vs Patch --------- */
+
 
 .mode-tabs {
     display: flex;
@@ -172,11 +172,11 @@ tr:hover {
 }
 
 .mode-btn.active {
-    background-color: rgb(213, 225, 205); /* mesma cor do .newItem */
+    background-color: rgb(213, 225, 205); 
     font-weight: 700;
 }
 
-/* usado pelo JS para esconder/mostrar seções */
+
 .hidden {
     display: none;
 }
@@ -191,5 +191,5 @@ tr:hover {
 }
 
 #patchTable {
-    background-color: rgb(209, 235, 245); /* azul clarinho só pra diferenciar */
+    background-color: rgb(209, 235, 245); 
 }

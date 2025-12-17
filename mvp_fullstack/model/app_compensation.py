@@ -7,7 +7,7 @@ class AppCompensation(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     municipality = Column(String(), nullable=False)
-    compensation = Column(Float, nullable=False)  # per unit (e.g. per m², per APP, etc.)
+    compensation = Column(Float, nullable=False) 
 
     __table_args__ = (
         UniqueConstraint("municipality", name="uix_app_muni"),

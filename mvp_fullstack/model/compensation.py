@@ -6,8 +6,8 @@ class Compensation(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     group = Column(String())  
-    municipality = Column(String())    # matches Produto.nome
-    compensation = Column(Integer)               # e.g. R$, área, etc.
+    municipality = Column(String())    
+    compensation = Column(Integer)               
     endangered = Column(Integer, default=1)
 
     def __init__(self, group: str, municipality:str,compensation:int, endangered:int):

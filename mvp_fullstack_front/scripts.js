@@ -1,17 +1,15 @@
-// =======================================================
-//  CONFIG & GLOBAL STATE
-// =======================================================
+
 const API_BASE = "http://127.0.0.1:5002";
 
-// Isolated trees: { quantidade, group, municipality }
+
 let isolatedItems = [];
 
-// Patch/area: { municipality, area_m2 }
+
 let patchItems = [];
 
 let appItems = [];
 
-// ================== HELPERS ==================
+
 function byId(id) {
   return document.getElementById(id);
 }
@@ -22,31 +20,29 @@ function showText(id, msg) {
   el.textContent = msg || "";
 }
 
-// =======================================================
-//  TABS: ISOLATED / PATCH / STATUS
-// =======================================================
+
 function setMode(mode) {
   const isoSection    = byId("isolatedSection");
   const patchSection  = byId("patchSection");
   const statusSection = byId("statusSection");
-  const appSection    = byId("appSection");   // NEW
+  const appSection    = byId("appSection");  
 
   const tabIsolated = byId("tabIsolated");
   const tabPatch    = byId("tabPatch");
   const tabStatus   = byId("tabStatus");
-  const tabApp      = byId("tabApp");         // NEW
+  const tabApp      = byId("tabApp");        
 
-  // Esconde todas as seções
+
   [isoSection, patchSection, statusSection, appSection].forEach((sec) => {
     if (sec) sec.style.display = "none";
   });
 
-  // Remove 'active' de todos os botões
+
   [tabIsolated, tabPatch, tabStatus, tabApp].forEach((btn) => {
     if (btn) btn.classList.remove("active");
   });
 
-  // Mostra apenas a aba selecionada
+
   if (mode === "isolated") {
     if (isoSection) isoSection.style.display = "block";
     if (tabIsolated) tabIsolated.classList.add("active");
@@ -63,9 +59,6 @@ function setMode(mode) {
 }
 
 
-// =======================================================
-//  MUNICIPALITIES DROPDOWNS (ISOLATED + PATCH)
-// =======================================================
 async function loadMunicipalities() {
   try {
     const resp = await fetch(`${API_BASE}/api/municipios`);
@@ -75,7 +68,7 @@ async function loadMunicipalities() {
 
     const data = await resp.json();
 
-    // Can be ["avare", ...] OR {municipios: [...]} OR {municipalities: [...]}
+ 
     let municipios = [];
     if (Array.isArray(data)) {
       municipios = data;
@@ -116,14 +109,12 @@ async function loadMunicipalities() {
   }
 }
 
-// =======================================================
-//  ISOLATED TREES: ADD ITEM
-// =======================================================
+
 function addItem() {
   const qtyInput = byId("treeQuantity");
   const groupSelect = byId("treeGroup");
   const municipalitySelect = byId("isolatedMunicipality");
-  const endangeredSelect = byId("treeEndangered");  // NEW
+  const endangeredSelect = byId("treeEndangered"); 
   const errorBox = byId("errorBox");
   const table = byId("myTable");
 
@@ -138,7 +129,7 @@ function addItem() {
   const group = groupSelect.value;
   const municipality = municipalitySelect.value;
 
-  // lê o dropdown (se não existir ainda, assume false)
+
   const endangeredValue = endangeredSelect ? endangeredSelect.value : "false";
   const endangered = endangeredValue === "true";
 
@@ -153,25 +144,25 @@ function addItem() {
 
   const quantidade = Number(qtyStr);
 
-  // agora o item também carrega o flag endangered
+
   const item = { quantidade, group, municipality, endangered };
   isolatedItems.push(item);
 
-  // Add row to table
+
   const row = table.insertRow(-1);
-  // Columns: Quantidade | Tipo | Municipality | Comp./árvore | Comp. total item | delete
+
   row.insertCell(0).textContent = quantidade;
   row.insertCell(1).textContent = group;
   row.insertCell(2).textContent = municipality;
-  row.insertCell(3).textContent = ""; // comp./árvore
-  row.insertCell(4).textContent = ""; // comp. total item
+  row.insertCell(3).textContent = ""; 
+  row.insertCell(4).textContent = ""; 
 
   const delCell = row.insertCell(5);
   delCell.textContent = "×";
   delCell.classList.add("delete-btn");
   delCell.style.cursor = "pointer";
   delCell.onclick = () => {
-    const index = row.rowIndex - 1; // minus header
+    const index = row.rowIndex - 1; 
     isolatedItems.splice(index, 1);
     table.deleteRow(row.rowIndex);
   };
@@ -180,9 +171,7 @@ function addItem() {
 }
 
 
-// =======================================================
-//  ISOLATED TREES: CALCULATE TOTAL COMPENSATION
-// =======================================================
+
 async function calculateTotal() {
   const errorBox = byId("errorBox");
   const totalBox = byId("totalBox");
@@ -202,7 +191,7 @@ async function calculateTotal() {
     const resp = await fetch(`${API_BASE}/api/compensacao/lote`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: isolatedItems }), // já inclui endangered
+      body: JSON.stringify({ items: isolatedItems }), 
     });
 
     const data = await resp.json();
@@ -215,19 +204,19 @@ async function calculateTotal() {
       return;
     }
 
-    // ---- processed items (suporta nomes antigos e novos) ----
+    
     const processed =
-      data.processed_items ||          // novo backend (snake_case)
-      data["processed items"] ||       // versão anterior com espaço
-      data.itens_processados ||        // fallback PT-BR
+      data.processed_items ||          
+      data["processed items"] ||       
+      data.itens_processados ||        
       [];
 
     if (table && Array.isArray(processed)) {
       processed.forEach((item, idx) => {
-        const row = table.rows[idx + 1]; // 0 é header
+        const row = table.rows[idx + 1]; 
         if (!row) return;
 
-        // Índices certos: 3 = Comp./árvore, 4 = Comp. total item
+        
         if (row.cells[3]) {
           row.cells[3].textContent =
             item.compensacao_por_arvore != null
@@ -243,10 +232,10 @@ async function calculateTotal() {
       });
     }
 
-    // ---- total compensation (nomes antigos e novos) ----
+    
     const total =
-      data.total_compensation ??       // novo
-      data["total compensation"] ??    // antigo
+      data.total_compensation ??       
+      data["total compensation"] ??    
       data.total_compensacao_geral ??
       data.total_compensacao_lote ??
       data.total ??
@@ -256,10 +245,10 @@ async function calculateTotal() {
       totalBox.textContent = `Compensação total do lote: ${total}`;
     }
 
-    // ---- itens sem regra (nomes antigos e novos) ----
+    
     const semRegra =
-      data.items_without_compensation ||  // novo
-      data["items without compensation"] || // antigo
+      data.items_without_compensation ||  
+      data["items without compensation"] || 
       data.itens_sem_regra ||
       [];
 
@@ -275,9 +264,7 @@ async function calculateTotal() {
 }
 
 
-// =======================================================
-//  PATCH: ADD PATCH ITEM
-// =======================================================
+
 function addPatchItem() {
   const municipalitySelect = byId("patchMunicipality");
   const areaInput = byId("patchArea");
@@ -310,11 +297,11 @@ function addPatchItem() {
   patchItems.push(item);
 
   const row = table.insertRow(-1);
-  // Columns: municipality | area | comp/m2 | comp total | delete
+  
   row.insertCell(0).textContent = municipality;
   row.insertCell(1).textContent = area_m2;
-  row.insertCell(2).textContent = ""; // comp/m²
-  row.insertCell(3).textContent = ""; // total
+  row.insertCell(2).textContent = ""; 
+  row.insertCell(3).textContent = ""; 
 
   const delCell = row.insertCell(4);
   delCell.textContent = "×";
@@ -329,9 +316,7 @@ function addPatchItem() {
   areaInput.value = "";
 }
 
-// =======================================================
-//  PATCH: CALCULATE COMPENSATION
-// =======================================================
+
 async function calculatePatchTotal() {
   const errorBoxPatch = byId("errorBoxPatch");
   const totalBoxPatch = byId("totalBoxPatch");
@@ -409,9 +394,7 @@ async function calculatePatchTotal() {
   }
 }
 
-// =======================================================
-//  SPECIES STATUS TAB
-// =======================================================
+
 async function searchStatus() {
   const familyInput = byId("statusFamily");
   const specieInput = byId("statusSpecie");
@@ -537,7 +520,7 @@ async function consultStatus() {
       return;
     }
 
-    const data = await resp.json();   // <- lista de registros
+    const data = await resp.json();   
 
     if (!Array.isArray(data) || data.length === 0) {
       if (message) message.textContent = "Espécie não encontrada.";
@@ -594,15 +577,15 @@ function addAppItem() {
 
   row.insertCell(0).textContent = municipality;
   row.insertCell(1).textContent = quantidade;
-  row.insertCell(2).textContent = ""; // comp/unidade
-  row.insertCell(3).textContent = ""; // total APP
+  row.insertCell(2).textContent = ""; 
+  row.insertCell(3).textContent = ""; 
 
   const delCell = row.insertCell(4);
   delCell.textContent = "×";
   delCell.classList.add("delete-btn");
   delCell.style.cursor = "pointer";
   delCell.onclick = () => {
-    const index = row.rowIndex - 1; // ignora header
+    const index = row.rowIndex - 1; 
     appItems.splice(index, 1);
     row.remove();
   };
@@ -677,9 +660,7 @@ async function calculateAppTotal() {
 
 
 
-// =======================================================
-//  EXPOSE FUNCTIONS FOR HTML
-// =======================================================
+
 window.setMode = setMode;
 window.addItem = addItem;
 window.calculateTotal = calculateTotal;
@@ -690,12 +671,10 @@ window.consultStatus = consultStatus;
 window.addAppItem = addAppItem;
 window.calculateAppTotal = calculateAppTotal;
 
-// =======================================================
-//  PAGE LOAD
-// =======================================================
+
 window.addEventListener("DOMContentLoaded", () => {
   console.log("scripts.js carregado - DOM pronto");
-  setMode("isolated");   // default tab
-  loadMunicipalities();  // fill dropdowns
+  setMode("isolated");   
+  loadMunicipalities();  
   loadAppMunicipalities();
 });
