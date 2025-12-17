@@ -13,3 +13,11 @@ class Compensation(Base):
         self.group = group 
         self.municipality = municipality 
         self.compensation = compensation
+
+class SpeciesStatus(Base):
+    __tablename__ = "species_status"
+
+    id = Column(Integer, primary_key=True)
+    family = Column(String, nullable=False, index=True)
+    specie = Column(String, nullable=False, index=True)
+    status = Column(String, nullable=False)

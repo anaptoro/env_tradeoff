@@ -17,98 +17,156 @@
             <h1>Environmental compensation calculator</h1>
         </div>
         <div class="banner">
+            <!-- sua imagem -->
             <img src="img/env_fig.jpeg" alt="Comp">
         </div>
     </header>
 
-    <!-- Abas de modo -->
-    <div class="mode-tabs">
-        <button id="tabIsolated" class="mode-btn active" onclick="setMode('isolated')">
+    <!-- TABS -->
+    <nav class="tabs">
+        <button id="tabIsolated" class="tab-button active" onclick="setMode('isolated')">
             Isolated trees
         </button>
-        <button id="tabPatch" class="mode-btn" onclick="setMode('patch')">
+        <button id="tabPatch" class="tab-button" onclick="setMode('patch')">
             Patch / area (m²)
         </button>
-    </div>
+        <button id="tabStatus" class="tab-button" onclick="setMode('status')">
+            Species status
+        </button>
+    </nav>
 
-    <!-- ===================== ÁRVORES ISOLADAS ===================== -->
-    <section id="isolatedSection">
-        <!-- Formulário -->
+    <!-- ========== ABA 1: ÁRVORES ISOLADAS ========== -->
+    <section id="isolatedSection" class="tab-section">
         <section class="newItem">
-            <input type="number" id="treeQuantity" placeholder="Quantidade" min="1">
+            <input
+                type="number"
+                id="treeQuantity"
+                placeholder="Quantidade de árvores"
+                min="1"
+            />
 
             <select id="treeGroup">
                 <option value="native">Nativa</option>
                 <option value="exotic">Exótica</option>
             </select>
 
-            <select id="treeMunicipality">
+            <select id="isolatedMunicipality">
                 <option value="">Selecione o município</option>
+                <!-- opções carregadas via JS a partir de /api/municipios -->
             </select>
 
             <button onclick="addItem()" class="addBtn">Adicionar à lista</button>
             <button onclick="calculateTotal()" class="calcBtn">Calcular compensação</button>
         </section>
 
-        <!-- Mensagens -->
         <section class="messages">
             <div id="errorBox"></div>
-            <div id="totalBox"></div>
+            <div id="totalBox">Compensação total do lote: 0</div>
         </section>
 
-        <!-- Tabela com árvores do lote -->
         <section class="items">
             <table id="myTable">
-                <tr>
-                    <th>Quantidade</th>
-                    <th>Tipo</th>
-                    <th>Municipality</th>
-                    <th>Comp./árvore</th>
-                    <th>Comp. total item</th>
-                    <th>
-                        <img src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
-                             width="15" height="15" alt="Remover">
-                    </th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Quantidade</th>
+                        <th>Tipo</th>
+                        <th>Municipality</th>
+                        <th>Comp./árvore</th>
+                        <th>Comp. total item</th>
+                        <th>
+                            <img
+                                src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
+                                width="15"
+                                height="15"
+                                alt="Remover"
+                            >
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- linhas preenchidas via JS -->
+                </tbody>
             </table>
         </section>
     </section>
 
-    <!-- ===================== PATCH / ÁREA ===================== -->
-    <section id="patchSection" class="hidden">
-        <!-- Formulário -->
+    <!-- ========== ABA 2: PATCH / ÁREA ========== -->
+    <section id="patchSection" class="tab-section" style="display:none;">
         <section class="newItem">
             <select id="patchMunicipality">
                 <option value="">Selecione o município</option>
+                <!-- opções carregadas via JS a partir de /api/municipios -->
             </select>
-            <input type="number" id="patchArea" placeholder="Área do patch (m²)" min="0">
+
+            <input
+                type="number"
+                id="patchArea"
+                placeholder="Área do patch (m²)"
+                min="1"
+            />
+
             <button onclick="addPatchItem()" class="addBtn">Adicionar patch</button>
             <button onclick="calculatePatchTotal()" class="calcBtn">Calcular compensação</button>
         </section>
 
-        <!-- Mensagens -->
         <section class="messages">
             <div id="errorBoxPatch"></div>
-            <div id="totalBoxPatch"></div>
+            <div id="totalBoxPatch">Compensação total do lote: 0</div>
         </section>
 
-        <!-- Tabela de patches -->
         <section class="items">
             <table id="patchTable">
-                <tr>
-                    <th>Municipality</th>
-                    <th>Área (m²)</th>
-                    <th>Comp./m²</th>
-                    <th>Comp. total patch</th>
-                    <th>
-                        <img src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
-                             width="15" height="15" alt="Remover">
-                    </th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Municipality</th>
+                        <th>Área (m²)</th>
+                        <th>Comp./m²</th>
+                        <th>Comp. total patch</th>
+                        <th>
+                            <img
+                                src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
+                                width="15"
+                                height="15"
+                                alt="Remover"
+                            >
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- linhas preenchidas via JS -->
+                </tbody>
             </table>
         </section>
     </section>
 
-    <script src="scripts.js?v=21"></script>
+    <!-- ========== ABA 3: STATUS DE ESPÉCIES ========== -->
+    <section id="statusSection" class="tab-section" style="display:none;">
+        <section class="newItem">
+          <input type="text" id="statusFamily" placeholder="Family (ex: ACANTHACEAE)" />
+          <input type="text" id="statusSpecie" placeholder="Specie (ex: Aphelandra squarrosa Nees)" />
+          <button onclick="consultStatus()" class="calcBtn">Consultar status</button>
+        </section>
+      
+        <section class="messages">
+          <div id="statusMessage"></div>
+        </section>
+      
+        <section class="items">
+          <table id="statusTable">
+            <thead>
+              <tr>
+                <th>Family</th>
+                <th>Specie</th>
+                <th>Status</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </section>
+
+    <!-- JS -->
+    <script src="scripts.js"></script>
 </body>
 </html>

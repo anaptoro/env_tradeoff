@@ -1,12 +1,16 @@
 import csv
+import os
 from pathlib import Path
 from model import Session
-from model.compensation import Compensation
+from model.compensation import Compensation, SpeciesStatus
 from model.patch_compensation import PatchCompensation
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 FEDERAL_CSV = BASE_DIR / "federal_compensation.csv"
 PATCH_CSV = BASE_DIR / "patch_compensation.csv"
+_STATUS_LOADED = False
+STATUS_CSV_PATH = BASE_DIR / "species_status.csv"
+
 
 def load_compensacao_from_csv_once(force: bool = False):
     session = Session()
@@ -92,3 +96,54 @@ def load_patch_compensacao_from_csv_once():
         print("Patch compensation table loaded from CSV.")
 
     session.close()
+
+def load_species_status_from_csv_once():
+    global _STATUS_LOADED
+    if _STATUS_LOADED:
+        return
+
+    session = Session()
+    try:
+        # if table already has rows, do nothing
+        if session.query(SpeciesStatus).first():
+            print("Species status table already populated.")
+            _STATUS_LOADED = True
+            return
+
+        if not STATUS_CSV_PATH.exists():
+            print(f"Species CSV not found at: {STATUS_CSV_PATH}")
+            return
+
+        with STATUS_CSV_PATH.open(newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+
+            for raw_row in reader:
+                # CSV header is "family,specie,status" (your example),
+                # but the DB column is "species" → we map it:
+                family = (raw_row.get("family") or "").strip()
+                specie = (raw_row.get("specie") or raw_row.get("species") or "").strip()
+                status = (raw_row.get("status") or "").strip()
+
+                if not family or not specie or not status:
+                    continue  # skip incomplete row
+
+                session.add(
+                    SpeciesStatus(
+                        family=family,
+                        specie=specie,
+                        status=status,
+                    )
+                )
+
+        session.commit()
+        _STATUS_LOADED = True
+        print("Species status table loaded from CSV.")
+
+    except Exception as e:
+        session.rollback()
+        print("Error loading species status CSV:", e)
+        raise
+    finally:
+        session.close()
+
+

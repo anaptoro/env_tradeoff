@@ -2,17 +2,25 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 from model import Session
-from model.compensation import Compensation
+from model.compensation import Compensation, SpeciesStatus
 from model.patch_compensation import PatchCompensation
-from model.utils import load_compensacao_from_csv_once, load_patch_compensacao_from_csv_once
+from model.utils import load_compensacao_from_csv_once, load_patch_compensacao_from_csv_once, load_species_status_from_csv_once
 
 app = Flask(__name__)
 CORS(app)
+STATUS_DESCRIPTIONS = {
+    "EW": "presumivelmente extinta (extinta na natureza)",
+    "CR": "em perigo crítico",
+    "EN": "em perigo",
+    "VU": "vulnerável",
+
+}
 
 @app.before_first_request
 def init_compensation():
     load_compensacao_from_csv_once()
     load_patch_compensacao_from_csv_once()
+    load_species_status_from_csv_once()
 
 @app.route('/')
 def home():
@@ -20,6 +28,41 @@ def home():
         "status": "ok",
         "message": "Tree compensation API is running"
     }), 200
+
+
+# Consulta de status por família / espécie (GET)
+@app.route("/api/species/status")
+def get_species_status():
+    family = request.args.get("family", "").strip()
+    specie = request.args.get("specie", "").strip()  # query param continua 'specie'
+
+    session = Session()
+    try:
+        q = session.query(SpeciesStatus)
+
+        if family:
+            # case-insensitive, contains
+            q = q.filter(SpeciesStatus.family.ilike(f"%{family}%"))
+        if specie:
+            # 👇 AQUI é o bug: usar .species, não .specie
+            q = q.filter(SpeciesStatus.specie.ilike(f"%{specie}%"))
+
+        rows = q.all()
+
+        # Sempre 200; lista vazia = "não encontrado"
+        result = [
+            {
+                "family": row.family,
+                "specie": row.specie,  # chave 'specie' pra bater com o front
+                "status": row.status,
+                "descricao": STATUS_DESCRIPTIONS.get(row.status, ""),
+            }
+            for row in rows
+        ]
+
+        return jsonify(result), 200
+    finally:
+        session.close()
 
 
 @app.route('/api/municipios', methods=['GET'])
@@ -121,6 +164,7 @@ def calcular_compensacao_lote():
         "total compensation": total_geral,
         "items without compensation": itens_sem_regra
     }), 200
+
 
 @app.route('/api/compensacao/patch', methods=['POST'])
 def calcular_compensacao_patch():
