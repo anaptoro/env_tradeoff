@@ -4,12 +4,17 @@ from pathlib import Path
 from model import Session
 from model.compensation import Compensation, SpeciesStatus
 from model.patch_compensation import PatchCompensation
+from model.app_compensation import AppCompensation
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 FEDERAL_CSV = BASE_DIR / "federal_compensation.csv"
 PATCH_CSV = BASE_DIR / "patch_compensation.csv"
 _STATUS_LOADED = False
+_app_loaded = False
 STATUS_CSV_PATH = BASE_DIR / "species_status.csv"
+APP_CSV = BASE_DIR / "app_compensation.csv"
+
 
 
 def load_compensacao_from_csv_once(force: bool = False):
@@ -146,4 +151,61 @@ def load_species_status_from_csv_once():
     finally:
         session.close()
 
+def load_app_compensacao_from_csv_once(force: bool = False):
+    """Carrega app_compensation.csv uma única vez na tabela app_compensation."""
+    global _app_loaded
 
+    session = Session()
+
+    if not force:
+        # já tem dados? não recarrega
+        if session.query(AppCompensation).count() > 0:
+            session.close()
+            _app_loaded = True
+            print("App compensation table already populated.")
+            return
+
+    if not APP_CSV.exists():
+        print(f"APP CSV not found at {APP_CSV}")
+        session.close()
+        return
+
+    if force:
+        session.query(AppCompensation).delete()
+        session.commit()
+
+    rows = []
+    seen = set()
+
+    with APP_CSV.open(newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            muni = (row.get("municipality") or "").strip()
+            if not muni:
+                continue
+            if muni in seen:
+                continue
+            seen.add(muni)
+
+            comp_str = row.get("compensation")
+            if comp_str is None:
+                continue
+            try:
+                comp = float(comp_str)
+            except ValueError:
+                continue
+
+            rows.append(
+                AppCompensation(
+                    municipality=muni,
+                    compensation=comp,
+                )
+            )
+
+    if rows:
+        session.add_all(rows)
+        session.commit()
+        print("App compensation table loaded from CSV.")
+
+    session.close()
+    _app_loaded = True

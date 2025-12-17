@@ -30,6 +30,9 @@
         <button id="tabPatch" class="tab-button" onclick="setMode('patch')">
             Patch / area (m²)
         </button>
+        <button id="tabApp" class="tab-button" onclick="setMode('app')">
+            APP
+        </button>
         <button id="tabStatus" class="tab-button" onclick="setMode('status')">
             Species status
         </button>
@@ -166,6 +169,49 @@
         </section>
       </section>
 
+
+<!-- APP compensation tab -->
+<section id="appSection" class="tab-section" style="display:none;">
+    <h2>Compensação de APP</h2>
+
+    <section class="newItem">
+        <select id="appMunicipality">
+            <option value="">Selecione o município</option>
+        </select>
+
+        <input type="number"
+               id="appQuantity"
+               placeholder="Quantidade / área"
+               min="0" />
+
+        <button onclick="addAppItem()" class="addBtn">Adicionar APP</button>
+        <button onclick="calculateAppTotal()" class="calcBtn">Calcular compensação</button>
+    </section>
+
+    <section class="messages">
+        <div id="errorBoxApp"></div>
+        <div id="totalBoxApp">Compensação total de APP: 0</div>
+    </section>
+
+    <section class="items">
+        <table id="appTable">
+            <thead>
+                <tr>
+                    <th>Município</th>
+                    <th>Quantidade / área</th>
+                    <th>Comp/unidade</th>
+                    <th>Comp. total APP</th>
+                    <th>
+                        <img src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
+                             width="15" height="15" alt="Remover" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+</section>
+     
     <!-- JS -->
     <script src="scripts.js"></script>
 </body>

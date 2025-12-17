@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 from model.base import Base
 from model.compensation import Compensation, SpeciesStatus
 from model.patch_compensation import PatchCompensation
+from model.app_compensation import AppCompensation
 
 
 

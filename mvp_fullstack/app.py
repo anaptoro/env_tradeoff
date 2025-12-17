@@ -4,7 +4,8 @@ from flask_cors import CORS
 from model import Session
 from model.compensation import Compensation, SpeciesStatus
 from model.patch_compensation import PatchCompensation
-from model.utils import load_compensacao_from_csv_once, load_patch_compensacao_from_csv_once, load_species_status_from_csv_once
+from model.app_compensation import AppCompensation
+from model.utils import load_compensacao_from_csv_once,load_patch_compensacao_from_csv_once, load_species_status_from_csv_once,load_app_compensacao_from_csv_once
 
 app = Flask(__name__)
 CORS(app)
@@ -21,6 +22,7 @@ def init_compensation():
     load_compensacao_from_csv_once()
     load_patch_compensacao_from_csv_once()
     load_species_status_from_csv_once()
+    load_app_compensacao_from_csv_once()
 
 @app.route('/')
 def home():
@@ -28,6 +30,19 @@ def home():
         "status": "ok",
         "message": "Tree compensation API is running"
     }), 200
+
+@app.route("/api/app_municipios", methods=["GET"])
+def listar_app_municipios():
+    session = Session()
+    rows = (
+        session.query(AppCompensation.municipality)
+        .distinct()
+        .order_by(AppCompensation.municipality)
+        .all()
+    )
+    municipios = [r[0] for r in rows if r[0]]
+    session.close()
+    return jsonify({"municipios": municipios}), 200
 
 
 # Consulta de status por família / espécie (GET)
@@ -246,3 +261,76 @@ def calcular_compensacao_patch():
         "patches_sem_regra": patches_sem_regra,
     }), 200
 
+@app.route("/api/compensacao/app", methods=["POST"])
+def calcular_compensacao_app():
+    data = request.get_json() or {}
+    apps = data.get("apps")
+
+    if not isinstance(apps, list) or not apps:
+        return jsonify({"erro": "Envie uma lista 'apps' com pelo menos um elemento"}), 400
+
+    session = Session()
+    resultados = []
+    total_geral = 0.0
+    apps_sem_regra = []
+
+    for idx, app_item in enumerate(apps):
+        municipality = app_item.get("municipality")
+        quantidade = app_item.get("quantidade", 1)
+
+        missing = []
+        if not municipality:
+            missing.append("municipality")
+        if quantidade is None:
+            missing.append("quantidade")
+
+        if missing:
+            apps_sem_regra.append({
+                "index": idx,
+                "motivo": f"Campos obrigatórios faltando ({', '.join(missing)})",
+                "item": app_item,
+            })
+            continue
+
+        try:
+            quantidade = float(quantidade)
+        except (TypeError, ValueError):
+            apps_sem_regra.append({
+                "index": idx,
+                "motivo": "quantidade não é número",
+                "item": app_item,
+            })
+            continue
+
+        regra = (
+            session.query(AppCompensation)
+            .filter(AppCompensation.municipality == municipality)
+            .first()
+        )
+
+        if not regra:
+            apps_sem_regra.append({
+                "index": idx,
+                "motivo": "não existe regra de compensação para este município (APP)",
+                "item": app_item,
+            })
+            continue
+
+        comp_por_unidade = regra.compensation
+        total_app = comp_por_unidade * quantidade
+        total_geral += total_app
+
+        resultados.append({
+            "municipality": municipality,
+            "quantidade": quantidade,
+            "compensacao_por_unidade": comp_por_unidade,
+            "compensacao_total_app": total_app,
+        })
+
+    session.close()
+
+    return jsonify({
+        "apps_processados": resultados,
+        "total_compensacao_geral": total_geral,
+        "apps_sem_regra": apps_sem_regra,
+    }), 200

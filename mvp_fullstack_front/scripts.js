@@ -9,6 +9,8 @@ let isolatedItems = [];
 // Patch/area: { municipality, area_m2 }
 let patchItems = [];
 
+let appItems = [];
+
 // ================== HELPERS ==================
 function byId(id) {
   return document.getElementById(id);
@@ -24,24 +26,27 @@ function showText(id, msg) {
 //  TABS: ISOLATED / PATCH / STATUS
 // =======================================================
 function setMode(mode) {
-  const isoSection = byId("isolatedSection");
-  const patchSection = byId("patchSection");
+  const isoSection    = byId("isolatedSection");
+  const patchSection  = byId("patchSection");
   const statusSection = byId("statusSection");
+  const appSection    = byId("appSection");   // NEW
 
   const tabIsolated = byId("tabIsolated");
-  const tabPatch = byId("tabPatch");
-  const tabStatus = byId("tabStatus");
+  const tabPatch    = byId("tabPatch");
+  const tabStatus   = byId("tabStatus");
+  const tabApp      = byId("tabApp");         // NEW
 
-  // hide sections
-  if (isoSection) isoSection.style.display = "none";
-  if (patchSection) patchSection.style.display = "none";
-  if (statusSection) statusSection.style.display = "none";
+  // Esconde todas as seções
+  [isoSection, patchSection, statusSection, appSection].forEach((sec) => {
+    if (sec) sec.style.display = "none";
+  });
 
-  // remove 'active' from all tabs
-  [tabIsolated, tabPatch, tabStatus].forEach((btn) => {
+  // Remove 'active' de todos os botões
+  [tabIsolated, tabPatch, tabStatus, tabApp].forEach((btn) => {
     if (btn) btn.classList.remove("active");
   });
 
+  // Mostra apenas a aba selecionada
   if (mode === "isolated") {
     if (isoSection) isoSection.style.display = "block";
     if (tabIsolated) tabIsolated.classList.add("active");
@@ -51,8 +56,12 @@ function setMode(mode) {
   } else if (mode === "status") {
     if (statusSection) statusSection.style.display = "block";
     if (tabStatus) tabStatus.classList.add("active");
+  } else if (mode === "app") {
+    if (appSection) appSection.style.display = "block";
+    if (tabApp) tabApp.classList.add("active");
   }
 }
+
 
 // =======================================================
 //  MUNICIPALITIES DROPDOWNS (ISOLATED + PATCH)
@@ -445,6 +454,29 @@ async function searchStatus() {
   }
 }
 
+async function loadAppMunicipalities() {
+  const select = document.getElementById("appMunicipality");
+  if (!select) return;
+
+  try {
+    const resp = await fetch(`${API_BASE}/api/app_municipios`);
+    const data = await resp.json();
+    const municipios = data.municipios || [];
+
+    select.innerHTML = '<option value="">Selecione o município</option>';
+    municipios.forEach((muni) => {
+      const opt = document.createElement("option");
+      opt.value = muni;
+      opt.textContent = muni;
+      select.appendChild(opt);
+    });
+  } catch (err) {
+    console.error("Erro ao carregar municípios de APP:", err);
+  }
+}
+
+
+
 async function consultStatus() {
   const familyInput = document.getElementById("statusFamily");
   const specieInput = document.getElementById("statusSpecie");
@@ -505,8 +537,122 @@ async function consultStatus() {
   }
 }
 
-// se usar onclick no HTML:
-window.consultStatus = consultStatus;
+function addAppItem() {
+  const municipalitySelect = document.getElementById("appMunicipality");
+  const quantityInput = document.getElementById("appQuantity");
+  const table = document.getElementById("appTable");
+  const errorBoxApp = document.getElementById("errorBoxApp");
+
+  if (!municipalitySelect || !quantityInput || !table) {
+    console.warn("Elementos de APP não encontrados.");
+    return;
+  }
+
+  if (errorBoxApp) errorBoxApp.textContent = "";
+
+  const municipality = municipalitySelect.value;
+  const quantityStr = quantityInput.value;
+
+  if (!municipality) {
+    if (errorBoxApp) errorBoxApp.textContent = "Selecione um município.";
+    return;
+  }
+  if (!quantityStr || Number(quantityStr) <= 0) {
+    if (errorBoxApp)
+      errorBoxApp.textContent = "Informe uma quantidade / área válida.";
+    return;
+  }
+
+  const quantidade = Number(quantityStr);
+  appItems.push({ municipality, quantidade });
+
+  const tbody = table.tBodies[0] || table.createTBody();
+  const row = tbody.insertRow(-1);
+
+  row.insertCell(0).textContent = municipality;
+  row.insertCell(1).textContent = quantidade;
+  row.insertCell(2).textContent = ""; // comp/unidade
+  row.insertCell(3).textContent = ""; // total APP
+
+  const delCell = row.insertCell(4);
+  delCell.textContent = "×";
+  delCell.classList.add("delete-btn");
+  delCell.style.cursor = "pointer";
+  delCell.onclick = () => {
+    const index = row.rowIndex - 1; // ignora header
+    appItems.splice(index, 1);
+    row.remove();
+  };
+
+  quantityInput.value = "";
+}
+
+async function calculateAppTotal() {
+  const errorBoxApp = document.getElementById("errorBoxApp");
+  const totalBoxApp = document.getElementById("totalBoxApp");
+  const table = document.getElementById("appTable");
+
+  if (errorBoxApp) errorBoxApp.textContent = "";
+  if (totalBoxApp) totalBoxApp.textContent = "";
+
+  if (!appItems.length) {
+    if (errorBoxApp)
+      errorBoxApp.textContent = "Adicione pelo menos um item de APP.";
+    return;
+  }
+
+  const payload = {
+    apps: appItems.map((item) => ({
+      municipality: item.municipality,
+      quantidade: item.quantidade,
+    })),
+  };
+
+  try {
+    const resp = await fetch(`${API_BASE}/api/compensacao/app`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await resp.json();
+    console.log("Resposta /api/compensacao/app:", data);
+
+    if (!resp.ok) {
+      if (errorBoxApp)
+        errorBoxApp.textContent =
+          data.erro || `Erro HTTP ${resp.status} na API (APP).`;
+      return;
+    }
+
+    const processed = data.apps_processados || [];
+    const tbody = table.tBodies[0] || table.createTBody();
+
+    processed.forEach((item, idx) => {
+      const row = tbody.rows[idx];
+      if (!row) return;
+      row.cells[2].textContent = item.compensacao_por_unidade ?? "";
+      row.cells[3].textContent = item.compensacao_total_app ?? "";
+    });
+
+    const total = data.total_compensacao_geral ?? 0;
+    if (totalBoxApp) {
+      totalBoxApp.textContent = `Compensação total de APP: ${total}`;
+    }
+
+    const semRegra = data.apps_sem_regra || [];
+    if (semRegra.length && errorBoxApp) {
+      errorBoxApp.textContent +=
+        " Alguns itens de APP não tiveram regra de compensação.";
+    }
+  } catch (err) {
+    console.error("Erro na requisição /api/compensacao/app:", err);
+    if (errorBoxApp)
+      errorBoxApp.textContent = "Erro de conexão com a API (APP).";
+  }
+}
+
+
 
 // =======================================================
 //  EXPOSE FUNCTIONS FOR HTML
@@ -518,6 +664,8 @@ window.addPatchItem = addPatchItem;
 window.calculatePatchTotal = calculatePatchTotal;
 window.searchStatus = searchStatus;
 window.consultStatus = consultStatus;
+window.addAppItem = addAppItem;
+window.calculateAppTotal = calculateAppTotal;
 
 // =======================================================
 //  PAGE LOAD
@@ -526,4 +674,5 @@ window.addEventListener("DOMContentLoaded", () => {
   console.log("scripts.js carregado - DOM pronto");
   setMode("isolated");   // default tab
   loadMunicipalities();  // fill dropdowns
+  loadAppMunicipalities();
 });
