@@ -10,6 +10,11 @@ from model.utils import load_compensacao_from_csv_once,load_patch_compensacao_fr
 
 app = Flask(__name__)
 CORS(app)
+
+app.config["SWAGGER"] = {
+    "title": "Environmental trade-off API", 
+    "uiversion": 3
+}
 swagger = Swagger(app)
 
 STATUS_DESCRIPTIONS = {
