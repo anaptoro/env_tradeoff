@@ -1,137 +1,139 @@
-
 const API_BASE = "http://127.0.0.1:5002";
 
-
+// ---------- GLOBAL STATE ----------
+let currentMode = "isolated";
 let isolatedItems = [];
-
-
 let patchItems = [];
-
 let appItems = [];
 
-
+// ---------- HELPERS ----------
 function byId(id) {
   return document.getElementById(id);
 }
 
-function showText(id, msg) {
-  const el = byId(id);
-  if (!el) return;
-  el.textContent = msg || "";
+function showSection(sectionId) {
+  const sections = [
+    "isolatedSection",
+    "patchSection",
+    "appSection",
+    "statusSection",
+  ];
+  sections.forEach((id) => {
+    const el = byId(id);
+    if (!el) return;
+    el.style.display = id === sectionId ? "block" : "none";
+  });
 }
 
+function setActiveTab(tabId) {
+  const tabs = ["tabIsolated", "tabPatch", "tabApp", "tabStatus"];
+  tabs.forEach((id) => {
+    const btn = byId(id);
+    if (!btn) return;
+    if (id === tabId) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+}
 
+// Chamado pelos botões do HTML
 function setMode(mode) {
-  const isoSection    = byId("isolatedSection");
-  const patchSection  = byId("patchSection");
-  const statusSection = byId("statusSection");
-  const appSection    = byId("appSection");  
-
-  const tabIsolated = byId("tabIsolated");
-  const tabPatch    = byId("tabPatch");
-  const tabStatus   = byId("tabStatus");
-  const tabApp      = byId("tabApp");        
-
-
-  [isoSection, patchSection, statusSection, appSection].forEach((sec) => {
-    if (sec) sec.style.display = "none";
-  });
-
-
-  [tabIsolated, tabPatch, tabStatus, tabApp].forEach((btn) => {
-    if (btn) btn.classList.remove("active");
-  });
-
+  currentMode = mode;
 
   if (mode === "isolated") {
-    if (isoSection) isoSection.style.display = "block";
-    if (tabIsolated) tabIsolated.classList.add("active");
+    setActiveTab("tabIsolated");
+    showSection("isolatedSection");
   } else if (mode === "patch") {
-    if (patchSection) patchSection.style.display = "block";
-    if (tabPatch) tabPatch.classList.add("active");
-  } else if (mode === "status") {
-    if (statusSection) statusSection.style.display = "block";
-    if (tabStatus) tabStatus.classList.add("active");
+    setActiveTab("tabPatch");
+    showSection("patchSection");
   } else if (mode === "app") {
-    if (appSection) appSection.style.display = "block";
-    if (tabApp) tabApp.classList.add("active");
+    setActiveTab("tabApp");
+    showSection("appSection");
+  } else if (mode === "status") {
+    setActiveTab("tabStatus");
+    showSection("statusSection");
   }
 }
 
-
+// ---------- MUNICIPALITIES LOADING ----------
 async function loadMunicipalities() {
+  // Isolated trees
   try {
     const resp = await fetch(`${API_BASE}/api/municipios`);
-    if (!resp.ok) {
-      throw new Error(`HTTP ${resp.status}`);
-    }
-
     const data = await resp.json();
-
- 
-    let municipios = [];
-    if (Array.isArray(data)) {
-      municipios = data;
-    } else if (Array.isArray(data.municipios)) {
-      municipios = data.municipios;
-    } else if (Array.isArray(data.municipalities)) {
-      municipios = data.municipalities;
-    }
-
-    console.log("Municipios recebidos:", municipios);
-
-    const isolatedSelect = byId("isolatedMunicipality");
-    const patchSelect = byId("patchMunicipality");
-
-    const fillSelect = (selectEl) => {
-      if (!selectEl || !Array.isArray(municipios)) return;
-
-      selectEl.innerHTML = "";
-      const opt0 = document.createElement("option");
-      opt0.value = "";
-      opt0.textContent = "Selecione o município";
-      selectEl.appendChild(opt0);
-
-      municipios.forEach((m) => {
+    const selectIso = byId("isolatedMunicipality");
+    if (selectIso && Array.isArray(data.municipios)) {
+      selectIso.innerHTML = '<option value="">Selecione o município</option>';
+      data.municipios.forEach((m) => {
         const opt = document.createElement("option");
         opt.value = m;
         opt.textContent = m;
-        selectEl.appendChild(opt);
+        selectIso.appendChild(opt);
       });
-    };
-
-    fillSelect(isolatedSelect);
-    fillSelect(patchSelect);
+    }
   } catch (err) {
-    console.error("Erro ao carregar municípios:", err);
-    showText("errorBox", "Erro ao carregar municípios da API.");
-    showText("errorBoxPatch", "Erro ao carregar municípios da API (patch).");
+    console.error("Erro carregando municípios (isolated):", err);
+  }
+
+  // Patch
+  try {
+    const resp = await fetch(`${API_BASE}/api/patch_municipios`);
+    const data = await resp.json();
+    const selectPatch = byId("patchMunicipality");
+    if (selectPatch && Array.isArray(data.municipios)) {
+      selectPatch.innerHTML = '<option value="">Selecione o município</option>';
+      data.municipios.forEach((m) => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        selectPatch.appendChild(opt);
+      });
+    }
+  } catch (err) {
+    console.error("Erro carregando municípios (patch):", err);
+  }
+
+  // APP
+  try {
+    const resp = await fetch(`${API_BASE}/api/app_municipios`);
+    const data = await resp.json();
+    const selectApp = byId("appMunicipality");
+    if (selectApp && Array.isArray(data.municipios)) {
+      selectApp.innerHTML = '<option value="">Selecione o município</option>';
+      data.municipios.forEach((m) => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        selectApp.appendChild(opt);
+      });
+    }
+  } catch (err) {
+    console.error("Erro carregando municípios (app):", err);
   }
 }
 
-
+// ---------- ISOLATED TREES ----------
 function addItem() {
   const qtyInput = byId("treeQuantity");
   const groupSelect = byId("treeGroup");
   const municipalitySelect = byId("isolatedMunicipality");
-  const endangeredSelect = byId("treeEndangered"); 
+  const endangeredSelect = byId("treeEndangered");
   const errorBox = byId("errorBox");
   const table = byId("myTable");
 
   if (errorBox) errorBox.textContent = "";
 
-  if (!qtyInput || !groupSelect || !municipalitySelect || !table) {
-    console.warn("Elementos do formulário de árvores isoladas não encontrados.");
+  if (!qtyInput || !groupSelect || !municipalitySelect || !endangeredSelect || !table) {
+    console.warn("Isolated trees form elements not found.");
     return;
   }
 
   const qtyStr = qtyInput.value;
   const group = groupSelect.value;
   const municipality = municipalitySelect.value;
-
-
-  const endangeredValue = endangeredSelect ? endangeredSelect.value : "false";
-  const endangered = endangeredValue === "true";
+  const endangeredValue = endangeredSelect.value;
 
   if (!qtyStr || Number(qtyStr) <= 0) {
     if (errorBox) errorBox.textContent = "Informe uma quantidade válida.";
@@ -143,47 +145,61 @@ function addItem() {
   }
 
   const quantidade = Number(qtyStr);
+  const endangered = endangeredValue === "true";
 
-
-  const item = { quantidade, group, municipality, endangered };
+  const item = {
+    quantidade: quantidade,
+    group: group,
+    municipality: municipality,
+    endangered: endangered,
+  };
   isolatedItems.push(item);
 
-
+  // Adiciona linha à tabela
   const row = table.insertRow(-1);
-
-  row.insertCell(0).textContent = quantidade;
-  row.insertCell(1).textContent = group;
-  row.insertCell(2).textContent = municipality;
-  row.insertCell(3).textContent = ""; 
-  row.insertCell(4).textContent = ""; 
-
+  const qtyCell = row.insertCell(0);
+  const groupCell = row.insertCell(1);
+  const munCell = row.insertCell(2);
+  const compPerTreeCell = row.insertCell(3);
+  const compTotalCell = row.insertCell(4);
   const delCell = row.insertCell(5);
+
+  qtyCell.textContent = quantidade;
+  groupCell.textContent = group;
+  munCell.textContent = municipality;
+  compPerTreeCell.textContent = "";
+  compTotalCell.textContent = "";
+
   delCell.textContent = "×";
   delCell.classList.add("delete-btn");
   delCell.style.cursor = "pointer";
-  delCell.onclick = () => {
-    const index = row.rowIndex - 1; 
-    isolatedItems.splice(index, 1);
+  delCell.onclick = function () {
+    const index = row.rowIndex - 1; // header = 0
+    if (index >= 0 && index < isolatedItems.length) {
+      isolatedItems.splice(index, 1);
+    }
     table.deleteRow(row.rowIndex);
   };
 
   qtyInput.value = "";
 }
 
-
-
 async function calculateTotal() {
   const errorBox = byId("errorBox");
   const totalBox = byId("totalBox");
   const table = byId("myTable");
 
-  if (errorBox) errorBox.textContent = "";
-  if (totalBox) totalBox.textContent = "";
+  if (!errorBox || !totalBox || !table) {
+    console.warn("Isolated trees elements not found.");
+    return;
+  }
+
+  // Reset UI
+  errorBox.textContent = "";
+  totalBox.textContent = "Compensação total do lote: 0";
 
   if (!Array.isArray(isolatedItems) || isolatedItems.length === 0) {
-    if (errorBox) {
-      errorBox.textContent = "Adicione pelo menos uma entrada antes de calcular.";
-    }
+    errorBox.textContent = "Adicione pelo menos uma entrada antes de calcular.";
     return;
   }
 
@@ -191,490 +207,445 @@ async function calculateTotal() {
     const resp = await fetch(`${API_BASE}/api/compensacao/lote`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: isolatedItems }), 
+      body: JSON.stringify({ items: isolatedItems }),
     });
 
     const data = await resp.json();
     console.log("Resposta /api/compensacao/lote:", data);
+    console.log("Chaves do JSON:", Object.keys(data));
 
     if (!resp.ok) {
-      if (errorBox) {
-        errorBox.textContent = data.erro || data.error || `Erro HTTP ${resp.status} na API.`;
-      }
+      errorBox.textContent =
+        data.erro || data.error || `Erro HTTP ${resp.status} na API.`;
       return;
     }
 
-    
+    // -------- 1) Atualizar linhas na tabela --------
     const processed =
-      data.processed_items ||          
-      data["processed items"] ||       
-      data.itens_processados ||        
+      data["processed items"] ||   // formato antigo
+      data.processed_items   ||   // snake_case
+      data.itens_processados ||   // pt-BR fallback
       [];
 
-    if (table && Array.isArray(processed)) {
+    if (Array.isArray(processed)) {
       processed.forEach((item, idx) => {
-        const row = table.rows[idx + 1]; 
+        const row = table.rows[idx + 1]; // índice 0 = header
         if (!row) return;
 
-        
+        // colunas: 0=Qtd, 1=Tipo, 2=Município, 3=Tree trade-off, 4=Total item
         if (row.cells[3]) {
           row.cells[3].textContent =
-            item.compensacao_por_arvore != null
+            item.compensacao_por_arvore !== undefined
               ? item.compensacao_por_arvore
               : "";
         }
         if (row.cells[4]) {
           row.cells[4].textContent =
-            item.compensacao_total_item != null
+            item.compensacao_total_item !== undefined
               ? item.compensacao_total_item
               : "";
         }
       });
     }
 
-    
-    const total =
-      data.total_compensation ??       
-      data["total compensation"] ??    
-      data.total_compensacao_geral ??
-      data.total_compensacao_lote ??
-      data.total ??
-      0;
+    // -------- 2) Descobrir o campo de total, custe o que custar :) --------
+    let total;
 
-    if (totalBox) {
-      totalBox.textContent = `Total trade-off: ${total}`;
+    // Tentamos primeiro nomes conhecidos
+    const possibleTotalKeys = [
+      "total compensation",      // seu formato antigo
+      "total_compensation",      // inglês com underscore
+      "total_compensacao_geral",
+      "total_compensacao_lote",
+      "total",
+    ];
+
+    for (const key of possibleTotalKeys) {
+      if (
+        Object.prototype.hasOwnProperty.call(data, key) &&
+        data[key] !== null &&
+        data[key] !== undefined
+      ) {
+        total = data[key];
+        break;
+      }
     }
 
-    
+    // Se ainda não achou, varremos todas as chaves procurando uma numérica com "total" no nome
+    if (total === undefined) {
+      for (const [key, value] of Object.entries(data)) {
+        if (typeof value === "number" && /total/i.test(key)) {
+          total = value;
+          break;
+        }
+      }
+    }
+
+    // Se mesmo assim nada, cai pra 0
+    if (total === undefined) {
+      total = 0;
+    }
+
+    // Se vier como string, tenta converter
+    if (typeof total === "string") {
+      const parsed = Number(total);
+      if (!Number.isNaN(parsed)) {
+        total = parsed;
+      }
+    }
+
+    totalBox.textContent = `Compensação total do lote: ${total}`;
+
+    // -------- 3) Itens sem regra --------
     const semRegra =
-      data.items_without_compensation ||  
-      data["items without trade-off"] || 
+      data["items without compensation"] ||
+      data.items_without_compensation ||
       data.itens_sem_regra ||
       [];
 
-    if (Array.isArray(semRegra) && semRegra.length > 0 && errorBox) {
+    if (Array.isArray(semRegra) && semRegra.length > 0) {
       errorBox.textContent +=
         (errorBox.textContent ? " " : "") +
-        "Some items were dismissed of trade-off.";
+        "Alguns itens não tiveram regra de compensação.";
     }
   } catch (err) {
-    console.error("Error in /api/compensacao/lote:", err);
-    if (errorBox) errorBox.textContent = "API conection error";
+    console.error("Erro na requisição /api/compensacao/lote:", err);
+    errorBox.textContent = "Erro de conexão com a API.";
   }
 }
 
 
 
+
+// ---------- PATCH / AREA ----------
 function addPatchItem() {
-  const municipalitySelect = byId("patchMunicipality");
+  const muniSelect = byId("patchMunicipality");
   const areaInput = byId("patchArea");
-  const errorBoxPatch = byId("errorBoxPatch");
-  const table = byId("patchTable");
+  const errorBox = byId("errorBoxPatch");
+  const table = byId("patchTable").getElementsByTagName("tbody")[0];
 
-  if (errorBoxPatch) errorBoxPatch.textContent = "";
+  if (errorBox) errorBox.textContent = "";
 
-  if (!municipalitySelect || !areaInput || !table) {
-    console.warn("PATCH elements not found");
+  if (!muniSelect || !areaInput || !table) {
+    console.warn("Patch form elements not found.");
     return;
   }
 
-  const municipality = municipalitySelect.value;
+  const municipality = muniSelect.value;
   const areaStr = areaInput.value;
 
   if (!municipality) {
-    if (errorBoxPatch)
-      errorBoxPatch.textContent = "Select the municipality where the patch is located";
+    if (errorBox) errorBox.textContent = "Selecione um município.";
     return;
   }
   if (!areaStr || Number(areaStr) <= 0) {
-    if (errorBoxPatch)
-      errorBoxPatch.textContent = "Inform a valid area (m²) for the patch";
+    if (errorBox) errorBox.textContent = "Informe uma área válida.";
     return;
   }
 
   const area_m2 = Number(areaStr);
-  const item = { municipality, area_m2 };
+  const item = { municipality: municipality, area_m2: area_m2 };
   patchItems.push(item);
 
   const row = table.insertRow(-1);
-  
-  row.insertCell(0).textContent = municipality;
-  row.insertCell(1).textContent = area_m2;
-  row.insertCell(2).textContent = ""; 
-  row.insertCell(3).textContent = ""; 
-
+  const muniCell = row.insertCell(0);
+  const areaCell = row.insertCell(1);
+  const compPerM2Cell = row.insertCell(2);
+  const compTotalCell = row.insertCell(3);
   const delCell = row.insertCell(4);
+
+  muniCell.textContent = municipality;
+  areaCell.textContent = area_m2;
+  compPerM2Cell.textContent = "";
+  compTotalCell.textContent = "";
+
   delCell.textContent = "×";
   delCell.classList.add("delete-btn");
   delCell.style.cursor = "pointer";
-  delCell.onclick = () => {
+  delCell.onclick = function () {
     const index = row.rowIndex - 1;
-    patchItems.splice(index, 1);
-    table.deleteRow(row.rowIndex);
+    if (index >= 0 && index < patchItems.length) {
+      patchItems.splice(index, 1);
+    }
+    row.parentNode.removeChild(row);
   };
 
   areaInput.value = "";
 }
 
-
 async function calculatePatchTotal() {
-  const errorBoxPatch = byId("errorBoxPatch");
-  const totalBoxPatch = byId("totalBoxPatch");
-  const table = byId("patchTable");
+  const errorBox = byId("errorBoxPatch");
+  const totalBox = byId("totalBoxPatch");
+  const tableBody = byId("patchTable").getElementsByTagName("tbody")[0];
 
-  if (errorBoxPatch) errorBoxPatch.textContent = "";
-  if (totalBoxPatch) totalBoxPatch.textContent = "";
+  if (errorBox) errorBox.textContent = "";
+  if (totalBox) totalBox.textContent = "";
 
-  if (!patchItems || patchItems.length === 0) {
-    if (errorBoxPatch)
-      errorBoxPatch.textContent =
-        "Add at least one patch";
+  if (!Array.isArray(patchItems) || patchItems.length === 0) {
+    if (errorBox) errorBox.textContent = "Adicione pelo menos um patch antes de calcular.";
     return;
   }
-
-  const payload = {
-    patches: patchItems.map((p) => ({
-      municipality: p.municipality,
-      area_m2: p.area_m2,
-    })),
-  };
 
   try {
     const resp = await fetch(`${API_BASE}/api/compensacao/patch`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ patches: patchItems }),
     });
 
-    const rawText = await resp.text();
-    console.log("Resposta PATCH:", resp.status, rawText);
-
-    let data;
-    try {
-      data = JSON.parse(rawText);
-    } catch (e) {
-      console.error("Error for JSON.parse (patch):", e);
-      if (errorBoxPatch)
-        errorBoxPatch.textContent =
-          "Inavlid answer API (patch). Check console.";
-      return;
-    }
+    const data = await resp.json();
+    console.log("Resposta /api/compensacao/patch:", data);
 
     if (!resp.ok) {
-      if (errorBoxPatch)
-        errorBoxPatch.textContent =
-          data.erro || `Erro HTTP ${resp.status} in API (patch).`;
+      if (errorBox) {
+        errorBox.textContent =
+          data.erro || data.error || ("Erro HTTP " + resp.status + " na API (patch).");
+      }
       return;
     }
 
-    if (table && Array.isArray(data.patches_processados)) {
-      data.patches_processados.forEach((item, idx) => {
-        const row = table.rows[idx + 1];
+    const processed = data.patches_processados || [];
+
+    if (tableBody && Array.isArray(processed)) {
+      processed.forEach(function (item, idx) {
+        const row = tableBody.rows[idx];
         if (!row) return;
-        row.cells[2].textContent = item.compensacao_por_m2 ?? "";
-        row.cells[3].textContent = item.compensacao_total_patch ?? "";
+
+        var compPerM2 = item.compensacao_por_m2;
+        if (compPerM2 === undefined || compPerM2 === null) compPerM2 = "";
+
+        var compTotal = item.compensacao_total_patch;
+        if (compTotal === undefined || compTotal === null) compTotal = "";
+
+        if (row.cells[2]) row.cells[2].textContent = compPerM2;
+        if (row.cells[3]) row.cells[3].textContent = compTotal;
       });
     }
 
-    if (totalBoxPatch) {
-      totalBoxPatch.textContent =
-        "Total patches trade-off " +
-        (data.total_compensacao_geral ?? 0);
+    var total = data.total_compensacao_geral;
+    if (total === undefined || total === null) total = 0;
+    total = Number(total);
+    if ((isNaN(total) || total === 0) && Array.isArray(processed) && processed.length > 0) {
+      total = 0;
+      processed.forEach(function (it) {
+        var v = Number(it.compensacao_total_patch);
+        if (!isNaN(v)) total += v;
+      });
     }
 
-    if (data.patches_sem_regra && data.patches_sem_regra.length > 0) {
-      if (errorBoxPatch)
-        errorBoxPatch.textContent +=
-          " Some patches didn have trade-offs";
+    if (totalBox) {
+      totalBox.textContent = "Compensação total do lote: " + total;
+    }
+
+    const semRegra = data.patches_sem_regra || [];
+    if (Array.isArray(semRegra) && semRegra.length > 0 && errorBox) {
+      errorBox.textContent +=
+        (errorBox.textContent ? " " : "") +
+        "Alguns patches não tiveram regra de compensação.";
     }
   } catch (err) {
-    console.error("Error in PATCH:", err);
-    if (errorBoxPatch)
-      errorBoxPatch.textContent = "API connection error (patch).";
+    console.error("Erro na requisição PATCH:", err);
+    if (errorBox) errorBox.textContent = "Erro de conexão com a API (patch).";
   }
 }
 
-
-async function searchStatus() {
+// ---------- SPECIES STATUS ----------
+async function consultStatus() {
   const familyInput = byId("statusFamily");
   const specieInput = byId("statusSpecie");
-  const table = byId("statusTable");
-  const message = byId("statusMessage");
+  const messageBox = byId("statusMessage");
+  const tableBody = byId("statusTable").getElementsByTagName("tbody")[0];
 
-  if (message) message.textContent = "";
-
-  if (!table) {
-    console.warn("statusTable not found");
-    return;
-  }
-
-  const tbody = table.tBodies[0] || table.createTBody();
-  tbody.innerHTML = "";
+  if (messageBox) messageBox.textContent = "";
+  if (tableBody) tableBody.innerHTML = "";
 
   const family = familyInput ? familyInput.value.trim() : "";
   const specie = specieInput ? specieInput.value.trim() : "";
 
   if (!family && !specie) {
-    if (message)
-      message.textContent =
-        "At least one family or specie must be informed";
+    if (messageBox) messageBox.textContent = "Informe ao menos família ou espécie.";
     return;
   }
 
+  const url = new URL(`${API_BASE}/api/species/status`);
+  if (family) url.searchParams.append("family", family);
+  if (specie) url.searchParams.append("specie", specie);
+
   try {
-    const params = new URLSearchParams();
-    if (family) params.append("family", family);
-    if (specie) params.append("specie", specie);
-
-    const resp = await fetch(
-      `${API_BASE}/api/species-status?` + params.toString()
-    );
-    if (!resp.ok) {
-      if (message) message.textContent = "Specie not found";
-      return;
-    }
-
+    const resp = await fetch(url.toString());
     const data = await resp.json();
-    const rows = Array.isArray(data) ? data : [data];
-
-    if (!rows.length) {
-      tbody.innerHTML =
-        "<tr><td colspan='4'>No results.</td></tr>";
-      return;
-    }
-
-    rows.forEach((row) => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${row.family || "-"}</td>
-        <td>${row.specie || "-"}</td>
-        <td>${row.status || "-"}</td>
-        <td>${row.description || row.descricao || "-"}</td>
-      `;
-      tbody.appendChild(tr);
-    });
-  } catch (err) {
-    console.error("Status error:", err);
-    if (message)
-      message.textContent = " API error.";
-  }
-}
-
-async function loadAppMunicipalities() {
-  const select = document.getElementById("appMunicipality");
-  if (!select) return;
-
-  try {
-    const resp = await fetch(`${API_BASE}/api/app_municipios`);
-    const data = await resp.json();
-    const municipios = data.municipios || [];
-
-    select.innerHTML = '<option value="">Select municipality</option>';
-    municipios.forEach((muni) => {
-      const opt = document.createElement("option");
-      opt.value = muni;
-      opt.textContent = muni;
-      select.appendChild(opt);
-    });
-  } catch (err) {
-    console.error("Error in getting municipalities with PPA trade-off rules:", err);
-  }
-}
-
-
-
-async function consultStatus() {
-  const familyInput = document.getElementById("statusFamily");
-  const specieInput = document.getElementById("statusSpecie");
-  const table       = document.getElementById("statusTable");
-  const message     = document.getElementById("statusMessage");
-
-  if (!table) {
-    console.warn("statusTable not found.");
-    return;
-  }
-
-  const tbody = table.tBodies[0] || table.createTBody();
-  tbody.innerHTML = "";
-  if (message) message.textContent = "";
-
-  const family = familyInput ? familyInput.value.trim() : "";
-  const specie = specieInput ? specieInput.value.trim() : "";
-
-  if (!family && !specie) {
-    if (message) message.textContent = "Inform family or specie.";
-    return;
-  }
-
-  const params = new URLSearchParams();
-  if (family) params.append("family", family);
-  if (specie) params.append("specie", specie);
-
-  try {
-    const resp = await fetch(
-      `${API_BASE}/api/species/status?` + params.toString()
-    );
+    console.log("Resposta /api/species/status:", data);
 
     if (!resp.ok) {
-      if (message) message.textContent = "API status error.";
+      if (messageBox) {
+        messageBox.textContent =
+          data.error || data.erro || ("Erro HTTP " + resp.status + " ao consultar status.");
+      }
       return;
     }
-
-    const data = await resp.json();   
 
     if (!Array.isArray(data) || data.length === 0) {
-      if (message) message.textContent = "Specie not found";
+      if (messageBox) messageBox.textContent = "Espécie não encontrada.";
       return;
     }
 
-    data.forEach((row) => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${row.family || "-"}</td>
-        <td>${row.specie || "-"}</td>
-        <td>${row.status || "-"}</td>
-        <td>${row.descricao || "-"}</td>
-      `;
-      tbody.appendChild(tr);
+    data.forEach(function (item) {
+      const row = tableBody.insertRow(-1);
+      row.insertCell(0).textContent = item.family || "";
+      row.insertCell(1).textContent = item.specie || "";
+      row.insertCell(2).textContent = item.status || "";
+      row.insertCell(3).textContent = item.descricao || "";
     });
   } catch (err) {
-    console.error("Status error:", err);
-    if (message) message.textContent = "API connection error";
+    console.error("Erro ao consultar status:", err);
+    if (messageBox) messageBox.textContent = "Erro de conexão com a API.";
   }
 }
 
+// ---------- APP ----------
 function addAppItem() {
-  const municipalitySelect = document.getElementById("appMunicipality");
-  const quantityInput = document.getElementById("appQuantity");
-  const table = document.getElementById("appTable");
-  const errorBoxApp = document.getElementById("errorBoxApp");
+  const muniSelect = byId("appMunicipality");
+  const qtyInput = byId("appQuantity");
+  const errorBox = byId("errorBoxApp");
+  const tableBody = byId("appTable").getElementsByTagName("tbody")[0];
 
-  if (!municipalitySelect || !quantityInput || !table) {
-    console.warn("PPA elements not found");
+  if (errorBox) errorBox.textContent = "";
+
+  if (!muniSelect || !qtyInput || !tableBody) {
+    console.warn("APP form elements not found.");
     return;
   }
 
-  if (errorBoxApp) errorBoxApp.textContent = "";
-
-  const municipality = municipalitySelect.value;
-  const quantityStr = quantityInput.value;
+  const municipality = muniSelect.value;
+  const qtyStr = qtyInput.value;
 
   if (!municipality) {
-    if (errorBoxApp) errorBoxApp.textContent = "Select a municipality";
+    if (errorBox) errorBox.textContent = "Selecione um município.";
     return;
   }
-  if (!quantityStr || Number(quantityStr) <= 0) {
-    if (errorBoxApp)
-      errorBoxApp.textContent = "Inform valid values for quantity/area";
+  if (!qtyStr || Number(qtyStr) < 0) {
+    if (errorBox) errorBox.textContent = "Informe uma quantidade/área válida.";
     return;
   }
 
-  const quantidade = Number(quantityStr);
-  appItems.push({ municipality, quantidade });
+  const quantidade = Number(qtyStr);
+  const item = { municipality: municipality, quantidade: quantidade };
+  appItems.push(item);
 
-  const tbody = table.tBodies[0] || table.createTBody();
-  const row = tbody.insertRow(-1);
-
-  row.insertCell(0).textContent = municipality;
-  row.insertCell(1).textContent = quantidade;
-  row.insertCell(2).textContent = ""; 
-  row.insertCell(3).textContent = ""; 
-
+  const row = tableBody.insertRow(-1);
+  const muniCell = row.insertCell(0);
+  const qtyCell = row.insertCell(1);
+  const compUnitCell = row.insertCell(2);
+  const compTotalCell = row.insertCell(3);
   const delCell = row.insertCell(4);
+
+  muniCell.textContent = municipality;
+  qtyCell.textContent = quantidade;
+  compUnitCell.textContent = "";
+  compTotalCell.textContent = "";
+
   delCell.textContent = "×";
   delCell.classList.add("delete-btn");
   delCell.style.cursor = "pointer";
-  delCell.onclick = () => {
-    const index = row.rowIndex - 1; 
-    appItems.splice(index, 1);
-    row.remove();
+  delCell.onclick = function () {
+    const index = row.rowIndex - 1;
+    if (index >= 0 && index < appItems.length) {
+      appItems.splice(index, 1);
+    }
+    row.parentNode.removeChild(row);
   };
 
-  quantityInput.value = "";
+  qtyInput.value = "";
 }
 
 async function calculateAppTotal() {
-  const errorBoxApp = document.getElementById("errorBoxApp");
-  const totalBoxApp = document.getElementById("totalBoxApp");
-  const table = document.getElementById("appTable");
+  const errorBox = byId("errorBoxApp");
+  const totalBox = byId("totalBoxApp");
+  const tableBody = byId("appTable").getElementsByTagName("tbody")[0];
 
-  if (errorBoxApp) errorBoxApp.textContent = "";
-  if (totalBoxApp) totalBoxApp.textContent = "";
+  if (errorBox) errorBox.textContent = "";
+  if (totalBox) totalBox.textContent = "";
 
-  if (!appItems.length) {
-    if (errorBoxApp)
-      errorBoxApp.textContent = "Add at least one PPA value";
+  if (!Array.isArray(appItems) || appItems.length === 0) {
+    if (errorBox) errorBox.textContent = "Adicione pelo menos uma entrada de APP antes de calcular.";
     return;
   }
-
-  const payload = {
-    apps: appItems.map((item) => ({
-      municipality: item.municipality,
-      quantidade: item.quantidade,
-    })),
-  };
 
   try {
     const resp = await fetch(`${API_BASE}/api/compensacao/app`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ apps: appItems }),
     });
 
     const data = await resp.json();
     console.log("Resposta /api/compensacao/app:", data);
 
     if (!resp.ok) {
-      if (errorBoxApp)
-        errorBoxApp.textContent =
-          data.erro || `Erro HTTP ${resp.status} na API (APP).`;
+      if (errorBox) {
+        errorBox.textContent =
+          data.erro || data.error || ("Erro HTTP " + resp.status + " na API (APP).");
+      }
       return;
     }
 
     const processed = data.apps_processados || [];
-    const tbody = table.tBodies[0] || table.createTBody();
 
-    processed.forEach((item, idx) => {
-      const row = tbody.rows[idx];
-      if (!row) return;
-      row.cells[2].textContent = item.compensacao_por_unidade ?? "";
-      row.cells[3].textContent = item.compensacao_total_app ?? "";
-    });
+    if (tableBody && Array.isArray(processed)) {
+      processed.forEach(function (item, idx) {
+        const row = tableBody.rows[idx];
+        if (!row) return;
 
-    const total = data.total_compensacao_geral ?? 0;
-    if (totalBoxApp) {
-      totalBoxApp.textContent = `PPA total compensation: ${total}`;
+        var compUnit = item.compensacao_por_unidade;
+        if (compUnit === undefined || compUnit === null) compUnit = "";
+
+        var compTotal = item.compensacao_total_app;
+        if (compTotal === undefined || compTotal === null) compTotal = "";
+
+        if (row.cells[2]) row.cells[2].textContent = compUnit;
+        if (row.cells[3]) row.cells[3].textContent = compTotal;
+      });
+    }
+
+    var total = data.total_compensacao_geral;
+    if (total === undefined || total === null) total = 0;
+    total = Number(total);
+    if ((isNaN(total) || total === 0) && Array.isArray(processed) && processed.length > 0) {
+      total = 0;
+      processed.forEach(function (it) {
+        var v = Number(it.compensacao_total_app);
+        if (!isNaN(v)) total += v;
+      });
+    }
+
+    if (totalBox) {
+      totalBox.textContent = "Compensação total de APP: " + total;
     }
 
     const semRegra = data.apps_sem_regra || [];
-    if (semRegra.length && errorBoxApp) {
-      errorBoxApp.textContent +=
-        " Some items did not need trade-off";
+    if (Array.isArray(semRegra) && semRegra.length > 0 && errorBox) {
+      errorBox.textContent +=
+        (errorBox.textContent ? " " : "") +
+        "Alguns itens de APP não tiveram regra de compensação.";
     }
   } catch (err) {
-    console.error("Error in o /api/compensacao/app:", err);
-    if (errorBoxApp)
-      errorBoxApp.textContent = "API connection error(PPA).";
+    console.error("Erro na requisição APP:", err);
+    if (errorBox) errorBox.textContent = "Erro de conexão com a API.";
   }
 }
 
+// ---------- INIT ----------
+document.addEventListener("DOMContentLoaded", function () {
+  setMode("isolated");
+  loadMunicipalities();
+});
 
-
-
+// expondo para o HTML
 window.setMode = setMode;
 window.addItem = addItem;
 window.calculateTotal = calculateTotal;
 window.addPatchItem = addPatchItem;
 window.calculatePatchTotal = calculatePatchTotal;
-window.searchStatus = searchStatus;
 window.consultStatus = consultStatus;
 window.addAppItem = addAppItem;
 window.calculateAppTotal = calculateAppTotal;
-
-
-window.addEventListener("DOMContentLoaded", () => {
-  console.log("scripts.js loaded - DOM pronto");
-  setMode("isolated");   
-  loadMunicipalities();  
-  loadAppMunicipalities();
-});

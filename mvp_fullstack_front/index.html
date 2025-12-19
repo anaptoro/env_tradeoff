@@ -29,7 +29,7 @@
             Patch / area (m²)
         </button>
         <button id="tabApp" class="tab-button" onclick="setMode('app')">
-            APP
+            PPA
         </button>
         <button id="tabStatus" class="tab-button" onclick="setMode('status')">
             Species status
@@ -38,7 +38,6 @@
 
 
     <section id="isolatedSection" class="tab-section">
-        <h2>Árvores isoladas</h2>
 
         <section class="newItem">
             <input
@@ -76,11 +75,11 @@
         <section class="items">
             <table id="myTable">
                 <tr>
-                    <th>Quantidade</th>
-                    <th>Tipo</th>
-                    <th>Município</th>
-                    <th>Comp./árvore</th>
-                    <th>Comp. total item</th>
+                    <th>Quantity</th>
+                    <th>Type</th>
+                    <th>Municipality</th>
+                    <th>Tree trade-off</th>
+                    <th>Total Item trade-off</th>
                     <th>
                         <img
                             src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
@@ -123,9 +122,9 @@
                 <thead>
                     <tr>
                         <th>Municipality</th>
-                        <th>Área (m²)</th>
-                        <th>Comp./m²</th>
-                        <th>Comp. total patch</th>
+                        <th>Area (m²)</th>
+                        <th>Trade-off/m²</th>
+                        <th>Total trade-off patch</th>
                         <th>
                             <img
                                 src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
@@ -173,7 +172,6 @@
 
 
 <section id="appSection" class="tab-section" style="display:none;">
-    <h2>Compensação de APP</h2>
 
     <section class="newItem">
         <select id="appMunicipality">
@@ -185,23 +183,23 @@
                placeholder="Quantidade / área"
                min="0" />
 
-        <button onclick="addAppItem()" class="addBtn">Adicionar APP</button>
-        <button onclick="calculateAppTotal()" class="calcBtn">Calcular compensação</button>
+        <button onclick="addAppItem()" class="addBtn">Add PPA</button>
+        <button onclick="calculateAppTotal()" class="calcBtn">Trade-off calculation</button>
     </section>
 
     <section class="messages">
         <div id="errorBoxApp"></div>
-        <div id="totalBoxApp">Compensação total de APP: 0</div>
+        <div id="totalBoxApp">Total PPA compensation: 0</div>
     </section>
 
     <section class="items">
         <table id="appTable">
             <thead>
                 <tr>
-                    <th>Município</th>
-                    <th>Quantidade / área</th>
-                    <th>Comp/unidade</th>
-                    <th>Comp. total APP</th>
+                    <th>Municipality</th>
+                    <th>Area</th>
+                    <th>Trade-off area</th>
+                    <th>Total trade-off</th>
                     <th>
                         <img src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
                              width="15" height="15" alt="Remover" />
