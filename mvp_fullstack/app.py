@@ -18,11 +18,12 @@ app.config["SWAGGER"] = {
 swagger = Swagger(app)
 
 STATUS_DESCRIPTIONS = {
-    "family": "ACANTHACEAE",
-    "specie": "Aphelandra squarrosa Nees",
-    "status": "EW",
-    "descricao": "Presumed extinct in the wild"
-  }
+    "EW": "presumivelmente extinta (extinta na natureza)",
+    "CR": "em perigo crítico",
+    "EN": "em perigo",
+    "VU": "vulnerável",
+
+}
 
 @app.before_first_request
 def init_compensation():

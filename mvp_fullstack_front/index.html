@@ -13,8 +13,10 @@
 <body>
     <header>
         <div class="title">
-            <h1>Environmental trade-off calculator</h1>
+            <h1>🌿 Environmental Trade-off Calculator</h1>
+            <p class="subtitle">Estimate tree, patch and PPA trade-off</p>
         </div>
+        
         <div class="banner">
             <img src="img/env_fig.png" alt="Comp">
         </div>
@@ -43,33 +45,33 @@
             <input
                 type="number"
                 id="treeQuantity"
-                placeholder="Quantidade"
+                placeholder="Quantity"
                 min="1"
             />
 
             <select id="treeGroup">
-                <option value="native">Nativa</option>
-                <option value="exotic">Exótica</option>
+                <option value="native">Native</option>
+                <option value="exotic">Exotic</option>
             </select>
 
             <select id="isolatedMunicipality">
-                <option value="">Selecione o município</option>
+                <option value="">Select municipality</option>
 
             </select>
 
 
             <select id="treeEndangered">
-                <option value="false">Não ameaçada</option>
-                <option value="true">Ameaçada</option>
+                <option value="false">Yes</option>
+                <option value="true">Not</option>
             </select>
 
-            <button onclick="addItem()" class="addBtn">Adicionar à lista</button>
-            <button onclick="calculateTotal()" class="calcBtn">Calcular compensação</button>
+            <button onclick="addItem()" class="addBtn">Add to list</button>
+            <button onclick="calculateTotal()" class="calcBtn">Calculate trade-off</button>
         </section>
 
         <section class="messages">
             <div id="errorBox"></div>
-            <div id="totalBox">Compensação total do lote: 0</div>
+            <div id="totalBox">Total batch trade-off: 0</div>
         </section>
 
         <section class="items">
@@ -97,24 +99,24 @@
     <section id="patchSection" class="tab-section" style="display:none;">
         <section class="newItem">
             <select id="patchMunicipality">
-                <option value="">Selecione o município</option>
+                <option value="">Select municipality</option>
                 
             </select>
 
             <input
                 type="number"
                 id="patchArea"
-                placeholder="Área do patch (m²)"
+                placeholder="Patch area (m²)"
                 min="1"
             />
 
-            <button onclick="addPatchItem()" class="addBtn">Adicionar patch</button>
-            <button onclick="calculatePatchTotal()" class="calcBtn">Calcular compensação</button>
+            <button onclick="addPatchItem()" class="addBtn">Add patch</button>
+            <button onclick="calculatePatchTotal()" class="calcBtn">Calculate trade-off</button>
         </section>
 
         <section class="messages">
             <div id="errorBoxPatch"></div>
-            <div id="totalBoxPatch">Compensação total do lote: 0</div>
+            <div id="totalBoxPatch">Total batch compensation: 0</div>
         </section>
 
         <section class="items">
@@ -147,7 +149,7 @@
         <section class="newItem">
           <input type="text" id="statusFamily" placeholder="Family (ex: ACANTHACEAE)" />
           <input type="text" id="statusSpecie" placeholder="Specie (ex: Aphelandra squarrosa Nees)" />
-          <button onclick="consultStatus()" class="calcBtn">Consultar status</button>
+          <button onclick="consultStatus()" class="calcBtn">Check status</button>
         </section>
       
         <section class="messages">
@@ -161,7 +163,7 @@
                 <th>Family</th>
                 <th>Specie</th>
                 <th>Status</th>
-                <th>Descrição</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -175,16 +177,16 @@
 
     <section class="newItem">
         <select id="appMunicipality">
-            <option value="">Selecione o município</option>
+            <option value="">Select municipality</option>
         </select>
 
         <input type="number"
                id="appQuantity"
-               placeholder="Quantidade / área"
+               placeholder="Quantity/area"
                min="0" />
 
         <button onclick="addAppItem()" class="addBtn">Add PPA</button>
-        <button onclick="calculateAppTotal()" class="calcBtn">Trade-off calculation</button>
+        <button onclick="calculateAppTotal()" class="calcBtn">Calculate trade-off</button>
     </section>
 
     <section class="messages">

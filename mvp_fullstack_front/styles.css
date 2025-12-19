@@ -1,4 +1,4 @@
-/* ========== Global ========== */
+
 *,
 *::before,
 *::after {
@@ -13,7 +13,7 @@ body {
     color: #0f2414;
 }
 
-/* Remove the old global background on ul/li */
+
 ul,
 li {
     margin: 0;
@@ -21,7 +21,7 @@ li {
     list-style: none;
 }
 
-/* ========== Header / Banner ========== */
+
 header {
     background: #c6ecc8;
     position: relative;
@@ -59,7 +59,7 @@ header {
     filter: saturate(1.1);
 }
 
-/* ========== Tabs Navigation ========== */
+
 .tabs {
     display: flex;
     justify-content: center;
@@ -96,7 +96,7 @@ header {
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
-/* ========== Sections / Cards ========== */
+
 .tab-section {
     max-width: 1100px;
     margin: 16px auto 32px;
@@ -110,7 +110,7 @@ header {
     font-weight: 600;
 }
 
-/* Card that holds the form */
+
 .newItem {
     background: #e3efe4;
     padding: 18px 24px;
@@ -124,7 +124,7 @@ header {
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-/* ========== Inputs & Selects ========== */
+
 input[type="number"],
 input[type="text"],
 select {
@@ -146,7 +146,7 @@ select:focus {
     box-shadow: 0 0 0 3px rgba(42, 181, 58, 0.18);
 }
 
-/* Keep specific IDs for compatibility – widths can be more relaxed */
+
 #treeQuantity {
     max-width: 90px;
 }
@@ -156,7 +156,7 @@ select:focus {
     max-width: 140px;
 }
 
-/* Extra IDs used in the app */
+
 #treeGroup,
 #isolatedMunicipality,
 #treeMunicipality,
@@ -168,7 +168,7 @@ select:focus {
     max-width: 220px;
 }
 
-/* ========== Buttons ========== */
+
 .addBtn,
 .calcBtn {
     padding: 9px 16px;
@@ -197,7 +197,7 @@ select:focus {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
 
-/* ========== Messages ========== */
+
 .messages {
     text-align: center;
     margin-top: 6px;
@@ -272,7 +272,7 @@ th img {
     vertical-align: middle;
 }
 
-/* Different background for patch / APP tables if desired */
+
 #patchTable {
     background: #f0f8ff;
 }
@@ -281,7 +281,7 @@ th img {
     background: #f9f4ff;
 }
 
-/* Delete button cell */
+
 .delete-btn,
 .close {
     color: #555;
@@ -296,12 +296,12 @@ th img {
     cursor: pointer;
 }
 
-/* ========== Utility ========== */
+
 .hidden {
     display: none !important;
 }
 
-/* Small screen tweaks */
+
 @media (max-width: 768px) {
     .newItem {
         flex-direction: column;

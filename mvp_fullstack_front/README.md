@@ -1,6 +1,6 @@
 # Environmental Trade-off Calculator – Frontend
 
-This repository contains only the web interface for the *Environmental Trade-off Calculator*, which communicates with a separate Flask API (backend) to estimate environmental compensation for trees, forest patches, APP areas, and to query species conservation status.
+This repository contains only the web interface for the *Environmental Trade-off Calculator*, which communicates with a separate Flask API (backend) to estimate environmental compensation for trees, forest patches, PPA areas, and to query species conservation status.
 
 All backend setup (Python, virtualenv, database, CSV loading, Swagger, etc.) is documented in the backend’s own README.  
 This README focuses only on the frontend.

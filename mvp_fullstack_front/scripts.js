@@ -1,12 +1,11 @@
 const API_BASE = "http://127.0.0.1:5002";
 
-// ---------- GLOBAL STATE ----------
 let currentMode = "isolated";
 let isolatedItems = [];
 let patchItems = [];
 let appItems = [];
 
-// ---------- HELPERS ----------
+
 function byId(id) {
   return document.getElementById(id);
 }
@@ -38,7 +37,7 @@ function setActiveTab(tabId) {
   });
 }
 
-// Chamado pelos botões do HTML
+
 function setMode(mode) {
   currentMode = mode;
 
@@ -57,15 +56,15 @@ function setMode(mode) {
   }
 }
 
-// ---------- MUNICIPALITIES LOADING ----------
+
 async function loadMunicipalities() {
-  // Isolated trees
+
   try {
     const resp = await fetch(`${API_BASE}/api/municipios`);
     const data = await resp.json();
     const selectIso = byId("isolatedMunicipality");
     if (selectIso && Array.isArray(data.municipios)) {
-      selectIso.innerHTML = '<option value="">Selecione o município</option>';
+      selectIso.innerHTML = '<option value="">Select municipality</option>';
       data.municipios.forEach((m) => {
         const opt = document.createElement("option");
         opt.value = m;
@@ -83,7 +82,7 @@ async function loadMunicipalities() {
     const data = await resp.json();
     const selectPatch = byId("patchMunicipality");
     if (selectPatch && Array.isArray(data.municipios)) {
-      selectPatch.innerHTML = '<option value="">Selecione o município</option>';
+      selectPatch.innerHTML = '<option value="">Select municipality</option>';
       data.municipios.forEach((m) => {
         const opt = document.createElement("option");
         opt.value = m;
@@ -92,7 +91,7 @@ async function loadMunicipalities() {
       });
     }
   } catch (err) {
-    console.error("Erro carregando municípios (patch):", err);
+    console.error("Error loading municipalities (patch):", err);
   }
 
   // APP
@@ -101,7 +100,7 @@ async function loadMunicipalities() {
     const data = await resp.json();
     const selectApp = byId("appMunicipality");
     if (selectApp && Array.isArray(data.municipios)) {
-      selectApp.innerHTML = '<option value="">Selecione o município</option>';
+      selectApp.innerHTML = '<option value="">Select municipality</option>';
       data.municipios.forEach((m) => {
         const opt = document.createElement("option");
         opt.value = m;
@@ -110,7 +109,7 @@ async function loadMunicipalities() {
       });
     }
   } catch (err) {
-    console.error("Erro carregando municípios (app):", err);
+    console.error("Error loading municipalities (ppa):", err);
   }
 }
 
@@ -126,7 +125,7 @@ function addItem() {
   if (errorBox) errorBox.textContent = "";
 
   if (!qtyInput || !groupSelect || !municipalitySelect || !endangeredSelect || !table) {
-    console.warn("Isolated trees form elements not found.");
+    console.warn("Isolated trees for municipality elements not found.");
     return;
   }
 
@@ -136,11 +135,11 @@ function addItem() {
   const endangeredValue = endangeredSelect.value;
 
   if (!qtyStr || Number(qtyStr) <= 0) {
-    if (errorBox) errorBox.textContent = "Informe uma quantidade válida.";
+    if (errorBox) errorBox.textContent = "Set a valid quantity.";
     return;
   }
   if (!municipality) {
-    if (errorBox) errorBox.textContent = "Selecione um município.";
+    if (errorBox) errorBox.textContent = "Select a municipality.";
     return;
   }
 
@@ -155,7 +154,7 @@ function addItem() {
   };
   isolatedItems.push(item);
 
-  // Adiciona linha à tabela
+
   const row = table.insertRow(-1);
   const qtyCell = row.insertCell(0);
   const groupCell = row.insertCell(1);
@@ -174,7 +173,7 @@ function addItem() {
   delCell.classList.add("delete-btn");
   delCell.style.cursor = "pointer";
   delCell.onclick = function () {
-    const index = row.rowIndex - 1; // header = 0
+    const index = row.rowIndex - 1; 
     if (index >= 0 && index < isolatedItems.length) {
       isolatedItems.splice(index, 1);
     }
@@ -194,12 +193,12 @@ async function calculateTotal() {
     return;
   }
 
-  // Reset UI
+
   errorBox.textContent = "";
-  totalBox.textContent = "Compensação total do lote: 0";
+  totalBox.textContent = "Total batch compensation: 0";
 
   if (!Array.isArray(isolatedItems) || isolatedItems.length === 0) {
-    errorBox.textContent = "Adicione pelo menos uma entrada antes de calcular.";
+    errorBox.textContent = "Add at least one entry";
     return;
   }
 
@@ -220,19 +219,19 @@ async function calculateTotal() {
       return;
     }
 
-    // -------- 1) Atualizar linhas na tabela --------
+
     const processed =
-      data["processed items"] ||   // formato antigo
-      data.processed_items   ||   // snake_case
-      data.itens_processados ||   // pt-BR fallback
+      data["processed items"] ||
+      data.processed_items   ||
+      data.itens_processados ||
       [];
 
     if (Array.isArray(processed)) {
       processed.forEach((item, idx) => {
-        const row = table.rows[idx + 1]; // índice 0 = header
+        const row = table.rows[idx + 1]; 
         if (!row) return;
 
-        // colunas: 0=Qtd, 1=Tipo, 2=Município, 3=Tree trade-off, 4=Total item
+        
         if (row.cells[3]) {
           row.cells[3].textContent =
             item.compensacao_por_arvore !== undefined
@@ -248,13 +247,13 @@ async function calculateTotal() {
       });
     }
 
-    // -------- 2) Descobrir o campo de total, custe o que custar :) --------
+    
     let total;
 
-    // Tentamos primeiro nomes conhecidos
+    
     const possibleTotalKeys = [
-      "total compensation",      // seu formato antigo
-      "total_compensation",      // inglês com underscore
+      "total compensation",      
+      "total_compensation",      
       "total_compensacao_geral",
       "total_compensacao_lote",
       "total",
@@ -271,7 +270,7 @@ async function calculateTotal() {
       }
     }
 
-    // Se ainda não achou, varremos todas as chaves procurando uma numérica com "total" no nome
+    
     if (total === undefined) {
       for (const [key, value] of Object.entries(data)) {
         if (typeof value === "number" && /total/i.test(key)) {
@@ -281,12 +280,12 @@ async function calculateTotal() {
       }
     }
 
-    // Se mesmo assim nada, cai pra 0
+    
     if (total === undefined) {
       total = 0;
     }
 
-    // Se vier como string, tenta converter
+    
     if (typeof total === "string") {
       const parsed = Number(total);
       if (!Number.isNaN(parsed)) {
@@ -296,7 +295,7 @@ async function calculateTotal() {
 
     totalBox.textContent = `Compensação total do lote: ${total}`;
 
-    // -------- 3) Itens sem regra --------
+    
     const semRegra =
       data["items without compensation"] ||
       data.items_without_compensation ||
@@ -315,9 +314,6 @@ async function calculateTotal() {
 }
 
 
-
-
-// ---------- PATCH / AREA ----------
 function addPatchItem() {
   const muniSelect = byId("patchMunicipality");
   const areaInput = byId("patchArea");
@@ -449,7 +445,7 @@ async function calculatePatchTotal() {
   }
 }
 
-// ---------- SPECIES STATUS ----------
+
 async function consultStatus() {
   const familyInput = byId("statusFamily");
   const specieInput = byId("statusSpecie");
@@ -502,7 +498,7 @@ async function consultStatus() {
   }
 }
 
-// ---------- APP ----------
+
 function addAppItem() {
   const muniSelect = byId("appMunicipality");
   const qtyInput = byId("appQuantity");
@@ -520,11 +516,11 @@ function addAppItem() {
   const qtyStr = qtyInput.value;
 
   if (!municipality) {
-    if (errorBox) errorBox.textContent = "Selecione um município.";
+    if (errorBox) errorBox.textContent = "Select a municipality.";
     return;
   }
   if (!qtyStr || Number(qtyStr) < 0) {
-    if (errorBox) errorBox.textContent = "Informe uma quantidade/área válida.";
+    if (errorBox) errorBox.textContent = "Set a valid area";
     return;
   }
 
@@ -567,7 +563,7 @@ async function calculateAppTotal() {
   if (totalBox) totalBox.textContent = "";
 
   if (!Array.isArray(appItems) || appItems.length === 0) {
-    if (errorBox) errorBox.textContent = "Adicione pelo menos uma entrada de APP antes de calcular.";
+    if (errorBox) errorBox.textContent = "Add at least one PPA entry";
     return;
   }
 
@@ -584,7 +580,7 @@ async function calculateAppTotal() {
     if (!resp.ok) {
       if (errorBox) {
         errorBox.textContent =
-          data.erro || data.error || ("Erro HTTP " + resp.status + " na API (APP).");
+          data.erro || data.error || ("Erro HTTP " + resp.status + " in API (PPA).");
       }
       return;
     }
@@ -619,28 +615,28 @@ async function calculateAppTotal() {
     }
 
     if (totalBox) {
-      totalBox.textContent = "Compensação total de APP: " + total;
+      totalBox.textContent = "Total PPA compensation: " + total;
     }
 
     const semRegra = data.apps_sem_regra || [];
     if (Array.isArray(semRegra) && semRegra.length > 0 && errorBox) {
       errorBox.textContent +=
         (errorBox.textContent ? " " : "") +
-        "Alguns itens de APP não tiveram regra de compensação.";
+        "Some PPA items dont have compensation rules.";
     }
   } catch (err) {
-    console.error("Erro na requisição APP:", err);
-    if (errorBox) errorBox.textContent = "Erro de conexão com a API.";
+    console.error("Errow requesting PPA:", err);
+    if (errorBox) errorBox.textContent = "Connection error";
   }
 }
 
-// ---------- INIT ----------
+
 document.addEventListener("DOMContentLoaded", function () {
   setMode("isolated");
   loadMunicipalities();
 });
 
-// expondo para o HTML
+
 window.setMode = setMode;
 window.addItem = addItem;
 window.calculateTotal = calculateTotal;
