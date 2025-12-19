@@ -1,101 +1,226 @@
-body,
-ul,
-li {
-    font-family: tahoma;
+/* ========== Global ========== */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-color: rgb(27, 77, 50);
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, sans-serif;
+    background: radial-gradient(circle at top left, #1c9b6a 0%, #0f3b25 45%, #062016 100%);
+    color: #0f2414;
+}
+
+/* Remove the old global background on ul/li */
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* ========== Header / Banner ========== */
 header {
-    background-color: rgb(198, 236, 200);
-    text-align: center;
+    background: #c6ecc8;
     position: relative;
     width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .title {
-    color: white;
     width: 100%;
-    background-color: rgb(27, 77, 50);
-    display: inline-block;
-    padding: 2px 0px;
+    background: #1b4d32;
+    color: #f5fff7;
+    text-align: center;
+    padding: 12px 8px;
     position: sticky;
-    top: 0px;
+    top: 0;
+    z-index: 10;
+}
+
+.title h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    letter-spacing: 0.03em;
 }
 
 .banner {
-    height: 300px;
+    height: 260px;
     overflow: hidden;
 }
 
 .banner img {
     margin: 0;
     width: 100%;
+    height: 100%;
     object-fit: cover;
+    filter: saturate(1.1);
 }
 
+/* ========== Tabs Navigation ========== */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 24px 0;
+    background: transparent;
+    margin-top: 10px;
+}
+
+.tab-button {
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    background: rgba(230, 244, 233, 0.4);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 999px;
+    color: #0b2a18;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.tab-button:hover {
+    background: rgba(230, 255, 234, 0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.tab-button.active {
+    background: #ffffff;
+    color: #145c34;
+    font-weight: 600;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* ========== Sections / Cards ========== */
+.tab-section {
+    max-width: 1100px;
+    margin: 16px auto 32px;
+    padding: 0 16px 24px;
+}
+
+.tab-section > h2 {
+    margin: 12px 4px 8px;
+    color: #f5fff7;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Card that holds the form */
 .newItem {
-    background-color: rgb(213, 225, 205);
-    padding: 30px 40px;
-    color: white;
+    background: #e3efe4;
+    padding: 18px 24px;
+    margin: 8px auto 12px;
+    color: #0f2414;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
+    border-radius: 14px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-.newItem:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-#treeQuantity,
-#treeGroup,
-#treeMunicipality,
-#patchMunicipality,
-#patchArea {
+/* ========== Inputs & Selects ========== */
+input[type="number"],
+input[type="text"],
+select {
     margin: 0;
-    border: 1px solid rgb(35, 32, 24);
-    padding: 10px;
-    font-size: 16px;
+    border: 1px solid rgba(26, 44, 31, 0.35);
+    padding: 9px 12px;
+    font-size: 14px;
+    border-radius: 999px;
+    background-color: #ffffff;
+    min-width: 150px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+    border-color: #2ab53a;
+    box-shadow: 0 0 0 3px rgba(42, 181, 58, 0.18);
+}
 
-
+/* Keep specific IDs for compatibility – widths can be more relaxed */
 #treeQuantity {
-    width: 8%;
+    max-width: 90px;
 }
 
+#patchArea,
+#appQuantity {
+    max-width: 140px;
+}
 
+/* Extra IDs used in the app */
 #treeGroup,
+#isolatedMunicipality,
 #treeMunicipality,
 #patchMunicipality,
-#patchArea {
-    width: 15%;
-    background-color: white;
+#appMunicipality,
+#treeEndangered,
+#statusFamily,
+#statusSpecie {
+    max-width: 220px;
 }
+
+/* ========== Buttons ========== */
 .addBtn,
 .calcBtn {
-    padding: 9px 12px;
-    background-color: rgb(27, 77, 50);
-    color: white;
+    padding: 9px 16px;
+    background: linear-gradient(135deg, #1b7b4d, #2ab53a);
+    color: #ffffff;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
-    transition: 0.3s;
-    border-radius: 2px;
+    transition: transform 0.1s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    border-radius: 999px;
     border: none;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .addBtn:hover,
 .calcBtn:hover {
-    background-color: #2ab53a;
-    color: white;
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.addBtn:active,
+.calcBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* ========== Messages ========== */
+.messages {
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+#errorBox,
+#errorBoxPatch,
+#errorBoxApp {
+    color: #d22b2b;
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+}
+
+#totalBox,
+#totalBoxPatch,
+#totalBoxApp {
+    font-weight: 700;
+    color: #f5fff7;
+    font-size: 1rem;
+}
+
+/* ========== Tables ========== */
 .items {
     margin: 0;
     padding: 0;
@@ -103,93 +228,99 @@ header {
     justify-content: center;
 }
 
-table,
-th,
-td {
-    border: 1px solid rgb(244, 241, 241);
+table {
+    width: 100%;
+    max-width: 1000px;
+    background: #f2fbf4;
     border-collapse: collapse;
-    cursor: pointer;
-    position: relative;
-    padding: 12px 8px 12px 10px;
-    font-size: 18px;
-    transition: 0.2s;
-    text-align: start;
+    margin: 6px auto 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
 }
 
-table {
-    background-color: rgb(209, 245, 209);
-    width: 80%;
+th,
+td {
+    border: 1px solid #e6efe7;
+    padding: 10px 10px;
+    font-size: 14px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+thead tr {
+    background: #ddeee1;
 }
 
 tr:nth-child(odd) {
-    background-color: #eee;
+    background-color: #f8fbf8;
 }
 
-th:nth-child(1) {
-    width: 25%;
+tr:nth-child(even) {
+    background-color: #ecf5ee;
 }
 
 tr:hover {
-    background: rgb(198, 233, 205);
+    background: #d6ecdc;
 }
 
+th:nth-child(1) {
+    width: 20%;
+}
+
+th img {
+    vertical-align: middle;
+}
+
+/* Different background for patch / APP tables if desired */
+#patchTable {
+    background: #f0f8ff;
+}
+
+#appTable {
+    background: #f9f4ff;
+}
+
+/* Delete button cell */
+.delete-btn,
+.close {
+    color: #555;
+    text-align: center;
+    font-size: 18px;
+}
+
+.delete-btn:hover,
 .close:hover {
     color: #f44336;
     font-weight: bolder;
-}
-
-.messages {
-    text-align: center;
-    margin-top: 10px;
-}
-
-#errorBox {
-    color: #b31616;
-    margin-bottom: 5px;
-}
-
-#totalBox {
-    font-weight: bold;
-}
-
-
-
-.mode-tabs {
-    display: flex;
-    gap: 8px;
-    padding: 6px 40px;
-    background-color: rgb(27, 77, 50);
-}
-
-.mode-btn {
-    border: none;
-    padding: 6px 12px;
     cursor: pointer;
-    background-color: #e4e4e4;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 4px 4px 0 0;
 }
 
-.mode-btn.active {
-    background-color: rgb(213, 225, 205); 
-    font-weight: 700;
-}
-
-
+/* ========== Utility ========== */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
-#errorBoxPatch {
-    color: #b31616;
-    margin-bottom: 5px;
-}
+/* Small screen tweaks */
+@media (max-width: 768px) {
+    .newItem {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-#totalBoxPatch {
-    font-weight: bold;
-}
+    input[type="number"],
+    input[type="text"],
+    select {
+        width: 100%;
+        max-width: 100%;
+    }
 
-#patchTable {
-    background-color: rgb(209, 235, 245); 
+    .tab-button {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+
+    table {
+        font-size: 13px;
+    }
 }
