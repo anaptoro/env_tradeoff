@@ -1,4 +1,940 @@
-family,specie,status
+family,species,status
+DICRANACEAE,Campylopus griseus (Hornsch.) A.Jaeger,EX
+DICRANACEAE,Campylopus julaceus A.Jaeger,VU
+DICRANACEAE,Campylopus surinamensis Müll. Hal.,VU
+DICRANACEAE,Campylopus thwaitesii (Mitt.) A.Jaeger,VU
+DICRANACEAE,Dicranella guilleminiana (Mont.) Mitt.,EX
+ENTODONTACEAE,Mesonodon regnellianus (Müll.Hal.) W.R.Buck,EX
+ERPODIACEAE,Aulacopilum schaeferi H.A.Crum,EX
+FISSIDENTACEAE,Fissidens dissitifolius Sull.,VU
+FRULLANIACEAE,Frullania griffithsiana Gottsche,EX
+FRULLANIACEAE,Frullania guadalupensis Gottsche ex Steph.,EX
+GEOCALYCACEAE,Leptoscyphus cuneifolius (Hook.) Mitt.,VU
+LEJEUNEACEAE,Bromeliophila natans (Steph.) R.M.Schust.,EN
+LEJEUNEACEAE,Ceratolejeunea filaria (Taylor ex Lehm.) Steph.,EX
+LEJEUNEACEAE,Cheilolejeunea aneogyna (Spruce) A. Evans,EX
+LEJEUNEACEAE,Cheilolejeunea grandibracteata Steph.,EX
+LEJEUNEACEAE,Cheilolejeunea lineata (Lehm. & Lindenb.) Steph.,EX
+LEJEUNEACEAE,Cheilolejeunea tenerrima (Steph.) C. Bastos,EX
+LEJEUNEACEAE,Cololejeunea platyneura (Spruce) S.W.Arnell,EX
+LEJEUNEACEAE,Cyclolejeunea accedens (Gottsche) A.Evans,EX
+LEJEUNEACEAE,Diplasiolejeunea unidentata (Lehm. & Lindenb.) Schiffn.,EX
+LEJEUNEACEAE,Drepanolejeunea aculeata Bischl.,EX
+LEJEUNEACEAE,Drepanolejeunea grollei E.Reiner & Schäfer-Verw.,VU
+LEJEUNEACEAE,Myriocoleopsis fluviatilis (Steph.) E.Reiner & Gradst.,VU
+LEJEUNEACEAE,Myriocoleopsis gymnocolea (Spruce) E.Reiner & Gradst.,EX
+LEJEUNEACEAE,Prionolejeunea mucronata (Sande Lac.) Steph.,EX
+LEJEUNEACEAE,Prionolejeunea scaberula (Spruce) Steph.,EX
+NECKERACEAE,Porotrichum leucocaulon Müll. Hal.,EX
+NECKERACEAE,Porotrichum thieleanum (Müll.Hal.) Mitt.,EX
+NOTOTHYLADACEAE,Notothylas vitalii Udar & Singh,EX
+ORTHOTRICHACEAE,Macromitrium argutum Hampe,EX
+PILOTRICHACEAE,Callicostella microcarpa Ångström,EX
+PILOTRICHACEAE,Crossomitrium saprophilum Broth.,EX
+PILOTRICHACEAE,Cyclodictyon marginatum (Hook. & Wilson) Kuntze,EX
+PILOTRICHACEAE,Cyclodictyon olfersianum (Hornsch.) Kuntze,EX
+PILOTRICHACEAE,Lepidopilum affine Müll. Hal.,EX
+POTTIACEAE,Aloina rigida (Hedw.) Limpr.,VU
+POTTIACEAE,Dolotortula mnifolia (Sull.) R.H.Zander,VU
+POTTIACEAE,Hymenostyliella alata (Herzog) H.Rob.,EX
+POTTIACEAE,Leptodontium stellatifolium (Hampe) Broth.,VU
+POTTIACEAE,Leptodontium wallisii (Müll.Hal.) Kindb.,VU
+POTTIACEAE,Molendoa sendtneriana (Bruch & Schimp.) Limpr.,VU
+POTTIACEAE,Timmiella barbuloides (Brid.) Mönk.,EX
+POTTIACEAE,Trachycarpidium lonchophyllum (Roth.) R.H. Zander,VU
+PTEROBRYACEAE,Calyptothecium acutifolium (Brid.) Broth.,EX
+RHACHITHECIACEAE,Rhachithecium perpusillum (Thwaites & Mitt.) Broth.,VU
+RICCIACEAE,Riccia albopunctata Jovet-Ast,EX
+SPHAGNACEAE,Sphagnum amoenoides H.A.Crum,VU
+SPHAGNACEAE,Sphagnum bocainense H.A.Crum,VU
+SPHAGNACEAE,Sphagnum frahmii H.A.Crum,VU
+SPHAGNACEAE,Sphagnum gracilescens Müll. Hal.,VU
+THUIDIACEAE,Pelekium muricatulum (Hampe) A.Touw,VU
+THUIDIACEAE,Thuidium urceolatum Lorentz,VU
+TRICHOCOLEACEAE,Trichocolea argentea Herzog,EX
+ANEMIACEAE,Anemia trichorhiza Gardner,EN
+ASPLENIACEAE,Asplenium bradeanum Handro,EN
+ASPLENIACEAE,Asplenium ulbrichtii Rosenst.,VU
+CYATHEACEAE,Alsophila capensis (L.f.) J.Sm.,EN
+DICKSONIACEAE,Culcita coniifolia (Hook.) Maxon,EN
+DICKSONIACEAE,Dicksonia sellowiana Hook.,VU
+DRYOPTERIDACEAE,Megalastrum wacketii (Rosenst. ex C.Chr.) A.R.Sm. & R.C.Moran,EN
+DRYOPTERIDACEAE,Elaphoglossum edwallii Rosenst.,VU
+DRYOPTERIDACEAE,Elaphoglossum strictum (Raddi) T.Moore,VU
+HYMENOPHYLLACEAE,Didymoglossum ovale (E.Fourn.) Wess. Boer.,EN
+ISOETACEAE,Isoetes bradei Herter,EX
+LYCOPODIACEAE,Diphasium jussiaei (Desv. ex Poir.) Rothm.,VU
+POLYPODIACEAE,Ceradenia glaziovii (Baker) Labiak,EN
+POLYPODIACEAE,Grammiris fluminensis Fée,EN
+POLYPODIACEAE,Lellingeria tamandarei (Rosenst.) A.R.Sm. & R.C.Moran,EN
+POLYPODIACEAE,Lellingeria brasiliensis (Rosenst.) Labiak,VU
+PTERIDACEAE,Adiantum mynsseniae J.Prado,EN
+PTERIDACEAE,Cheilanthes goyazensis (Taub.) Domin,EN
+PTERIDACEAE,Cheilanthes regnelliana Mett.,EN
+PTERIDACEAE,Doryopteris itatiaiensis (Fée) Christ,EN
+PTERIDACEAE,Doryopteris paradoxa (Fée) Christ,VU
+PTERIDACEAE,Doryopteris rediviva Fée,VU
+SELAGINELLACEAE,Selaginella convoluta (Arn.) Spring,EN
+SELAGINELLACEAE,Selaginella mendoncae Hieron.,VU
+THELYPTERIDACEAE,Goniopteris multigemmifera (Salino) Salino & T.E.Almeida,EN
+THELYPTERIDACEAE,Meniscium macrophyllum Kunze,EX
+ARAUCARIACEAE,Araucaria angustifolia (Bertol.) Kuntze,EN
 ACANTHACEAE,Aphelandra squarrosa Nees,EW
 ACANTHACEAE,Lepidagathis meridionalis Kameyama,VU
 ACANTHACEAE,Staurogyne itatiaiae (Wawra) Leonard,EN
+ACANTHACEAE,Stenandrium diphyllum Nees,EX
+ACANTHACEAE,Stenandrium mandioccanum Nees,VU
+ALISMATACEAE,Echinodorus paniculatus Micheli,EX
+ALISMATACEAE,Limnocharis laforestii Duchass,VU
+ALSTROEMERIACEAE,Alstroemeria apertiflora Baker,EN
+ALSTROEMERIACEAE,Alstroemeria caryophyllaea Jacq.,EW
+ALSTROEMERIACEAE,Alstroemeria foliosa Mart.ex Schult & Schult. f.,EN
+ALSTROEMERIACEAE,Alstroemeria plantaginea Mart. ex Schult & Schult. f.,EN
+AMARANTHACEAE,Alternanthera aquatica (D. Parodi) Chodat,VU
+AMARANTHACEAE,Alternanthera bahiensis Pedersen,VU
+AMARANTHACEAE,Alternanthera flavescens Kunth,VU
+AMARANTHACEAE,Alternanthera micrantha R.E. Fr.,VU
+AMARANTHACEAE,Alternanthera paronychioides A.St.-Hil.,EX
+AMARANTHACEAE,Alternanthera reinekii Briq.,VU
+AMARANTHACEAE,Alternanthera lanceolata (Benth.) Schinz,VU
+AMARANTHACEAE,Gomphrena agrestis Mart.,VU
+AMARANTHACEAE,Gomphrena elegans Mart.,VU
+AMARYLLIDACEAE,Crinum americanum L.,VU
+AMBLYSTEGIACEAE,Anacamptodon cubensis (Sull.) Mitt.,EX
+AMARYLLIDACEAE,Eithea blumenavia (K.Koch & C.D.Bouché ex Carrière) Ravenna,EN
+ANEURACEAE,Riccardia schwaneckei (Steph.) Pagán,EX
+AMARYLLIDACEAE,Griffinia hyacinthina Ker Gawl.,EN
+ANOMODONTACEAE,Herpertineuron toccoae (Sull. & Lesq.) Cardot,VU
+AMARYLLIDACEAE,Hippeastrum angustifolium Pax,EW
+ANTHOCEROTACEAE,Folioceros apiahynus (Steph.) Hässel,EX
+AMARYLLIDACEAE,Hippeastrum blossfeldiae (Traub & L.J.Doran) van Scheepen,VU
+BALANTIOPSIDACEAE,Neesioscyphus carneus (Nees) Grolle,EX
+AMARYLLIDACEAE,Hippeastrum morelianum Lem.,VU
+BARTRAMIACEAE,Breutelia microdonta (Mitt.) Broth.,EX
+AMARYLLIDACEAE,Hippeastrum psittacinum (Ker Gawl.) Herb.,EN
+BARTRAMIACEAE,Breutelia subdisticha (Hampe) A.Jaeger,EX
+AMARYLLIDACEAE,Hippeastrum reginae (L.) Herb.,EN
+BRYACEAE,Anomobryum conicum (Hornsch.) Broth.,VU
+AMARYLLIDACEAE,Hippeastrum striatum (Lam.) Moore,EN
+BRYACEAE,Brachymenium morasicum Besch.,EX
+AMARYLLIDACEAE,Zephyranthes candida (Lindl.) Herb.,EN
+BRYACEAE,Bryum pabstianum Müll. Hal.,EX
+ANNONACEAE,Annona glaucophylla R.E.Fr.,EX
+BRYACEAE,Rhodobryum pseudomarginatum (Geh. & Hampe) Paris,VU
+ANNONACEAE,Annona ubatubensis (Maas & Westra) H.Rainer,EN
+CALYMPERACEAE,Syrrhopodon cryptocarpus Dozy & Molk.,VU
+ANNONACEAE,Annona xylopiifolia A.St.-Hil. & Tul.,EX
+CALYPOGEIACEAE,Calypogeia uncinulatula Herzog,EX
+ANNONACEAE,Duguetia salicifolia R.E.Fr.,VU
+CALYPOGEIACEAE,Mnioloma crenulatum (Bischl.) R.M.Schust.,VU
+ANNONACEAE,Trigynaea oblongifolia Schltdl.,EN
+CRYPHAEACEAE,Schoenobryum rubricaule (Mitt.) Manuel,EX
+APIACEAE,Apium prostratum Labill.,VU
+DICRANACEAE,Campylopus angustiretis (Austin) Lesq. & James,VU
+APIACEAE,Eryngium glaziovianum Urb.,EX
+DICRANACEAE,Campylopus densicoma (Müll.Hal.) Paris,EN
+APIACEAE,Eryngium koehneanum Urb.,EN
+APIACEAE,Eryngium sanguisorba Cham. & Schltdl.,EX
+BROMELIACEAE,Nidularium bocainense Leme,VU
+GESNERIACEAE,Codonanthe carnosa (Gardner) Hanst.,VU
+MELASTOMATACEAE,Leandra paulina DC.,VU
+APIACEAE,Eryngium scirpinum Cham.,EN
+BROMELIACEAE,Nidularium campos-portoi (L.B.Sm.) Wand. & B.A.Moreira,VU
+GESNERIACEAE,Codonanthe venosa Chautems,VU
+MELASTOMATACEAE,Leandra pauloensis Hoehne,EX
+APIACEAE,Eryngium stenophyllum Urb.,EX
+BROMELIACEAE,Nidularium corallinum (Leme) Leme,EN
+GESNERIACEAE,Nematanthus crassifolius (Schott) Wiehler,VU
+MELASTOMATACEAE,Leandra quinquenodis (DC.) Cogn.,EN
+APIACEAE,Hydrocotyle exigua (Urb.) Malme,EN
+BROMELIACEAE,Nidularium itatiaiae L.B.Sm.,EX
+GESNERIACEAE,Nematanthus mattosianus (Handro) H.E.Moore,VU
+MELASTOMATACEAE,Leandra riedeliana (O.Berg ex Triana) Cogn.,EX
+APIACEAE,Hydrocotyle langsdorffii DC.,EX
+BROMELIACEAE,Nidularium jonesianum Leme,EX
+GESNERIACEAE,Nematanthus monanthos (Vell.) Chautems,EN
+MELASTOMATACEAE,Leandra sparsisetulosa Hoehne,EX
+APIACEAE,Hydrocotyle pusilla A.Rich.,EX
+BROMELIACEAE,Nidularium minutum Mez,VU
+GESNERIACEAE,Nematanthus strigillosus (Mart.) H.E.Moore,EX
+MELASTOMATACEAE,Leandra strigilliflora (Naudin) Cogn.,VU
+APIACEAE,Spananthe paniculata Jacq.,EX
+BROMELIACEAE,Nidularium rolfianum Leme,VU
+GESNERIACEAE,Sinningia araneosa Chautems,VU
+MELASTOMATACEAE,Leandra tristis Cogn.,EN
+APOCYNACEAE,Asclepias aequicornu E.Fourn.,EN
+BROMELIACEAE,Tillandsia araujei Mez,VU
+GESNERIACEAE,Sinningia canescens (Mart.) Wiehler,VU
+MELASTOMATACEAE,Leandra uliginosa Brade,VU
+APOCYNACEAE,Asclepias langsdorfii E.Fourn.,EX
+BROMELIACEAE,Tillandsia crocata (E.Morren) Baker,VU
+GESNERIACEAE,Sinningia glazioviana (Fritsch) Chautems,CR
+MELASTOMATACEAE,Leandra umbellata DC.,EN
+APOCYNACEAE,Aspidosperma macrocarpon Mart.,VU
+BROMELIACEAE,Tillandsia linearis Vell.,VU
+GESNERIACEAE,Sinningia hatschbachii Chautems,EN
+MELASTOMATACEAE,Leandra vesiculosa Cogn.,EN
+APOCYNACEAE,Aspidosperma nobile Müll.Arg.,CR
+BROMELIACEAE,Tillandsia polystachia (L.) L.,VU
+GESNERIACEAE,Sinningia iarae Chautems,EN
+MELASTOMATACEAE,Leandra viridiflava Brade,VU
+APOCYNACEAE,Aspidosperma quirandy Hassl.,EN
+BROMELIACEAE,Tillandsia recurvifolia Hook.,VU
+GESNERIACEAE,Sinningia insularis (Handro) Chautems,EN
+MELASTOMATACEAE,Miconia macrothyrsa Benth.,EN
+APOCYNACEAE,Aspidosperma riedelii Müll.Arg.,EN
+BROMELIACEAE,Vriesea lubbersii (Baker) E.Morren ex Mez,EX
+GESNERIACEAE,Sinningia magnifica (Otto & A.Dietr.) Wiehler,VU
+MELASTOMATACEAE,Miconia mendoncae Cogn.,VU
+APOCYNACEAE,Aspidosperma spruceanum Benth. ex Müll.Arg.,EN
+BROMELIACEAE,Vriesea neoglutinosa Mez,VU
+GESNERIACEAE,Sinningia micans (Fritsch) Chautems,EN
+MELASTOMATACEAE,Miconia picinguabensis R.Goldenb. & A.B.Martins,EN
+APOCYNACEAE,Ditassa lagoensis E.Fourn.,EX
+BROMELIACEAE,Vriesea pardalina Mez,EX
+GESNERIACEAE,Sinningia piresiana (Hoehne) Chautems,EN
+MELASTOMATACEAE,Miconia polyandra Gardner,VU
+APOCYNACEAE,Macroditassa marianae Fontella & Ferreira,EN
+BROMELIACEAE,Vriesea pauperrima E.Pereira,VU
+GESNERIACEAE,Sinningia warmingii (Hiern.) Chautems,VU
+MELASTOMATACEAE,Miconia robustissima Cogn.,EN
+APOCYNACEAE,Macroscepis magnifica Malme,EX
+BROMELIACEAE,Vriesea platzmannii E.Morren,VU
+HYPERICACEAE,Hypericum mutilum L.,VU
+MELASTOMATACEAE,Miconia sclerophylla Triana,EN
+APOCYNACEAE,Mandevilla fragrans (Staldem.) Woodson,EX
+BROMELIACEAE,Vriesea regnellii Mez,EX
+HYPERICACEAE,Hypericum piriai Arechav.,EX
+MELASTOMATACEAE,Miconia serrulata (DC.) Naudin,VU
+APOCYNACEAE,Mandevilla sellowii (Müll.Arg.) Woodson,EX
+BROMELIACEAE,Vriesea rubyae E.Pereira,CR
+HYPERICACEAE,Hypericum rigidum A.St.-Hil.,EX
+MELASTOMATACEAE,Miconia shepherdii R.Goldenb. & Reginato,EN
+APOCYNACEAE,Mandevilla venulosa (Müll.Arg.) Woodson,VU
+BROMELIACEAE,Vriesea sazimae Leme,VU
+HYPERICACEAE,Vismia martiana Reichardt,EN
+MELASTOMATACEAE,Miconia tentaculifera Naudin,VU
+APOCYNACEAE,Matelea glaziovii (E.Fourn.) Morillo,VU
+BROMELIACEAE,Vriesea sparsiflora L.B.Sm.,EX
+IRIDACEAE,Neomarica glauca (Seub. ex Klatt) Sprague,VU
+MELASTOMATACEAE,Miconia urophylla DC.,VU
+APOCYNACEAE,Matelea marcoassisii Fontella,VU
+BROMELIACEAE,Vriesea taritubensis E.Pereira & I.A.Penna,VU
+LAMIACEAE,Aegiphila capitata Moldenke,EX
+MELASTOMATACEAE,Microlicia myrtoidea Cham.,VU
+APOCYNACEAE,Oxypetalum confusum Malme,EX
+BROMELIACEAE,Vriesea vulpinoidea L.B.Sm.,VU
+LAMIACEAE,Hyptis alpestris A.St.-Hil. ex Benth.,EN
+MELASTOMATACEAE,Pleroma guartelaensis F.S.Mey & R.Goldenb.,VU
+APOCYNACEAE,Oxypetalum ekblomii Malme,EN
+BROMELIACEAE,Wittrockia gigantea (Baker) Leme,VU
+LAMIACEAE,Hyptis lagenaria A.St.-Hil. ex Benth.,EN
+MELASTOMATACEAE,Pterolepis perpusilla (Naudin) Cogn.,VU
+APOCYNACEAE,Oxypetalum glaziovii (E.Fourn.) Fontella & Marquete,EN
+BURMANNIACEAE,Burmannia australis Malme,EX
+LAMIACEAE,Hyptis lavandulacea Pohl ex Benth.,EX
+MELASTOMATACEAE,Rhynchanthera grandiflora (Aubl.) DC.,VU
+APOCYNACEAE,Oxypetalum regnellii (Malme) Malme,VU
+BURMANNIACEAE,Burmannia flava Mart.,EX
+LAMIACEAE,Hyptis lobata A.St.-Hil. ex Benth.,EX
+MELASTOMATACEAE,Siphanthera cordata Pohl ex DC.,VU
+APOCYNACEAE,Oxypetalum strictum Mart.,EX
+CABOMBACEAE,Cabomba aquatica Aubl.,EX
+LAMIACEAE,Hyptis riparia Harley,EX
+MELASTOMATACEAE,Siphanthera dawsonii Wurdack,VU
+APOCYNACEAE,Prestonia bahiensis Müll.Arg.,EX
+CACTACEAE,Hatiora herminiae (Campos Porto & Castellanos) Backeb.,VU
+LAMIACEAE,Hyptis uliginosa A.St.-Hil. ex Benth.,EX
+MELASTOMATACEAE,Tibouchina aegopogon (Naudin) Cogn.,EN
+APOCYNACEAE,Prestonia solanifolia (Müll.Arg.) Woodson,EX
+CACTACEAE,Rhipsalis crispata Pfeiff.,VU
+LAMIACEAE,Rhabdocaulon gracile (Benth.) Epling,EX
+MELASTOMATACEAE,Tibouchina cinerea Cogn.,VU
+APOCYNACEAE,Widgrenia corymbosa Malme,EX
+CACTACEAE,Rhipsalis dissimilis K. Schum.,EN
+LAMIACEAE,Salvia campos-portoi Brade,EX
+MELASTOMATACEAE,Tibouchina eichleri Cogn.,EX
+CACTACEAE,Schlumbergera lutea Calvente & Brade subsp. bradei LAMIACEAE Salvia lachnostachys Benth.,EX
+MELASTOMATACEAE,Tibouchina herincquiana Cogn.,VU
+LAURACEAE,Aiouea bracteata Kosterm.,VU
+MELASTOMATACEAE,Tibouchina itatiaiae Cogn.,VU
+CACTACEAE,Schlumbergera opuntioides (Loefgr. & Dusen) D.R.Hunt,VU
+LAURACEAE,Aiouea piauhyensis (Meisn.) Mez,EX
+MELASTOMATACEAE,Tibouchina minutiflora Cogn.,VU
+CALYCERACEAE,Acicarpha tribuloides Juss.,EX
+LAURACEAE,Aiouea trinervis Meisn.,EN
+MELASTOMATACEAE,Tibouchina riedeliana Cogn.,EX
+CALYCERACEAE,Boopis bupleuroides (Less) C. A.Mull.,EX
+LAURACEAE,Aniba heringerii Vattimo-Gil,EN
+MELASTOMATACEAE,Tibouchina schenckii Cogn.,EX
+CALYCERACEAE,Boopis itatiaiae Dusén,EN
+LAURACEAE,Beilschmiedia fluminensis Kosterm.,VU
+MELASTOMATACEAE,Tibouchina serrana P.J.F.Guim. & A.B.Martins,VU
+CAMPANULACEAE,Lobelia hederacea Cham.,EX
+LAURACEAE,Cryptocarya botelhensis P.L.R. de Moraes,VU
+MELASTOMATACEAE,Tibouchina versicolor (Lindl.) Cogn.,VU
+CAMPANULACEAE,Lobelia nummularioides Cham.,EX
+LAURACEAE,Cryptocarya micrantha Meisn.,VU
+MELIACEAE,Cedrela fissilis Vell.,VU
+CAMPANULACEAE,Lobelia xalapensis Kunth,EX
+LAURACEAE,Nectandra angustifolia (Schrad) Nees,EN
+MELIACEAE,Cedrela odorata L.,VU
+CAMPANULACEAE,Siphocampylus lycioides (Cham.) G.Don,EN
+LAURACEAE,Nectandra barbellata Coe-Teix.,VU
+MOLLUGINACEAE,Glinus radiatus (Ruiz & Pav.) Rohrb.,EX
+CAPRIFOLIACEAE,Valeriana glaziovii Taub.,EN
+LAURACEAE,Nectandra cissiflora Nees,VU
+MONIMIACEAE,Mollinedia luizae Peixoto,VU
+CAPRIFOLIACEAE,Valeriana organensis Gardner,CR
+LAURACEAE,Nectandra debilis Mez,VU
+MONIMIACEAE,Mollinedia oligotricha Perkins,EX
+CAPRIFOLIACEAE,Valeriana reitziana Borsini,VU
+LAURACEAE,Nectandra hihua (Ruiz & Pav.) Rohwer,EN
+MONIMIACEAE,Mollinedia pachysandra Perkins,VU
+CELASTRACEAE,Maytenus brasiliensis Mart.,CR
+LAURACEAE,Nectandra paranaensis Coe-Teix.,VU
+MONIMIACEAE,Mollinedia salicifolia Perkins,VU
+CELASTRACEAE,Maytenus ilicifolia Mart.,VU
+LAURACEAE,Ocotea basicordatifolia Vattimo-Gil,VU
+MORACEAE,Brosimum glaziovii Taub.,VU
+CELASTRACEAE,Salacia mosenii A.C.Sm.,CR
+LAURACEAE,Ocotea beulahiae Baitello,EN
+MORACEAE,Ficus cyclophylla (Miq.) Miq.,VU
+CELASTRACEAE,Schaefferia argentinensis Speg.,CR
+LAURACEAE,Ocotea beyrichii (Nees) Mez,VU
+MYRISTICACEAE,Virola bicuhyba (Schott ex Spreng.) Warb.,EN
+CELASTRACEAE,Tontelea martiana (Miers) A.C.Sm.,EN
+LAURACEAE,Ocotea bragai Coe-Teix.,EN
+MYRTACEAE,Calyptranthes brasiliensis Spreng.,EX
+ARALIACEAE,Hydrocotyle langsdorffii DC.,EX
+CHRYSOBALANACEAE,Couepia leitaofilhoi Prance,VU
+LAURACEAE,Ocotea catharinensis Mez,VU
+MYRTACEAE,Calyptranthes curta Sobral & O.Aguiar,EN
+ARALIACEAE,Hydrocotyle pusilla A. Rich.,EX
+CHRYSOBALANACEAE,Couepia meridionalis Prance,EX
+LAURACEAE,Ocotea daphnifolia (Meisn.) Mez,VU
+MYRTACEAE,Calyptranthes dichotoma Casar.,EX
+ARECACEAE,Acrocomia emensis (Toledo) Lorenzi,VU
+CHRYSOBALANACEAE,Licania gardneri (Hook. f.) Fritsch,EX
+LAURACEAE,Ocotea felix Coe-Teix.,EN
+MYRTACEAE,Calyptranthes dryadica M.L.Kawas.,VU
+ARECACEAE,Acrocomia hassleri (Barb.Rodr.) W.J.Hahn,EN
+CHRYSOBALANACEAE,Licania indurata Pilg.,EX
+LAURACEAE,Ocotea frondosa (Meisn.) Mez,VU
+MYRTACEAE,Calyptranthes fusiformis M.L.Kawas.,VU
+ARECACEAE,Attalea oleifera Barb.Rodr.,VU
+CHRYSOBALANACEAE,Parinari brasiliensis (Schott) Hook.f.,EN
+LAURACEAE,Ocotea inhauba Coe-Teix.,EX
+MYRTACEAE,Calyptranthes grammica (Spreng.) D.Legrand,VU
+ARECACEAE,Butia microspadix Burret,VU
+CLEOMACEAE,Hemiscola diffusa (Banks ex DC.) Iltis,EX
+LAURACEAE,Ocotea mosenii Mez,VU
+MYRTACEAE,Calyptranthes maritima Sobral & Bertoncello,VU
+ARECACEAE,Euterpe edulis Mart.,VU
+CLUSIACEAE,Hypericum mutilum L.,VU
+LAURACEAE,Ocotea odorifera (Vell.) Rohwer,EN
+MYRTACEAE,Calyptranthes obovata Kiaersk.,EX
+ARECACEAE,Mauritia flexuosa L.f.,VU
+CLUSIACEAE,Hypericum piriai Arechav.,EX
+LAURACEAE,Ocotea porosa (Nees & Mart.) L.Barroso,EN
+MYRTACEAE,Calyptranthes serrana A.R.Lourenço,VU
+ARISTOLOCHIACEAE,Aristolochia cymbifera Mart.,VU
+CLUSIACEAE,Hypericum rigidum A. St.-Hil.,EX
+LAURACEAE,Ocotea serrana Coe-Teix.,EN
+MYRTACEAE,Calyptranthes solitaria Sobral, O.Aguiar & Antunes,VU
+ARISTOLOCHIACEAE,Aristolochia odora Steud.,EX
+CLUSIACEAE,Vismia martiana Reichardt,CR
+LAURACEAE,Ocotea tabacifolia (Meisn.) Rohwer,EN
+MYRTACEAE,Calyptranthes ubatubana Sobral & Rochelle,VU
+ASTERACEAE,Aldama aspilioides (Baker) E.E.Schill. & Panero,VU
+COMBRETACEAE,Buchenavia parvifolia subsp. rabelloana (N.F.Mattos) Alwan & Stace,VU
+LAURACEAE,Ocotea vaccinioides (Meisn.) Rohwer,VU
+MYRTACEAE,Campomanesia aurea O.Berg,EN
+ASTERACEAE,Aspilia floribunda Baker,EN
+COMBRETACEAE,Buchenavia hoehneana N.F.Mattos,VU
+LAURACEAE,Ocotea virgultosa (Nees) Mart.,EN
+MYRTACEAE,Eugenia angustissima O.Berg,EN
+ASTERACEAE,Austrocritonia angulicaulis (Baker) R.M.King & H.Rob.,VU
+CONNARACEAE,Rourea pseudospadicea G.Schellenb.,EN
+LAURACEAE,Persea obovata Nees & Mart.,CR
+MYRTACEAE,Eugenia arenosa Mattos,VU
+ASTERACEAE,Austroeupatorium rosmarinaceum (Cabrera & Vittet) CONVOLVULACEAE Convolvulus hasslerianus (Chodat) O’Donell,EX
+LAURACEAE,Persea punctata Meisn.,EN
+MYRTACEAE,Eugenia bahiensis DC.,VU
+CONVOLVULACEAE,Evolvulus chrysotrichos Meisn.,EX
+LAURACEAE,Persea rigida Nees & Mart.,EN
+MYRTACEAE,Eugenia brunneopubescens Mazine,VU
+ASTERACEAE,Barrosoa apiculata (Gardner) R.M.King & H.Rob.,EX
+CONVOLVULACEAE,Evolvulus cressoides Mart.,EN
+LAURACEAE,Urbanodendron bahiense (Meisn.) Rohwer,VU
+MYRTACEAE,Eugenia bunchosiifolia Nied.,VU
+ASTERACEAE,Bidens bipinnata L.,EN
+CONVOLVULACEAE,Evolvulus elegans Moric. var. confertifolius Meisn.,EX
+LECYTHIDACEAE,Cariniana legalis (Mart.) Kuntze,VU
+MYRTACEAE,Eugenia catharinensis D.Legrand,VU
+ASTERACEAE,Calea acaulis Baker,EX
+CONVOLVULACEAE,Evolvulus filipes Mart.,EX
+LENTIBULARIACEAE,Genlisea aurea A.St.-Hil.,EN
+MYRTACEAE,Eugenia cinerascens Gardner,EX
+ASTERACEAE,Calea gentianoides DC.,EN
+CONVOLVULACEAE,Evolvulus fuscus Meisn.,EN
+LENTIBULARIACEAE,Genlisea repens Benj.,EN
+MYRTACEAE,Eugenia disperma Vell.,VU
+ASTERACEAE,Calea polycephala (Baker) H.Rob.,VU
+CONVOLVULACEAE,Evolvulus riedelii Meisn.,EN
+LENTIBULARIACEAE,Genlisea violacea A.St.-Hil.,EX
+MYRTACEAE,Eugenia gracillima Kiaersk.,VU
+ASTERACEAE,Campuloclinium parvulum (Glaziou ex B.L.Rob.) R.M.King & H.Rob.,VU
+CONVOLVULACEAE,Evolvulus stellariifolius Ooststr.,VU
+LENTIBULARIACEAE,Utricularia nigrescens Sylvén,EN
+MYRTACEAE,Eugenia handroi (Mattos) Mattos,VU
+ASTERACEAE,Campuloclinium riedelii (Baker) R.M.King & H.Rob.,EN
+CONVOLVULACEAE,Ipomoea acutisepala O'Donell,VU
+LENTIBULARIACEAE,Utricularia olivacea C.Wright ex Griseb.,VU
+MYRTACEAE,Eugenia hermesiana Mattos,CR
+ASTERACEAE,Chromolaena arrayana (Gardner) R.M.King & H.Rob.,VU
+CONVOLVULACEAE,Ipomoea aprica House,VU
+LENTIBULARIACEAE,Utricularia trichophylla Spruce ex Oliv.,VU
+MYRTACEAE,Eugenia lambertiana DC.,VU
+ASTERACEAE,Chromolaena elliptica (Hook. & Arn.) R.M.King & H.Rob.,EX
+CONVOLVULACEAE,Ipomoea hirsutissima Gardner,EX
+LENTIBULARIACEAE,Utricularia warmingii Kam.,EX
+MYRTACEAE,Eugenia longibracteata Mazine,VU
+ASTERACEAE,Chromolaena latisquamulosa (Hiern.) R.M.King & H.Rob.,VU
+CONVOLVULACEAE,Ipomoea pinifolia Meisn.,EX
+LINACEAE,Linum littorale A.St.-Hil.,EN
+MYRTACEAE,Eugenia macahensis O.Berg,VU
+ASTERACEAE,Chromolaena rhinanthacea (DC.) R.M.King & H.Rob.,EX
+CONVOLVULACEAE,Ipomoea sericophylla Meisn.,EX
+LOASACEAE,Aosa parviflora (Schrad. ex DC.) Weigend,EN
+MYRTACEAE,Eugenia macrobracteolata Mattos,EN
+ASTERACEAE,Disynaphia ericoides (DC.) R.M.King & H.Rob.,EN
+CONVOLVULACEAE,Ipomoea subrevoluta Choisy,VU
+LOASACEAE,Blumenbachia scabra (Miers) Urb.,EN
+MYRTACEAE,Eugenia malacantha D.Legrand,EN
+ASTERACEAE,Enhydra sessilis DC.,EX
+CONVOLVULACEAE,Jacquemontia acrocephala Meisn.,EX
+LOGANIACEAE,Spigelia amplexicaulis E.F.Guimar. & Fontella,EW
+MYRTACEAE,Eugenia modesta DC.,VU
+ASTERACEAE,Eremanthus elaeagnus (Mart. ex DC.) Sch.Bip.,VU
+CONVOLVULACEAE,Jacquemontia glabrescens (Meisn.) M.Pastore & Sim.-Bianch.,EX
+LOGANIACEAE,Spigelia reitzii L.B.Sm.,EN
+MYRTACEAE,Eugenia neophaea Sobral & Mazine,EN
+ASTERACEAE,Gochnatia rotundifolia Less.,EX
+CONVOLVULACEAE,Operculina macrocarpa (L.) Urb.,EW
+LOGANIACEAE,Strychnos gardneri A.DC.,EX
+MYRTACEAE,Eugenia nutans O.Berg,VU
+ASTERACEAE,Gyptis vernoniopsis (Schultz-Bip. ex Baker) R.M.King & H.Rob.,EN
+COSTACEAE,Chamaecostus subsessilis (Nees & Mart.) C.Specht & D.W.Stev.,EX
+LOGANIACEAE,Strychnos nigricans Prog.,EX
+MYRTACEAE,Eugenia peruibensis Mattos,EN
+ASTERACEAE,Hatschbachiella tweediana (Hook. & Arn.) R.M.King & H.Rob.,EN
+CUCURBITACEAE,Cayaponia bonariensis (Mill.) Mart.Crov.,EX
+LOGANIACEAE,Strychnos trinervis (Vell.) Mart.,VU
+MYRTACEAE,Eugenia pisiformis Cambess.,VU
+ASTERACEAE,Heterocondylus amphidyctius (DC.) R.M.King & H.Rob.,VU
+CUCURBITACEAE,Cayaponia pedata Cogn.,EX
+LYTHRACEAE,Cuphea arenarioides A. St.-Hil.,EN
+MYRTACEAE,Eugenia plicata Nied.,VU
+ASTERACEAE,Heterocondylus lysimachioides (Chodat) R.M.King & H.Rob.,EX
+CUCURBITACEAE,Cayaponia trilobata (Cogn.) Cogn.,VU
+LYTHRACEAE,Cuphea lutescens Pohl ex Koehne,VU
+MYRTACEAE,Eugenia pruinosa D.Legrand,EN
+ASTERACEAE,Idiothamnus pseudorgyalis R.M.King & H.Rob.,VU
+CYMODOCEACEAE,Halodule wrightii Asch.,EN
+LYTHRACEAE,Diplusodon ovatus Pohl,EN
+MYRTACEAE,Eugenia sphenoides O.Berg,EX
+ASTERACEAE,Lessingianthus asteriflorus (Mart. ex DC.),EN
+CYPERACEAE,Scleria balansae Maury ex Micheli,VU
+LYTHRACEAE,Diplusodon villosissimus Pohl,EN
+MYRTACEAE,Eugenia stephanii O.Berg,EX
+ASTERACEAE,Lessingianthus reitzianus (Cabrera) H.Rob.,EN
+DIOSCOREACEAE,Dioscorea grandiflora Griseb.,VU
+LYTHRACEAE,Lafoensia nummularifolia A.St.-Hil.,VU
+MYRTACEAE,Eugenia subundulata Kiaersk.,EN
+ASTERACEAE,Lessingianthus subcarduoides (H.Rob.) H.Rob.,EX
+DIOSCOREACEAE,Dioscorea loefgrenii R.Knuth,VU
+MALPIGHIACEAE,Aspicarpa sericea (A.St.-Hil.) Nied.,VU
+MYRTACEAE,Eugenia zuccarinii O.Berg,VU
+ASTERACEAE,Lessingianthus zuccarinianus (Mart. ex DC.) H.Rob.,VU
+DIOSCOREACEAE,Dioscorea mantiqueirensis R.Knuth,EX
+MALPIGHIACEAE,Banisteriopsis basifixa B. Gates,EX
+MYRTACEAE,Marlierea regeliana O.Berg,VU
+ASTERACEAE,Lulia nervosa (Less.) Zardini,EX
+DIOSCOREACEAE,Dioscorea mollis Kunth,VU
+MALPIGHIACEAE,Byrsonima brachybotrya Nied.,VU
+MYRTACEAE,Marlierea skortzoviana Mattos,CR
+ASTERACEAE,Mikania bradei B.L.Rob.,EX
+DIOSCOREACEAE,Dioscorea plantaginifolia R.Knuth,VU
+MALPIGHIACEAE,Byrsonima cydoniifolia A.Juss.,VU
+MYRTACEAE,Myrceugenia alpigena (DC.) Landrum,VU
+ASTERACEAE,Mikania stenomeres B.L.Rob.,EX
+DIOSCOREACEAE,Dioscorea rumicoides Griseb.,VU
+MALPIGHIACEAE,Byrsonima psilandra Griseb.,EN
+MYRTACEAE,Myrceugenia bracteosa (DC.) D.Legrand & Kausel,EN
+ASTERACEAE,Neocabreria malachophylla (Klatt) R.M.King & H.Rob,VU
+ELAEOCARPACEAE,Sloanea obtusifolia (Moric.) Schum.,EN
+MALPIGHIACEAE,Camarea hirsuta A.St.-Hil.,EN
+MYRTACEAE,Myrceugenia brevipedicellata (Burret) D.Legrand & Kausel,EN
+ASTERACEAE,Piptocarpha brasiliana Cass.,VU
+ELAEOCARPACEAE,Sloanea petalata D.Sampaio e V.C.Souza,EN
+MALPIGHIACEAE,Mascagnia divaricata (Kunth) Nied.,VU
+MYRTACEAE,Myrceugenia euosma (O.Berg) D.Legrand,EX
+ASTERACEAE,Praxelis grandiflora (DC.) R.M.King & H.Rob.,VU
+EREMOLEPIDACEAE,Eubrachion ambiguum (Hook. & Arn.) Engl.,VU
+MALPIGHIACEAE,Tetrapterys microphylla (A. Juss.) Nied.,VU
+MYRTACEAE,Myrceugenia franciscensis (O.Berg) Landrum,EN
+ASTERACEAE,Senecio langei Malme,EX
+ERICACEAE,Agarista niederleinii (Sleumer) Judd,EN
+MALPIGHIACEAE,Thryallis brachystachys Lindley,EX
+MYRTACEAE,Myrceugenia gertii Landrum,EN
+ASTERACEAE,Stevia alternifolia Hieron.,EX
+ERICACEAE,Agarista nummularia G.Don,EX
+MALVACEAE,Abutilon nigricans G.L.Esteves & Krapov.,CR
+MYRTACEAE,Myrceugenia hoehnei (Burret) D.Legrand & Kausel,VU
+ASTERACEAE,Stevia leptophylla Sch.Bip. ex Baker,EN
+ERICACEAE,Agarista pulchra G.Don,EN
+MALVACEAE,Byttneria oblongata Pohl,EX
+MYRTACEAE,Myrceugenia kleinii D.Legrand & Kausel,VU
+ASTERACEAE,Stevia pohliana Baker,EX
+ERICACEAE,Gaultheria sleumeriana Kin.-Gouv.,EN
+MALVACEAE,Byttneria scabra L.,VU
+MYRTACEAE,Myrceugenia venosa D.Legrand,VU
+ASTERACEAE,Stevia riedelii Schultz-Bip. ex Baker,EN
+ERICACEAE,Gaylussacia montana (Pohl) Sleumer,EX
+MALVACEAE,Eriotheca pubescens (Mart. & Zucc.) Schott & Endl.,VU
+MYRTACEAE,Myrcia anomala Cambess.,EX
+ASTERACEAE,Steyermarkina dispalata (Gardner) R.M.King & H.Rob.,EX
+ERYTHROXYLACEAE,Erythroxylum catharinense Amaral,EN
+MALVACEAE,Gaya guerkeana K. Schum.,EX
+MYRTACEAE,Myrcia bicolor Kiaersk.,EN
+ASTERACEAE,Stomatanthes dentatus (Gardner) H.Rob.,VU
+ERYTHROXYLACEAE,Erythroxylum cyclophyllum O.E.Schulz,EX
+MALVACEAE,Hibiscus diversifolius Jacq.,EX
+MYRTACEAE,Myrcia cionei (Mattos) Mazine,VU
+ASTERACEAE,Stomatanthes dictyophyllus (DC.) H.Rob.,EX
+ERYTHROXYLACEAE,Erythroxylum myrsinites Mart.,EN
+MALVACEAE,Hibiscus urticifolius A.St.-Hil.,EX
+MYRTACEAE,Myrcia congestiflora Caliari & V.C.Souza,VU
+ASTERACEAE,Stomatanthes loefgrenii (B.L. Rob.) H.Rob.,EN
+ESCALLONIACEAE,Escallonia chlorophylla Cham. & Schltdl.,CR
+MALVACEAE,Luehea conwentizii K. Schum.,VU
+MYRTACEAE,Myrcia cordiifolia DC.,EX
+ASTERACEAE,Trixis glaziovii Baker,EX
+ESCALLONIACEAE,Escallonia obtusissima A.St.-Hil.,EX
+MALVACEAE,Pachira calophylla (K.Schum.) Fern. Alonso,VU
+MYRTACEAE,Myrcia diaphana (O.Berg) N.J.E.Silveira,VU
+ASTERACEAE,Verbesina polyanthes Toledo,EX
+EUPHORBIACEAE,Astraea cincta (Müll.Arg.) Caruzo & Cordeiro,EX
+MALVACEAE,Pavonia distinguenda A.St.-Hil.,VU
+MYRTACEAE,Myrcia eriocalyx DC.,VU
+ASTERACEAE,Wedelia puberula DC.,EN
+EUPHORBIACEAE,Chiropetalum gymnadenium (Müll.Arg.) Pax & K.Hoffm.,EX
+MALVACEAE,Pavonia kleinii Krapov.,VU
+MYRTACEAE,Myrcia eriopus DC.,VU
+BEGONIACEAE,Begonia brevilobata Irmsch.,EX
+EUPHORBIACEAE,Croton compressus Lam.,EN
+MALVACEAE,Pseudobombax marginatum (St. Hil) A.Robyns,EN
+MYRTACEAE,Myrcia flagellaris (D.Legrand) Sobral,VU
+BEGONIACEAE,Begonia handroi Brade,EX
+EUPHORBIACEAE,Croton glechomifolius Müll.Arg.,CR
+MALVACEAE,Pseudobombax tomentosum (Mart. & Zucc.) A.Robyns,VU
+MYRTACEAE,Myrcia guarujana Sobral, Magenta & Caliari,EN
+BEGONIACEAE,Begonia larorum L.B.Sm. & Wassh.,EX
+EUPHORBIACEAE,Croton leptobothryus Müll.Arg.,VU
+MALVACEAE,Sida acrantha Link,EN
+MYRTACEAE,Myrcia hexasticha Kiaersk.,EN
+BEGONIACEAE,Begonia paulensis A.DC.,VU
+EUPHORBIACEAE,Croton serratifolius Baill.,CR
+MARANTACEAE,Goeppertia aemula (Körn.) Borchs. & S.Suárez,VU
+MYRTACEAE,Myrcia isaiana G.M.Barroso & Peixoto,EN
+BEGONIACEAE,Begonia piresiana Handro,VU
+EUPHORBIACEAE,Croton sphaerogynus Baill.,VU
+MARANTACEAE,Goeppertia zebrina (Sims) Nees,VU
+MYRTACEAE,Myrcia montana Cambess.,VU
+BEGONIACEAE,Begonia undulata Schott,EX
+FABACEAE,Ancistrotropis firmula (Mart. ex Benth.) A.Delgado,VU
+MELASTOMATACEAE,Behuria parvifolia Cogn.,VU
+MYRTACEAE,Myrcia oligantha O.Berg,EN
+BIGNONIACEAE,Adenocalymma ubatubense Assis & Semir,CR
+FABACEAE,Apuleia leiocarpa (Vogel) J.F.Macbr.,VU
+MELASTOMATACEAE,Bertolonia angustifolia Cogn.,EX
+MYRTACEAE,Myrcia rupicola D.Legrand,EN
+BIGNONIACEAE,Anemopaegma arvense (Vell.) Stellfeld ex de Souza,EN
+FABACEAE,Bauhinia marginata (Bong.) Steud.,EX
+MELASTOMATACEAE,Bertolonia leuzeana (Bonpl.) DC.,VU
+MYRTACEAE,Myrcia stictophylla (O.Berg) N.J.E.Silveira,VU
+BIGNONIACEAE,Tabebuia cassinoides (Lam.) DC.,EN
+FABACEAE,Camptosema bellum (Mart. ex Benth.) Benth,VU
+MELASTOMATACEAE,Bertolonia paranaensis (Wurdack) Baumgratz,EX
+MYRTACEAE,Myrcia ubatubana Mazine & Sobral,VU
+BIGNONIACEAE,Zeyheria tuberculosa (Vell.) Bareau ex Verl.,VU
+FABACEAE,Camptosema isopetalum Taub.,EX
+MELASTOMATACEAE,Cambessedesia pityrophylla (Mart. ex DC.) A.B.Martins,VU
+MYRTACEAE,Myrcia vestita DC.,EN
+BORAGINACEAE,Cordia silvestris Fresen.,VU
+FABACEAE,Chamaecrista atroglandulosa (Taub.) H.S.Irwin & Barneby,EX
+MELASTOMATACEAE,Cambessedesia regnelliana Cogn.,VU
+MYRTACEAE,Myrcia vittoriana Kiaersk.,EX
+BORAGINACEAE,Cordia trichoclada A.DC.,VU
+FABACEAE,Chamaecrista trachycarpa (Vogel) H.S.Irwin & Barneby,EX
+MELASTOMATACEAE,Cambessedesia weddellii Naudin,VU
+MYRTACEAE,Neomitranthes amblymitra (Burret) Mattos,EX
+BROMELIACEAE,Aechmea apocalyptica Reitz,EX
+FABACEAE,Cratylia intermedia (Hassl.) L.P.Queiroz & R.Monteiro,EX
+MELASTOMATACEAE,Chaetostoma glaziovii Cogn.,VU
+MYRTACEAE,Neomitranthes capivariensis (Mattos) Mattos,EN
+BROMELIACEAE,Aechmea gamossepala Wittm.,EX
+FABACEAE,Crotalaria otoptera Benth.,VU
+MELASTOMATACEAE,Clidemia sericea D.Don,VU
+MYRTACEAE,Neomitranthes gracilis (D.Legrand) D.Legrand,EN
+BROMELIACEAE,Aechmea lingulata (L.) Baker,VU
+FABACEAE,Dalbergia nigra (Vell.) Allemão ex Benth.,CR
+MELASTOMATACEAE,Graffenrieda weddellii Naudin,EN
+MYRTACEAE,Neomitranthes pedicellata (Burret) Mattos,EN
+BROMELIACEAE,Aechmea recurvata (Klotzsch) L.B.Sm.,VU
+FABACEAE,Eriosema glaziovii Harms,VU
+MELASTOMATACEAE,Henriettea saldanhaei Cogn.,VU
+MYRTACEAE,Plinia complanata M.L.Kawas. & B.Holst,EN
+BROMELIACEAE,Aechmea setigera Mart. ex Shult.,EX
+FABACEAE,Eriosema platycarpon Micheli,VU
+MELASTOMATACEAE,Huberia laurina DC.,EX
+MYRTACEAE,Plinia edulis (Vell.) Sobral,VU
+BROMELIACEAE,Aechmea wittmackiana (Regel) Mez,VU
+FABACEAE,Galactia marginalis Benth.,EX
+MELASTOMATACEAE,Huberia nettoana Brade,EX
+MYRTACEAE,Plinia hatschbachii (Mattos) Sobral,EN
+BROMELIACEAE,Billbergia alfonsi-joannis Reitz,VU
+FABACEAE,Indigofera guaranitica Hassl.,VU
+MELASTOMATACEAE,Lavoisiera serrulata Cogn.,EX
+MYRTACEAE,Plinia pseudodichasiantha (Kiaersk.) G.M.Barroso ex Sobral,VU
+BROMELIACEAE,Billbergia meyeri Mez,EX
+FABACEAE,Inga mendoncaei Harms,VU
+MELASTOMATACEAE,Leandra calvescens (Triana) Cogn.,VU
+MYRTACEAE,Psidium giganteum Mattos,EN
+BROMELIACEAE,Billbergia nutans H.Wendl. ex Regel,VU
+FABACEAE,Inga praegnans T.D.Penn.,VU
+MELASTOMATACEAE,Leandra coriacea Cogn.,VU
+MYRTACEAE,Psidium salutare (Kunth) O.Berg,EX
+BROMELIACEAE,Bromelia interior L.B.Sm.,VU
+FABACEAE,Melanoxylon brauna Schott,EW
+MELASTOMATACEAE,Leandra dispar (Gardner) Cogn.,VU
+MYRTACEAE,Psidium sartorianum Nied.,VU
+BROMELIACEAE,Dyckia minarum Mez,VU
+FABACEAE,Mimosa myuros Barneby,VU
+MELASTOMATACEAE,Leandra eichleri Cogn.,VU
+MYRTACEAE,Siphoneugena kuhlmannii Mattos,VU
+BROMELIACEAE,Fernseea bocainensis Pereira & Coutinho,CR
+FABACEAE,Mimosa paucifolia Benth.,VU
+MELASTOMATACEAE,Leandra hermogenesii Baumgratz & D’El Rei Souza,VU
+MYRTACEAE,Siphoneugena reitzii D.Legrand,VU
+BROMELIACEAE,Fernseea itatiaiae (Wawra) Baker,EN
+FABACEAE,Mysanthus uleanus (Harms) G.P.Lewis & A.Delgado Salinas,EN
+MELASTOMATACEAE,Leandra involucrata DC.,VU
+NYCTAGINACEAE,Guapira nitida (Mart. ex J.A.Schmidt) Lundell,VU
+BROMELIACEAE,Hoehenbergia ridleyi (Baker) Mez,VU
+FABACEAE,Peltogyne confertiflora (Hayne) Benth.,EN
+MELASTOMATACEAE,Leandra itatiaiae (Wawra) Cogn.,VU
+NYCTAGINACEAE,Neea verticillata Ruiz & Pav.,EX
+BROMELIACEAE,Neoregelia bahiana (Ule) L.B.Sm.,EX
+FABACEAE,Rhynchosia reticulata (Sw.) DC.,EX
+MELASTOMATACEAE,Leandra lancifolia Cogn.,EN
+OLACACEAE,Heisteria perianthomega (Vell.) Sleumer,EX
+BROMELIACEAE,Neoregelia binotti (Antoine) L.B.Sm.,EX
+FABACEAE,Senna paradictyon (Vogel) H.S.Irwin & Barneby,EX
+MELASTOMATACEAE,Leandra lapae D’El Rei Souza & Baumgratz,VU
+ORCHIDACEAE,Anathallis gehrtii (Hoehne & Schltr.) F.Barros,VU
+BROMELIACEAE,Neoregelia burle-marxii Read.,VU
+FABACEAE,Tephrosia sessiliflora Hassl.,VU
+MELASTOMATACEAE,Leandra limbata Cogn.,EX
+ORCHIDACEAE,Bifrenaria racemosa (Hook.) Lindl.,EX
+BROMELIACEAE,Neoregelia compacta (Mez) L.B.Sm.,VU
+GELSEMIACEAE,Mostuea muricata Sobral & Lc.Rossi,VU
+MELASTOMATACEAE,Leandra linearifolia Cogn.,VU
+ORCHIDACEAE,Bifrenaria tyrianthina (Lodd.) Reichb.f.,EW
+BROMELIACEAE,Neoregelia doeringiana L.B.Sm.,EX
+GENTIANACEAE,Curtia tenuifolia (Aubl.) Knobl.,CR
+MELASTOMATACEAE,Leandra longistyla Cogn.,VU
+ORCHIDACEAE,Brachionidium restrepioides (Hoehne) Pabst,VU
+BROMELIACEAE,Neoregelia maculata L.B.Sm.,EX
+GENTIANACEAE,Schultesia aptera Cham.,CR
+MELASTOMATACEAE,Leandra mattosii Baumgratz & D’El Rei Souza,EX
+ORCHIDACEAE,Cattleya guttata Lindl.,VU
+BROMELIACEAE,Neoregelia nivea Leme,VU
+GENTIANACEAE,Zygostigma australe (Cham. & Schltdl.) Griseb.,CR
+MELASTOMATACEAE,Leandra neglecta Brade,VU
+ORCHIDACEAE,Cattleya harrisoniana Batem. ex Lindl.,VU
+BROMELIACEAE,Neoregelia pontualii Leme,VU
+GESNERIACEAE,Besleria umbrosa Mart.,VU
+MELASTOMATACEAE,Leandra pallida Cogn.,VU
+ORCHIDACEAE,Cattleya intermedia Grah.,VU
+ORCHIDACEAE,Cattleya perrinii Lindl.,VU
+PIPERACEAE,Piper edwallii Yuncker,EX
+PRIMULACEAE,Myrsine villosissima Mart.,EN
+ORCHIDACEAE,Cattleya purpurata (Lindl. & Paxton) Van den Berg,EW
+PIPERACEAE,Piper hoehnei Yuncker,EX
+PROTEACEAE,Euplassa cantareirae Sleumer,EX
+ORCHIDACEAE,Cattleya tigrina A.Rich.,EW
+PIPERACEAE,Piper kuhlmannii Yuncker,EX
+PROTEACEAE,Panopsis multiflora (Schott) Ducke,EN
+ORCHIDACEAE,Cattleya velutina Rchb.f.,VU
+PIPERACEAE,Piper lanceolatum Ruiz & Pav.,EN
+PROTEACEAE,Panopsis rubescens (Pohl) Rusby,VU
+ORCHIDACEAE,Cattleya walkeriana Gardner,VU
+PIPERACEAE,Piper loefgrenii Yuncker,EX
+PROTEACEAE,Roupala sculpta Sleumer,VU
+ORCHIDACEAE,Chytroglossa paulensis Edwall,EX
+PIPERACEAE,Piper oblancifolium Yuncker,EX
+QUIINACEAE,Quiina magallano-gomesii Schwacke,VU
+ORCHIDACEAE,Cirrhaea fuscolutea Lindl.,EN
+PIPERACEAE,Piper piritubanum Yuncker,EX
+RANUNCULACEAE,Clematis campestris A.St.-Hil.,EW
+ORCHIDACEAE,Cirrhaea loddigesii Lindl.,CR
+PIPERACEAE,Piper scabrellum Yuncker,EX
+RANUNCULACEAE,Ranunculus flagelliformis Sm.,EX
+ORCHIDACEAE,Cirrhaea longiracemosa Hoehne,VU
+PIPERACEAE,Piper tectoniifolium Kunth,EX
+RHAMNACEAE,Colubrina retusa (Pittier) R.S.Cowan,EN
+ORCHIDACEAE,Cyrtopodium blanchetii Rchb.f.,VU
+PLANTAGINACEAE,Angelonia integerrima Spreng.,EX
+RHAMNACEAE,Crumenaria choretroides Mart. ex Reissek,VU
+ORCHIDACEAE,Cyrtopodium brandonianum Barb.Rodr.,EX
+PLANTAGINACEAE,Bacopa congesta Chodat & Hassl.,EX
+RHAMNACEAE,Gouania blanchetiana Miq.,EX
+ORCHIDACEAE,Cyrtopodium dusenii Schltr.,VU
+PLANTAGINACEAE,Callitriche terrestris Raf.,EX
+RHAMNACEAE,Gouania corylifolia Raddi,VU
+ORCHIDACEAE,Cyrtopodium fowliei L.Menezes,EN
+PLANTAGINACEAE,Stemodia foliosa Benth.,EX
+RHAMNACEAE,Gouania inornata Reissek,EN
+ORCHIDACEAE,Cyrtopodium hatschbachii Pabst,EN
+RHAMNACEAE,Gouania ulmifolia Hook. & Arn.,EX
+ORCHIDACEAE,Cyrtopodium lissochiloides Hoehne & Schltr.,EX
+RHAMNACEAE,Reissekia smilacina (Sm.) Steud.,EX
+ORCHIDACEAE,Cyrtopodium parviflorum Lindl.,EX
+RHAMNACEAE,Rhamnidium glabrum Reissek,VU
+ORCHIDACEAE,Cyrtopodium triste Rchb.f. & Warm.,VU
+RHAMNACEAE,Scutia arenicola (Casar.) Reissek,EN
+ORCHIDACEAE,Dichaea mosenii Cogn.,VU
+ROSACEAE,Acaena eupatoria Cham. & Schltdl.,VU
+ORCHIDACEAE,Dryadella auriculigera (Rchb.f.) Luer,EX
+ROSACEAE,Agrimonia parviflora Sol.,EX
+ORCHIDACEAE,Dryadella lilliputiana (Cogn.) Luer,VU
+RUBIACEAE,Alseis involuta K. Schum.,VU
+ORCHIDACEAE,Epidendrum addae Pabst,VU
+RUBIACEAE,Borreria pulchristipula (Bremek.) Bacigalupo & E.L.Cabral,VU
+ORCHIDACEAE,Epidendrum ecostatum Pabst,VU
+RUBIACEAE,Chomelia modesta (Standl.) Steyerm.,EX
+ORCHIDACEAE,Epidendrum filicaule Lindl.,VU
+RUBIACEAE,Coussarea bocainae M. Gomes,EN
+ORCHIDACEAE,Epidendrum geniculatum Barb.Rodr.,VU
+RUBIACEAE,Declieuxia cordigera Mart. & Zucc. ex Schult. & 260108 2016PD00530 3.396,45 ORCHIDACEAE Epidendrum henschenii Barb.Rodr.,EN
+ORCHIDACEAE,Epidendrum hololeucum Barb.Rodr.,VU
+RUBIACEAE,Declieuxia oenanthoides Mart. & Zucc. ex. Schult. & Schult.f.,EN
+ORCHIDACEAE,Epidendrum infaustum Reichb.f.,EX
+RUBIACEAE,Faramea monantha Müll.Arg.,VU
+ORCHIDACEAE,Epidendrum saxatile Lindl.,EX
+RUBIACEAE,Faramea paratiensis M.Gomes,EN
+ORCHIDACEAE,Eulophia ruwenzoriensis Rendle,EN
+RUBIACEAE,Galianthe cymosa (Cham.) E.L.Cabral & Bacigalupo,EX
+ORCHIDACEAE,Gomesa ciliata (Lindl.) M.W.Chase & N.H.Williams,VU
+RUBIACEAE,Galianthe peruviana (Pres.) E.L.Cabral,EX
+ORCHIDACEAE,Gomesa concolor (Hook.) M.W.Chase & N.H.Williams,EN
+RUBIACEAE,Galianthe pseudopeciolata E.L.Cabral,EX
+ORCHIDACEAE,Gomesa cruciata (Rchb.f.) M.W.Chase & N.H.Williams,VU
+RUBIACEAE,Galianthe souzae E.L.Cabral & Bacigalupo,EN
+ORCHIDACEAE,Gomesa cuneata (Scheidw.) M.W.Chase & N.H.Williams,VU
+RUBIACEAE,Galianthe vaginata E.L.Cabral & Bacigalupo,EN
+ORCHIDACEAE,Gomesa jucunda (Rchb.f.) M.W.Chase & N.H.Williams,VU
+RUBIACEAE,Galium diphyllum (K.Schum.) Dempster,EX
+ORCHIDACEAE,Gomesa pectoralis (Lindl.) M.W.Chase & N.H.Williams,CR
+RUBIACEAE,Galium equisetoides (Cham. & Schltdl.) Standl.,EX
+ORCHIDACEAE,Gomesa praetexta (Rchb.f.) M.W.Chase & N.H.Williams,VU
+RUBIACEAE,Galium humile Cham. & Schltdl.,EX
+ORCHIDACEAE,Gomesa welteri (Pabst) M.W.Chase & N.H.Williams,VU
+RUBIACEAE,Galium hypocarpium (L.) Endl. ex Griseb. subsp. 260121 2016PD00803 4.541,26 ORCHIDACEAE Grandiphyllum divaricatum (Lindl.) Docha Neto,VU
+ORCHIDACEAE,Grandiphyllum hians (Lindl.) Docha Neto,VU
+RUBIACEAE,Galium nigroramosum (Ehrend.) Dempster,EX
+ORCHIDACEAE,Grobya fascifera Reichb. f.,EX
+RUBIACEAE,Galium noxium (A.St.-Hil.) Dempster subsp. 260121 2016PD00810 6.153,52 ORCHIDACEAE Habenaria achalensis Kraenzl.,VU
+ORCHIDACEAE,Habenaria armata Rchb.f.,EX
+RUBIACEAE,Galium shepherdii Jung-Mendaçolli,CR
+ORCHIDACEAE,Habenaria brachyplectron Hoehne & Schltr.,EX
+RUBIACEAE,Guettarda platyphylla Müll.Arg.,EX
+ORCHIDACEAE,Habenaria crucifera Rchb.f. & Warm.,EX
+RUBIACEAE,Manettia campanulacea Standl.,CR
+ORCHIDACEAE,Habenaria ernest-ulei Hoehne,EX
+RUBIACEAE,Manettia pauciflora Dusén,VU
+ORCHIDACEAE,Habenaria exaltata Barb.Rodr.,EX
+RUBIACEAE,Manettia tweedieana K.Schum.,VU
+ORCHIDACEAE,Habenaria galeandriformis Hoehne,EX
+RUBIACEAE,Melanopsidium nigrum Colla,VU
+ORCHIDACEAE,Habenaria hexaptera Lindl.,EX
+RUBIACEAE,Palicourea tetraphylla Cham. & Schltdl.,VU
+ORCHIDACEAE,Habenaria hydrophila Barb.Rodr.,EX
+RUBIACEAE,Psychotria loefgrenii Standl.,EN
+ORCHIDACEAE,Habenaria jordanensis (J.E.Leite) Garay,EX
+RUBIACEAE,Psychotria microcarpa Müll.Arg.,EX
+ORCHIDACEAE,Habenaria leucosantha Barb.Rodr.,EN
+RUBIACEAE,Psychotria paludosa Müll.Arg.,EX
+ORCHIDACEAE,Habenaria novaesii Edwall ex Hoehne,EX
+RUBIACEAE,Psychotria prunifolia (Kunth) Steyerm.,EN
+ORCHIDACEAE,Habenaria regnellii Cogn.,EN
+RUBIACEAE,Psychotria rhytidocarpa Müll.Arg.,VU
+ORCHIDACEAE,Habenaria santensis Barb.Rodr.,EX
+RUBIACEAE,Psychotria tenuifolia Sw.,EN
+ORCHIDACEAE,Habenaria schwackei Barb.Rodr.,EN
+RUBIACEAE,Richardia schumannii W.H.Lewis & R.L.Oliv.,EX
+ORCHIDACEAE,Habenaria trifida Kunth,VU
+RUBIACEAE,Richardia stellaris (Cham. & Schltdl.) Steud.,EN
+ORCHIDACEAE,Habenaria umbraticola Barb.Rodr.,EX
+RUBIACEAE,Rudgea corymbulosa Benth.,EN
+ORCHIDACEAE,Homalopetalum hypoleptum (Lindl.) Soto-Arenas,EX
+RUBIACEAE,Rudgea jasminoides (Cham.) Müll.Arg. subsp. nervosa 260121 2016PD00879 424,07 ORCHIDACEAE Houlletia brocklehurstiana Lindl.,EN
+ORCHIDACEAE,Isabelia virginalis Barb.Rodr.,VU
+RUBIACEAE,Rudgea pachyphylla Müll.Arg.,EX
+ORCHIDACEAE,Koellensteinia tricolor (Lindl.) Reichb.f.,VU
+RUBIACEAE,Rudgea parquioides (Cham.) Müll.Arg. subsp. caprifolium 260121 2016PD00884 7.320,11 ORCHIDACEAE Lepanthopsis densiflora (Barb.Rodr.) Ames,EX
+ORCHIDACEAE,Lepanthopsis floripecten (Rchb.f.) Ames,VU
+RUBIACEAE,Rudgea parquioides (Cham.) Müll.Arg. subsp. hirsutissima Zappi,EN
+ORCHIDACEAE,Macradenia multiflora R.Br. Cogn.,VU
+RUBIACEAE,Rustia angustifolia K.Schum.,EN
+ORCHIDACEAE,Malaxis cogniauxiana (Schltr.) Pabst,EX
+RUBIACEAE,Schizocalyx cuspidatus (A.St.-Hil) Kainul. & B.Bremer,VU
+ORCHIDACEAE,Malaxis jaraguae (Hoehne & Schltr.) Pabst,VU
+RUTACEAE,Esenbeckia pilocarpoides Kunth,EN
+ORCHIDACEAE,Mesadenella atroviridis (Barb.Rodr.) Garay,EX
+RUTACEAE,Pilocarpus giganteus Engl.,EN
+ORCHIDACEAE,Miltonia clowesii Lindl.,EX
+SAPINDACEAE,Cupania concolor Radlk.,VU
+ORCHIDACEAE,Miltonia kayasimae Pabst,EX
+SAPINDACEAE,Cupania furfuracea Radlk.,VU
+ORCHIDACEAE,Neogardneria murrayana (Gardner ex Hook.) Schltr.,EN
+SAPINDACEAE,Paullinia racemosa Wawra,VU
+ORCHIDACEAE,Nohawilliamsia pirarense (Rchb.f.) M.W.Chase & Whitten,EX
+SAPINDACEAE,Paullinia uloptera Radlk.,VU
+ORCHIDACEAE,Octomeria alexandri Schltr.,EN
+SAPINDACEAE,Serjania hatschbachii Ferrucci,EX
+ORCHIDACEAE,Octomeria estrellensis Hoehne,EW
+SAPINDACEAE,Urvillea glabra Cambess.,VU
+ORCHIDACEAE,Octomeria geraensis Barb.Rodr.,EX
+SAPOTACEAE,Chrysophyllum imperiale (Linden ex K.Koch & Fintelm.) 260121 2016PD00933 2.622,37 ORCHIDACEAE Octomeria hatschbachii Schltr.,EX
+ORCHIDACEAE,Octomeria hoehnei Schltr.,EX
+SAPOTACEAE,Pouteria bullata (S.Moore) Baehni,EN
+ORCHIDACEAE,Octomeria lichenicola Barb.Rodr.,EN
+SAPOTACEAE,Pouteria glomerata (Miq.) Radlk.,VU
+ORCHIDACEAE,Octomeria palmyrabellae Barb.Rodr.,VU
+SAPOTACEAE,Pouteria oxypetala T.D.Penn.,EN
+ORCHIDACEAE,Octomeria wawrae Rchb.f.,EX
+SIMAROUBACEAE,Simaba salubris Engl.,EX
+ORCHIDACEAE,Octomeria wilsoniana Hoehne,EX
+SMILACACEAE,Smilax japicanga Griseb.,VU
+ORCHIDACEAE,Pabstia jugosa (Lindl.) Garay,EN
+SMILACACEAE,Smilax lappacea Willd.,EX
+ORCHIDACEAE,Pabstiella carinifera (Barb.Rodr.) Luer,VU
+SMILACACEAE,Smilax lutescens Vell.,EX
+ORCHIDACEAE,Phragmipedium vittatum (Vell.) Rolfe,VU
+SMILACACEAE,Smilax muscosa Toledo,EX
+ORCHIDACEAE,Phymatidium vogelii Pabst,VU
+SMILACACEAE,Smilax subsessiliflora Duhamel,EX
+ORCHIDACEAE,Pogoniopsis schenckii Cogn.,EX
+SOLANACEAE,Schwenckia curviflora Benth.,EN
+ORCHIDACEAE,Pteroglossa hilariana (Cogn.) Garay,EX
+SOLANACEAE,Solanum spissifolium Sendtn,EX
+ORCHIDACEAE,Rodriguezia rigida (Lindl.) Rchb.f.,VU
+SYMPLOCACEAE,Symplocos atlantica Aranha,EN
+ORCHIDACEAE,Sarcoglottis alexandrii Schltr. ex. Mansf.,EX
+SYMPLOCACEAE,Symplocos itatiaiae Wawra,EN
+ORCHIDACEAE,Sarcoglottis uliginosa Barb.Rodr.,VU
+SYMPLOCACEAE,Symplocos rizzinii Occhioni,EX
+ORCHIDACEAE,Saundersia mirabilis Rchb.f.,EN
+TRIURIDACEAE,Sciaphila schwackeana Johow,EN
+ORCHIDACEAE,Scuticaria itirapinensis Pabst,CR
+TRIURIDACEAE,Triuris hyalina (Miers) F.Muell,EX
+ORCHIDACEAE,Scuticaria strictifolia Hoehne,EX
+TROPAEOLACEAE,Tropaeolum warmingianum Rohrb.,EN
+ORCHIDACEAE,Thysanoglossa jordanensis Porto & Brade,EN
+TURNERACEAE,Turnera hilaireana Urb.,EN
+ORCHIDACEAE,Trichocentrum albococcineum Lindl. Belg.,VU
+ULMACEAE,Phyllostylon rhamnoides (J.Poiss.) Taub.,EN
+ORCHIDACEAE,Vanilla dietschiana Edwall,VU
+URTICACEAE,Pilea rhizobola Miq.,EX
+ORCHIDACEAE,Veyretia rupicola (Garay) F.Barros,EX
+VELLOZIACEAE,Barbacenia gounelleana Beauverd,EN
+ORCHIDACEAE,Warczewiczella wailesiana (Lindl.) Rchb.f. ex E.Morren,EN
+VELLOZIACEAE,Barbacenia paranaensis L.B.Sm.,EN
+ORCHIDACEAE,Zygostates pellucida Rchb.f.,EN
+VELLOZIACEAE,Vellozia variabilis Mart. ex Schult. & Schilt.f.,EX
+OROBANCHACEAE,Agalinis communis (Cham. & Schltdl.) D’Arcy,EN
+VIOLACEAE,Hybanthus velutinus Schulze-Menz,EN
+OROBANCHACEAE,Agalinis ramulifera Barringer,EX
+VIOLACEAE,Viola gracillima A.St.-Hil.,EX
+OROBANCHACEAE,Buchnera amethystina Cham. & Schltdl.,EX
+VIOLACEAE,Viola subdimidiata A.St.-Hil.,EN
+OROBANCHACEAE,Escobedia grandiflora (L.f.) Kuntze,EN
+XYRIDACEAE,Xyris augusto-coburgii Szyszyl. ex Beck,EN
+OROBANCHACEAE,Melasma rhinanthoides (Cham.) Benth.,EX
+XYRIDACEAE,Xyris brevifolia Michx.,VU
+OXALIDACEAE,Oxalis arachnoidea Progel,EN
+XYRIDACEAE,Xyris capensis Thunb.,EX
+OXALIDACEAE,Oxalis hyalotricha Lourteig,EN
+XYRIDACEAE,Xyris cervii E.D.Lozano & Wand.,EN
+PASSIFLORACEAE,Passiflora campanulata Mast.,EW
+XYRIDACEAE,Xyris fallax Malme,EN
+PASSIFLORACEAE,Passiflora ischnoclada Harms,CR
+XYRIDACEAE,Xyris fusca L.A.Nilsson,EN
+PASSIFLORACEAE,Passiflora malacophylla Mast.,EX
+XYRIDACEAE,Xyris longifolia Mart.,EX
+PASSIFLORACEAE,Passiflora racemosa Brot.,EW
+XYRIDACEAE,Xyris metallica Klotzsch ex Seub.,VU
+PASSIFLORACEAE,Passiflora setulosa Killip,EW
+XYRIDACEAE,Xyris obtusiuscula L.A.Nilsson,EX
+PENTAPHYLACACEAE,Ternstroemia cuneifolia Gardner,EX
+XYRIDACEAE,Xyris rigida Kunth,CR
+PIPERACEAE,Peperomia adsurgens Yuncker,EX
+XYRIDACEAE,Xyris stenophylla L.A.Nilsson,EX
+PIPERACEAE,Peperomia apiahyensis Yuncker,EX
+XYRIDACEAE,Xyris trachyphylla Mart.,EN
+PIPERACEAE,Peperomia clivicola Yuncker,EX
+XYRIDACEAE,Xyris uninervis Malme,VU
+PIPERACEAE,Peperomia cooperi C.DC.,EX
+XYRIDACEAE,Xyris vacillans Malme,EN
+PIPERACEAE,Peperomia diaphanoides Dahlst.,EX
+XYRIDACEAE,Xyris wawrae Heimerl.,EN
+PIPERACEAE,Peperomia emarginella C.DC.,EX
+PIPERACEAE,Peperomia gardneriana Miq.,EX
+PIPERACEAE,Peperomia gracilis Dahlst.,EN
+PIPERACEAE,Peperomia guarujana C.DC.,EX
+PIPERACEAE,Peperomia hemmendorffii Yuncker,EX
+PIPERACEAE,Peperomia hernandiifolia (Vahl) A.Dietr.,EX
+PODOSTEMACEAE,Podostemum distichum (Cham.) Wedd.,VU
+PIPERACEAE,Peperomia hydrocotyloides Miq.,EX
+PODOSTEMACEAE,Podostemum ovatum C.T.Philbrick & Novelo,EN
+PIPERACEAE,Peperomia itatiaiana Yuncker,EX
+PODOSTEMACEAE,Podostemum rutifolium Warm.,EN
+PIPERACEAE,Peperomia loefgrenii Yuncker,EX
+POLYGALACEAE,Polygala brasiliensis L.,EN
+PIPERACEAE,Peperomia mosenii Dahlst.,EX
+POLYGALACEAE,Polygala galioides Poir.,EX
+PIPERACEAE,Peperomia oreophilla Hensch.,EX
+POLYGALACEAE,Polygala molluginifolia A.St.-Hil.,EX
+PIPERACEAE,Peperomia quadrifolia Miq.,EX
+POLYGALACEAE,Polygala pumila Norl.,EX
+PIPERACEAE,Peperomia rostulatiformis Yuncker,EX
+POLYGALACEAE,Polygala stephaniana Marques,EX
+PIPERACEAE,Peperomia schwackei C.DC.,EN
+POLYGALACEAE,Polygala tamariscea Mart. ex A.W.Benn.,EX
+PIPERACEAE,Peperomia subrubrispica C.DC.,EX
+PONTEDERIACEAE,Heteranthera reniformis Ruiz & Pav.,VU
+PIPERACEAE,Peperomia trinervis Ruiz & Pav.,EN
+PONTEDERIACEAE,Heteranthera zosterifolia Mart.,VU
+PIPERACEAE,Peperomia turbinata Dahlst.,EX
+PORTULACACEAE,Portulaca amilis Speg.,VU
+PIPERACEAE,Peperomia velloziana Miq.,EX
+PORTULACACEAE,Portulaca halimoides L.,EX
+PIPERACEAE,Piper amparoense Yuncker,EX
+PRIMULACEAE,Anagallis barbata (P.Taylor) Kupicha,EN
+PIPERACEAE,Piper anostachyum Yuncker,EN
+PRIMULACEAE,Clavija spinosa (Vell.) Mez,EN
+PIPERACEAE,Piper crassistilum Yuncker,EX
+PRIMULACEAE,Lysimachia buxifolia Molina,EN

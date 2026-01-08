@@ -1,6 +1,6 @@
-municipality,compensation_m2
-avare,2
-sorocaba,4
-piracicaba,3
-piracicaba,3
-cotia,1
+municipality,successional_stage,compensation_m2
+avare,mid,2
+sorocaba,mid,4
+piracicaba,initial,3
+piracicaba,late,3
+cotia,mid,1

@@ -7,6 +7,7 @@ from model.patch_compensation import PatchCompensation
 from model.app_compensation import AppCompensation
 
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 FEDERAL_CSV = BASE_DIR / "federal_compensation.csv"
 PATCH_CSV = BASE_DIR / "patch_compensation.csv"
@@ -70,55 +71,36 @@ def load_compensacao_from_csv_once(force: bool = False):
     session.close()
 
 
+# model/utils.py  (relevant part)
 def load_patch_compensacao_from_csv_once():
-    """Carrega patch_compensation.csv uma única vez na tabela patch_compensation."""
     session = Session()
-    count = session.query(PatchCompensation).count()
-    if count > 0:
+
+    # If there's already data, don't reload
+    if session.query(PatchCompensation).first():
         session.close()
         print("Patch compensation table already populated.")
         return
 
-    if not PATCH_CSV.exists():
-        session.close()
-        print(f"PATCH CSV not found at {PATCH_CSV}")
-        return
+    csv_path = Path(".") / "patch_compensation.csv"
 
-    rows = []
-    seen = set()
-
-    with PATCH_CSV.open(newline="", encoding="utf-8") as f:
+    with csv_path.open(newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            muni = (row.get("municipality") or "").strip()
-            if not muni:
-                continue
-            if muni in seen:
-                
-                continue
-            seen.add(muni)
+            municipality = row["municipality"].strip()
+            successional_stage = row.get("successional_stage", "").strip().lower() or None
+            compensation_m2 = float(row["compensation_m2"])
 
-            comp_m2_str = row.get("compensation_m2")
-            if comp_m2_str is None:
-                continue
-            try:
-                comp_m2 = float(comp_m2_str)
-            except ValueError:
-                continue
-
-            rows.append(
-                PatchCompensation(
-                    municipality=muni,
-                    compensation_m2=comp_m2
-                )
+            pc = PatchCompensation(
+                municipality=municipality,
+                compensation_m2=compensation_m2,
+                successional_stage=successional_stage,
             )
+            session.add(pc)
 
-    if rows:
-        session.add_all(rows)
-        session.commit()
-        print("Patch compensation table loaded from CSV.")
-
+    session.commit()
     session.close()
+    print("Patch compensation table loaded from CSV.")
+
 
 def load_species_status_from_csv_once():
     global _STATUS_LOADED

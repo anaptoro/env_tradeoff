@@ -340,10 +340,11 @@ def calcular_compensacao_lote():
 
 
 
+
 @app.route('/api/compensacao/patch', methods=['POST'])
 def calcular_compensacao_patch():
     """
-    Trade-off calculation for patches(m²).
+    Trade-off calculation for patches (m²).
 
     ---
     tags:
@@ -368,12 +369,16 @@ def calcular_compensacao_patch():
                   area_m2:
                     type: number
                     example: 150.5
+                  successional_stage:
+                    type: string
+                    enum: [initial, mid, late]
+                    example: initial
     responses:
       200:
         description: Patch trade-off
     """
     data = request.get_json() or {}
-    print("Received data for patch:", data)  
+    print("Received data for patch:", data)
 
     patches = data.get("patches")
     if not isinstance(patches, list) or not patches:
@@ -388,13 +393,16 @@ def calcular_compensacao_patch():
     for idx, patch in enumerate(patches):
         municipality = patch.get("municipality")
         area_m2 = patch.get("area_m2")
+        successional_stage = patch.get("successional_stage")  # new field
 
-        
+        # Mandatory fields
         missing = []
         if not municipality:
             missing.append("municipality")
         if area_m2 is None:
             missing.append("area_m2")
+        if not successional_stage:
+            missing.append("successional_stage")
 
         if missing:
             patches_sem_regra.append({
@@ -404,7 +412,10 @@ def calcular_compensacao_patch():
             })
             continue
 
-        
+        # Normalize successional_stage (optional, but nice)
+        successional_stage_norm = str(successional_stage).strip().lower()
+
+        # Convert area
         try:
             area_m2 = float(area_m2)
         except (TypeError, ValueError):
@@ -415,28 +426,32 @@ def calcular_compensacao_patch():
             })
             continue
 
-        
+        # Look up rule in PatchCompensation table -> municipality + successional_stage
         regra = (
             session.query(PatchCompensation)
-            .filter(PatchCompensation.municipality == municipality)
+            .filter(
+                PatchCompensation.municipality == municipality,
+                PatchCompensation.successional_stage == successional_stage_norm
+            )
             .first()
         )
 
         if not regra:
             patches_sem_regra.append({
                 "index": idx,
-                "motivo": "não existe regra de compensação para este município",
+                "motivo": "no patch trade-off rule for this municipality + successional_stage",
                 "item": patch
             })
             continue
 
-        
+        # Assuming column 'compensation_m2' in PatchCompensation
         comp_por_m2 = regra.compensation_m2
         total_patch = comp_por_m2 * area_m2
         total_geral += total_patch
 
         resultados.append({
             "municipality": municipality,
+            "successional_stage": successional_stage_norm,
             "area_m2": area_m2,
             "compensacao_por_m2": comp_por_m2,
             "compensacao_total_patch": total_patch,
@@ -449,6 +464,7 @@ def calcular_compensacao_patch():
         "total_compensacao_geral": total_geral,
         "patches_sem_regra": patches_sem_regra,
     }), 200
+
 
 @app.route("/api/compensacao/app", methods=["POST"])
 def calcular_compensacao_app():
