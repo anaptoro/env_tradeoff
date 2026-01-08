@@ -1,21 +1,23 @@
 # Environmental trade-off calculator
 Environmental Trade-off Calculator 
 
-This project is a small full-stack web app to help estimate environmental tree compensation required under local(Sao Paulo state) regulations.
+This project is a small full-stack web app to help estimate environmental tree compensation required under local(Sao Paulo state - SEMIL nº 02/2024) regulations.
 
 The frontend is a simple HTML/CSS/JavaScript single page with tabs for each workflow, calling the Flask endpoints via fetch and rendering tables with the detailed results and totals.
 
 The backend is a Flask API (with Swagger/OpenAPI docs) that reads compensation rules from CSV files and a SQLite database. It supports three main operations:
 
-Isolated trees – given quantity, group (native/exotic), municipality and whether the species is endangered, the API returns the tree-level trade-off and the total trade-off per item and per lot.
+Isolated trees – given quantity, group (native/exotic), municipality and whether the species is endangered, the API returns the tree-level trade-off and the total trade-off per item and per batch.
 
-Forest patches / area (m²) – given municipality and patch area, it looks up the compensation factor (per m²) and computes the total patch trade-off.
+Forest patches / area (m²) – given municipality, successional stage, and patch area, it looks up the compensation factor (per m²) and computes the total patch trade-off.
 
 Permanent Preservation Area(PPA) – similar to patches, but using a separate rules table for PPA trade-off.
 
 Species conservation status – query a species (family + scientific name) and return its IUCN-style status (EW, CR, EN, VU, etc.).
 
 For both cases the compensation will be automatically calculated based on individual municipalities environmental rules.
+
+All the trade-off rules here were extracted from the SEMIL 02/2024 official documentation (**Resolução SEMIL nº 02/2024** (pages 30–34, Annex II))
 
 ---
 ## How to run
